@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA
-from .user import User
+# from .user import User
 
 class Profile(db.Model):
     __tablename__ = 'profiles'
