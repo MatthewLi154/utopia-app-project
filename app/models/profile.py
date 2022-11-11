@@ -18,4 +18,4 @@ class Profile(db.Model):
     img_url = db.Column(db.String, nullable=False)
     score = db.Column(db.String, nullable=False)
 
-    db.relationship("User", back_populates='profile')
+    user = db.relationship("User", back_populates='profile')
