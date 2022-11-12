@@ -6,6 +6,24 @@ from flask_login import current_user, login_required
 
 profile_routes = Blueprint('profile', __name__)
 
+@profile_routes.route('/<id>', methods=['PUT'])
+@login_required
+def edit_profile(id):
+    profile = Profile.query.filter_by(id=id).first()
+    parsed_profile = profile.__dict__
+    del parsed_profile['_sa_instance_state']
+    data = request.get_json()
+
+    # Update parsed_profile with request body data
+    profile.first_name = data.first_name
+    profile.last_name = data.last_name
+    profile.bio = data.bio
+    profile.birthday = data.birthday
+    profile.identify_as = data.identify_as
+
+
+    return parsed_profile
+
 
 @profile_routes.route('', methods=['GET'])
 @login_required
