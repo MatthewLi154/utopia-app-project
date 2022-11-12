@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify
-from app.models import User
+from flask import Blueprint, jsonify, request
+from app.models import User, db
 from app.models.profile import Profile
 from flask_login import current_user, login_required
 
@@ -24,9 +24,19 @@ def create_profile():
     from the form and store it into the data base, then
     redirect them to their profile page
     """
-    pass
-
-@profile_routes.route("/create", methods=['GET'])
-@login_required
-def profile_form():
-    pass
+    data = request.get_json()
+    print(data)
+    new_profile = Profile(
+        user_id=data['user_id'],
+        first_name=data['first_name'],
+        last_name=data['last_name'],
+        birthday=data['birthday'],
+        location=data['location'],
+        bio=data['bio'],
+        identify_as=data['identify_as'],
+        looking_for=data['looking_for'],
+        img_url=data['img_url']
+    )
+    db.session.add(new_profile)
+    db.session.commit()
+    return data
