@@ -2,6 +2,7 @@
 const LOAD_ALL_PROFILES = "profile/loadAllProfiles";
 const ADD_PROFILE = "profile/addProfile";
 const LOAD_SINGLE_PROFILE = "profile/loadSingleProfile";
+const EDIT_PROFILE = "profile/editProfile";
 
 // actions
 export const getUserProfiles = (data) => {
@@ -21,6 +22,13 @@ export const addUserProfile = (data) => {
 export const getSingleProfile = (data) => {
   return {
     type: LOAD_SINGLE_PROFILE,
+    profile: data,
+  };
+};
+
+export const editProfile = (data) => {
+  return {
+    type: EDIT_PROFILE,
     profile: data,
   };
 };
@@ -60,6 +68,20 @@ export const createProfile = (newProfileData) => async (dispatch) => {
   }
 };
 
+export const editSingleProfile = (newProfileData) => async (dispatch) => {
+  const response = await fetch("/api/profile", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newProfileData),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editProfile(data));
+    return data;
+  }
+};
+
 // reducer
 const initialState = { user_profiles: {}, singleProfile: {} };
 
@@ -74,6 +96,8 @@ const profileReducer = (state = initialState, action) => {
       return profileStateObj;
     case LOAD_SINGLE_PROFILE:
       profileStateObj.singleProfile = action.profile;
+      return profileStateObj;
+    case EDIT_PROFILE:
       return profileStateObj;
     default:
       return state;
