@@ -9,6 +9,11 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Profile from "./components/profile";
 import { authenticate } from "./store/session";
+import CreateProfileName from "./components/CreateProfile/CreateProfileName";
+import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirthday";
+import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
+import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
+import SingleUserProfile from "./components/SingleUserProfile";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +40,22 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile/create/name">
+          <CreateProfileName />
+        </Route>
+        <Route path="/profile/create/birthday">
+          <CreateProfileBirthday />
+        </Route>
+        <Route exact path="/profile/create/location">
+          <CreateProfileLocation />
+        </Route>
+        <Route exact path="/profile/create/about">
+          <CreateProfileBio />
+        </Route>
+        <Route path="/profile/:userId">
+          <SingleUserProfile />
+        </Route>
+        <Route path="/profiles">
           <Profile />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
