@@ -10,7 +10,6 @@ const LoginForm = ({setLogin}) => {
   const [password, setPassword] = useState('');
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory()
 
   if(sessionUser) return (
     <Redirect to="/"/>
@@ -22,22 +21,20 @@ const LoginForm = ({setLogin}) => {
     if (data) {
       setErrors(data);
     }
-    if(data?.id){
-      history.push('/')
-      setLogin(false)
-    }
   };
 
   if (sessionUser) {
     return <Redirect to='/' />;
   }
 
+
+
   return (
     <div className='login-modal'>
       <h1 id='Log-in'>Log In</h1>
       <h2 id='login-welcome'> Welcome to Utopia</h2>
     <form className='login-form-container' onClick={e => e.stopPropagation()} onSubmit={onLogin}>
-      
+
         {errors.map((error, ind) => (
           <li key={ind}>{error}</li>
         ))}
@@ -63,10 +60,10 @@ const LoginForm = ({setLogin}) => {
         </label>
         <button className='log-in-button' type='submit'>Log  In</button>
         <button className='Demo-User-Button'
-        onClick={() => (dispatch(sessionActions.login({
-          email: "demo@aa.io",
-          password: "password"
-        })), setLogin(false))}
+        onClick={() => (dispatch(sessionActions.login(
+          "demo@aa.io",
+          "password"
+        )))}
         > Demo User </button>
     </form>
     </div>
