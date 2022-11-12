@@ -14,6 +14,7 @@ import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirth
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
 import SingleUserProfile from "./components/SingleUserProfile";
+import PersonalityQuestions from "./components/PersonalityQuestions";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/profile/:userId/personality-questions">
+          <PersonalityQuestions />
         </Route>
         <Route path="/profile/create/name">
           <CreateProfileName />
