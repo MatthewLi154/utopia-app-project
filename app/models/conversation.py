@@ -15,3 +15,10 @@ class Conversation(db.Model):
     recipient = db.relationship("User",foreign_keys=[recipient_id])
 
     message = db.relationship("Message", back_populates='conversation')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'sender_id': self.sender_id,
+            'recipient_id': self.recipient_id
+        }

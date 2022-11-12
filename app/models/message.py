@@ -12,3 +12,10 @@ class Message(db.Model):
     conversation_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('conversations.id')), nullable=False)
 
     conversation = db.relationship("Conversation", back_populates='message')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'body': self.body,
+            'conversation_id': self.conversation_id
+        }

@@ -9,6 +9,13 @@ def seed_conversations():
     db.session.add(conversation1)
     db.session.commit()
 
+    conversation2 = Conversation(
+        sender_id = 2,
+        recipient_id = 3
+    )
+    db.session.add(conversation2)
+    db.session.commit()
+
 def undo_conversations():
     db.session.execute('DELETE FROM conversations')
     db.session.commit()

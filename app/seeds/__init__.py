@@ -21,8 +21,8 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_profiles()
-        # undo_conversations()
-        # undo_messages()
+        undo_conversations()
+        undo_messages()
     seed_users()
     seed_profiles()
     seed_conversations()
@@ -35,6 +35,6 @@ def seed():
 def undo():
     undo_users()
     undo_profiles()
-    # undo_conversations()
-    # undo_messages()
+    undo_conversations()
+    undo_messages()
     # Add other undo functions here
