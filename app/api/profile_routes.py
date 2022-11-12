@@ -76,3 +76,15 @@ def create_profile():
     db.session.add(new_profile)
     db.session.commit()
     return data
+
+@profile_routes.route("/<id>/personality-questions", methods=['PUT'])
+def get_personality_score(id):
+
+    # Recieve data from request (should be the score of the questions)
+    data = request.get_json()
+    profile = Profile.query.filter_by(id=id).first()
+    profile.score = data['score']
+    db.session.commit()
+
+    # Return to matches page
+    return "Successfully updated"

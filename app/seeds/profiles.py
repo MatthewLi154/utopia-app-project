@@ -8,7 +8,7 @@ def seed_profiles():
     )
 
     demo_profile_2 = Profile(
-        user_id=2, first_name='Marnie', last_name='Einram', birthday='01-12-1998', location='Venus, Milky Way', bio="This is Marnie's bio!", identify_as='Alien', looking_for='Human', img_url='image2.jpg', score=15
+        user_id=2, first_name='Marnie', last_name='Einram', birthday='01-12-1998', location='Venus, Milky Way', bio="This is Marnie's bio!", identify_as='Alien', looking_for='Human', img_url='image2.jpg', score=24
     )
 
     demo_profile_3 = Profile(

@@ -47,3 +47,8 @@
   border-bottom-right-radius: 1rem;
   /* background-color: aqua; */
 }
+
+.submit-personality-questions-container {
+  display: flex;
+  justify-content: center;
+}

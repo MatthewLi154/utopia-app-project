@@ -41,7 +41,7 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/profile/:userId/personality-questions">
+        <Route path="/profile/:profileId/personality-questions">
           <PersonalityQuestions />
         </Route>
         <Route path="/profile/create/name">

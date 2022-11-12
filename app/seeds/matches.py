@@ -1,15 +1,15 @@
-from app.models import db, user
+from app.models import db, profile
 from app.models.match import Match
 
 def seed_matches():
     matches = [
         {
-        'user_id': 1,
-        'matched_user_id': 2
+        'profile_id': 1,
+        'matched_profile_id': 2
         },
         {
-        'user_id': 1,
-        'matched_user_id': 3
+        'profile_id': 1,
+        'matched_profile_id': 3
         }
     ]
 
