@@ -13,6 +13,7 @@ import CreateProfileName from "./components/CreateProfile/CreateProfileName";
 import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirthday";
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
+import SingleUserProfile from "./components/SingleUserProfile";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,7 +52,10 @@ function App() {
         <Route exact path="/profile/create/about">
           <CreateProfileBio />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile/:userId">
+          <SingleUserProfile />
+        </Route>
+        <Route path="/profiles">
           <Profile />
         </Route>
         <ProtectedRoute path="/users" exact={true}>

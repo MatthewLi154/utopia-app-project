@@ -3,7 +3,9 @@ from app.models import User, db
 from app.models.profile import Profile
 from flask_login import current_user, login_required
 
+
 profile_routes = Blueprint('profile', __name__)
+
 
 @profile_routes.route('', methods=['GET'])
 @login_required
@@ -15,6 +17,17 @@ def user_profile():
         parsed_user_dict[profile.id] = vars(profile)
         del parsed_user_dict[profile.id]['_sa_instance_state']
     return parsed_user_dict
+
+
+@profile_routes.route('/<id>', methods=['GET'])
+@login_required
+def single_user_profile(id):
+    profile = Profile.query.filter_by(id=id).first()
+    parsed_profile = profile.__dict__
+    del parsed_profile['_sa_instance_state']
+    print(parsed_profile)
+    return parsed_profile
+
 
 @profile_routes.route('', methods=['POST'])
 @login_required

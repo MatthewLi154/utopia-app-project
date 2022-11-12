@@ -1,6 +1,7 @@
 // constants
 const LOAD_ALL_PROFILES = "profile/loadAllProfiles";
 const ADD_PROFILE = "profile/addProfile";
+const LOAD_SINGLE_PROFILE = "profile/loadSingleProfile";
 
 // actions
 export const getUserProfiles = (data) => {
@@ -17,6 +18,13 @@ export const addUserProfile = (data) => {
   };
 };
 
+export const getSingleProfile = (data) => {
+  return {
+    type: LOAD_SINGLE_PROFILE,
+    profile: data,
+  };
+};
+
 // thunks
 export const fetchAllProfiles = () => async (dispatch) => {
   const response = await fetch("/api/profile");
@@ -24,6 +32,16 @@ export const fetchAllProfiles = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getUserProfiles(data));
+    return data;
+  }
+};
+
+export const fetchSingleProfile = (id) => async (dispatch) => {
+  const response = await fetch(`/api/profile/${id}`);
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addUserProfile(data));
     return data;
   }
 };
@@ -52,6 +70,9 @@ const profileReducer = (state = initialState, action) => {
       profileStateObj.user_profiles = action.profiles;
       return profileStateObj;
     case ADD_PROFILE:
+      profileStateObj.singleProfile = action.profile;
+      return profileStateObj;
+    case LOAD_SINGLE_PROFILE:
       profileStateObj.singleProfile = action.profile;
       return profileStateObj;
     default:
