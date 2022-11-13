@@ -17,6 +17,21 @@ class Profile(db.Model):
     identify_as = db.Column(db.String, nullable=False)
     looking_for = db.Column(db.String, nullable=False)
     img_url = db.Column(db.String, nullable=False)
-    score = db.Column(db.String)
+    score = db.Column(db.Integer)
 
     user = db.relationship("User", back_populates='profile')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'birthday': self.birthday,
+            'location': self.location,
+            'bio': self.bio,
+            'identify_as': self.identify_as,
+            'looking_for': self.looking_for,
+            'img_url': self.img_url,
+            'score': self.score
+        }
