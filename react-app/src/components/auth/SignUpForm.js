@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import * as sessionActions from "../../store/session"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -9,85 +10,73 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(sessionActions.signUp(username, email, password));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
-
-  if (user) {
+  if (sessionUser) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <div className='sign-up-form-modal'>
+      <div className='signup-form-header'>
+        <h3>Sign Up</h3>
+      </div>
+    <form onClick={(e) => e.stopPropagation()} onSubmit={onSignUp} className="signup-form-wrapper">
+      <h2>Welcome to Utopia</h2>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Name</label>
+
+        <label>
         <input
           type='text'
-          name='username'
-          onChange={updateUsername}
+          onChange={(e) => setUsername(e.target.value)}
           value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
+          placeholder="Username"
+        />
+          </label>
+
+        <label>
         <input
           type='text'
-          name='email'
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
+          placeholder="Email"
+        />
+        </label>
+        <label>
         <input
           type='password'
-          name='password'
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
+          placeholder="Password"
+        />
+        </label>
+        <label>
         <input
           type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
+          onChange={(e) => setRepeatPassword(e.target.value)}
           value={repeatPassword}
+          placeholder="Confirm Password"
           required={true}
-        ></input>
-      </div>
+        />
+        </label>
       <button type='submit'>Sign Up</button>
     </form>
+    </div>
   );
 };
 
