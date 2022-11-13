@@ -13,26 +13,17 @@ def add_matches():
     # New profile with score will need to compare scores with existing profiles
 
     data = request.get_json()
+    print(data)
     # add each dictionary from data list to match table as new match instance
     for match in data:
         newMatch = Match(profile_id=match['profile_id'], matched_profile_id=match['matched_profile_id'])
         db.session.add(newMatch)
     db.session.commit()
 
-    # want to update state with new matched users state
-    # matches state should look like this
-    ## matches = {
-    #     1: {profile_id: 1, matching_percentage: 0.6}
-    #     2: {profile_id: 2, matching_percentage: 0.8}
-    # }
-    # matched_profiles = Match.query.filter_by(profile_id=data[0]['profile_id']).all()
     matched_profiles = Match.query.all()
-    # profiles = Profile.query.filter_by()
-    # print(list(matched_profiles))
     matched_profiles_dict = {}
     for matched in matched_profiles:
         matched_profiles_dict[matched.to_dict()['id']] = matched.to_dict()
-    # print(matched_profiles_dict)
 
     current_user_id = current_user.to_dict()['id']
     current_profile = Profile.query.filter_by(user_id=current_user_id).first()
@@ -41,22 +32,102 @@ def add_matches():
 
     matches_state_set = set()
     for match_set in matched_profiles_dict:
-        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set:
+        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
             matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
         if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
             matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
     print(matches_state_set)
 
+    # Get current profile score
+    current_profile_score = current_profile.to_dict()['score']
 
-    return matched_profiles_dict
+    # for each profile id, get score then calculate match percentage
+    # return match profile id and respective match percentage in dictionary where match profile id is key of dict
+    match_percent_dict = {}
+    for profile_id in matches_state_set:
+        print(profile_id)
+        match_profile = Profile.query.filter_by(id=profile_id).first()
+        if match_profile:
+            match_profile_score = match_profile.to_dict()['score']
+            if match_profile_score > current_profile_score:
+                matching_percentage = current_profile_score / match_profile_score
+            else:
+                matching_percentage = match_profile_score / current_profile_score
+        match_percent_dict[profile_id] = {
+            "matched_profile_id": profile_id,
+            "matching_percentage": matching_percentage
+        }
+
+    return match_percent_dict
+
+@matches_routes.route('/match-percent', methods=['GET'])
+@login_required
+def get_match_percent():
+    matched_profiles = Match.query.all()
+    matched_profiles_dict = {}
+    for matched in matched_profiles:
+        matched_profiles_dict[matched.to_dict()['id']] = matched.to_dict()
+
+    current_user_id = current_user.to_dict()['id']
+    current_profile = Profile.query.filter_by(user_id=current_user_id).first()
+    current_profile_id = current_profile.to_dict()['id']
+    print(current_profile_id)
+
+    matches_state_set = set()
+    for match_set in matched_profiles_dict:
+        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
+            matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
+        if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
+            matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
+
+    # Get current profile score
+    current_profile_score = current_profile.to_dict()['score']
+
+    # for each profile id, get score then calculate match percentage
+    # return match profile id and respective match percentage in dictionary where match profile id is key of dict
+    match_percent_dict = {}
+    for profile_id in matches_state_set:
+        print(profile_id)
+        match_profile = Profile.query.filter_by(id=profile_id).first()
+        if match_profile:
+            match_profile_score = match_profile.to_dict()['score']
+            if match_profile_score > current_profile_score:
+                matching_percentage = current_profile_score / match_profile_score
+            else:
+                matching_percentage = match_profile_score / current_profile_score
+        match_percent_dict[profile_id] = {
+            "matched_profile_id": profile_id,
+            "matching_percentage": matching_percentage
+        }
+
+    print(match_percent_dict)
+    return match_percent_dict
+
 
 @matches_routes.route('', methods=['GET'])
 @login_required
 def get_matches():
-    # Fetch from matches table
-    # create an object
-    # query using current_user,
-    # find all instances of profile_id = profile.id
-    # find all instances of recipient_id = profile.id
-    # return matches obj
-    return { "message": "successful add" }
+
+    matched_profiles = Match.query.all()
+
+    matched_profiles_dict = {}
+    for matched in matched_profiles:
+        matched_profiles_dict[matched.to_dict()['id']] = matched.to_dict()
+
+    current_user_id = current_user.to_dict()['id']
+    current_profile = Profile.query.filter_by(user_id=current_user_id).first()
+    current_profile_id = current_profile.to_dict()['id']
+
+    matches_state_set = set()
+    for match_set in matched_profiles_dict:
+        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
+            matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
+        if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
+            matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
+
+    matched_profiles_state = {}
+    for profile_id in matches_state_set:
+        profile_match = Profile.query.filter_by(id=profile_id).first()
+        matched_profiles_state[profile_id] = profile_match.to_dict()
+
+    return matched_profiles_state
