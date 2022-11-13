@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import {
   fetchAllProfiles,
   fetchSingleProfile,
@@ -12,6 +12,7 @@ import { storeAllMatches } from "../../store/match";
 function PersonalityQuestions() {
   const { profileId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const allProfiles = useSelector((state) => state?.profiles.user_profiles);
   const currentUserProfile = useSelector(
     (state) => state?.profiles.singleProfile
@@ -66,7 +67,7 @@ function PersonalityQuestions() {
       const profile = allProfiles[key];
       // Do not compare to self
       let matchingPercentage = 0;
-      if (profile.id !== parseInt(profileId)) {
+      if (profile.id !== parseInt(profileId) && profile.score) {
         // if score is about 60% the same, then add to match table
         if (total > profile.score) {
           matchingPercentage = profile.score / total;
@@ -83,16 +84,9 @@ function PersonalityQuestions() {
       }
     }
 
-    // console.log(matches);
-    // // normalize matches
-    // let matchObj = {};
-    // for (const match of matches) {
-    //   matchObj[match.id] = match;
-    // }
-
-    console.log("OBJ", matches);
-    // Load matches into the state
     dispatch(storeAllMatches(matches));
+
+    history.push("/profiles");
   };
 
   return (
