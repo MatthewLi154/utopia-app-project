@@ -20,7 +20,7 @@ const NavBar = ({ isLoaded }) => {
           <div className='left-nav-items'>
             <li className='left-nav'>
               <NavLink  to='/' exact={true}>
-                <img className="logo" src='https://i.imgur.com/TTcEnHK.png' alt='logo' className='home-logo'></img>
+                <img src='https://i.imgur.com/TTcEnHK.png' alt='logo' className='home-logo'></img>
               </NavLink>
               <NavLink className="discover" to='/profiles' exact={true}>
                 Discover
@@ -36,7 +36,7 @@ const NavBar = ({ isLoaded }) => {
             <img  src='https://i.imgur.com/1kY4QtL.png' alt="default-profile-pic" className='default-profile-pic'></img>
           </Link>
           <div className='user-name'>Matthew Li</div>
-        <div className='Log-out-button'>
+        <div>
           <LogoutButton />
         </div>
         </div>

@@ -1,43 +1,107 @@
 .nav-bar {
-  margin: 0px;
-  width: 100%;
+    margin: 0px;
+    width: 100%;
 }
 
 .nav-list {
-  /* color: white; */
-  display: flex;
-  justify-content: space-evenly;
-  list-style: none;
-  height: 80px;
-  width: 100%;
-  margin: 0px;
-  top: 0;
-  align-items: center;
-  box-sizing: border-box;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /* color: white; */
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    height: 80px;
+    width: 100%;
+    margin: 0px;
+    top: 0;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.left-nav-items {
-  display: flex;
-  align-items: center;
-  margin: 0;
+
+.left-nav {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    /* margin: 0; */
 }
 
 .discover {
-  padding: 12px;
-  letter-spacing: 0.5px;
-  font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+}
+
+.discover:hover {
+    cursor: pointer;
+    background:
+        linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
 .default-profile-pic {
-  border-radius: 50%;
-  height: 50px;
+    border-radius: 50%;
+    height: 50px;
 }
 
 .Right-nav-user {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .user-name {
-  padding: 5px;
+    padding: 5px;
+}
+
+.logout {
+    width: 80px;
+    height: 30px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.logout:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.logout:active {
+    color: #000
+}
+
+.logout:active:after {
+    background: transparent;
+}
+
+.logout:hover:before {
+    opacity: 1;
+}
+
+.logout:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
 }
