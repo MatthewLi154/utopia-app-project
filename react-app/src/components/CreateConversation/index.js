@@ -15,13 +15,14 @@ function CreateConversation(){
 
     let conversations = useSelector((state) => Object.values(state.conversations.all_user_conversations))
     let profile = useSelector((state) => Object.values(state.profiles.user_profiles))
-    console.log('this is profile', profile)
 
     const findProfile = (id) => profile.find(p => p.user_id === id)
 
     // NOTE: we need to make the first name and last name a link/button that leads you to that
     // conversation's messages
 
+    // there is a matches table so that we can use a match table slice of state to auto-generate conversations
+    // confirm w matt after merge.
 
 
     return (
