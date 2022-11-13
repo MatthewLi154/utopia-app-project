@@ -4,6 +4,7 @@ const ADD_PROFILE = "profile/addProfile";
 const LOAD_SINGLE_PROFILE = "profile/loadSingleProfile";
 const EDIT_PROFILE = "profile/editProfile";
 const DELETE_PROFILE = "profile/deleteProfile";
+const UPDATE_SCORE_PROFILE = "profile/updateScore";
 
 // actions
 export const getUserProfiles = (data) => {
@@ -38,6 +39,13 @@ export const deleteProfile = (id) => {
   return {
     type: DELETE_PROFILE,
     id: id,
+  };
+};
+
+export const updateScore = (profileId) => {
+  return {
+    type: UPDATE_SCORE_PROFILE,
+    id: profileId,
   };
 };
 
@@ -99,6 +107,22 @@ export const deleteSingleProfile = (id) => async (dispatch) => {
     const data = await response.json();
     dispatch(deleteProfile(id));
     return data;
+  }
+};
+
+export const updateScoreProfile = (score, profileId) => async (dispatch) => {
+  const response = await fetch(
+    `/api/profile/${profileId}/personality-questions`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(score),
+    }
+  );
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateScore(data));
   }
 };
 
