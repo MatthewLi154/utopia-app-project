@@ -7,7 +7,7 @@ import {
   updateScoreProfile,
 } from "../../store/profile";
 import "./PersonalityQuesitons.css";
-import { storeAllMatches } from "../../store/match";
+import { addNewMatches } from "../../store/match";
 
 function PersonalityQuestions() {
   const { profileId } = useParams();
@@ -51,8 +51,6 @@ function PersonalityQuestions() {
       score: total,
     };
 
-    console.log(score);
-
     dispatch(updateScoreProfile(score, profileId));
 
     // After updating score on user profile, create match tables that fit the criteria
@@ -61,7 +59,7 @@ function PersonalityQuestions() {
     // Add matches as a state
 
     // Get all profiles, compare total to other profiles scores
-    let matches = {};
+    let matches = [];
     // console.log(allProfiles);
     for (const key in allProfiles) {
       const profile = allProfiles[key];
@@ -74,17 +72,26 @@ function PersonalityQuestions() {
         } else {
           matchingPercentage = total / profile.score;
         }
-        console.log(matchingPercentage);
+        // console.log(matchingPercentage);
+        // if (matchingPercentage >= 0.6) {
+        //   matches[profile.id] = {
+        //     profileId: profile.id,
+        //     matchPercentage: matchingPercentage,
+        //   };
+        // }
+        let newMatch = {};
         if (matchingPercentage >= 0.6) {
-          matches[profile.id] = {
-            profileId: profile.id,
-            matchPercentage: matchingPercentage,
+          newMatch = {
+            profile_id: profileId,
+            matched_profile_id: profile.id,
           };
+          matches.push(newMatch);
         }
       }
     }
 
-    dispatch(storeAllMatches(matches));
+    // Store matches into database
+    dispatch(addNewMatches(matches));
 
     history.push("/profiles");
   };
