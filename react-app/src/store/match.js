@@ -3,7 +3,7 @@ const ADD_MATCHES = "matches/addMatches";
 const GET_MATCHES = "matches/getMatches";
 
 // actions
-export const storeAllMatches = (data) => {
+export const addMatches = (data) => {
   return {
     type: ADD_MATCHES,
     matches: data,
@@ -18,6 +18,24 @@ export const getUserMatches = (id) => {
 };
 
 // thunks
+export const addNewMatches = (data) => async (dispatch) => {
+  // Data should be in format:
+  // data = [{
+  //     'profile_id': 1,
+  //     'matched_profile_id': 2
+  // }]
+  const response = await fetch("/api/matches", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getUserMatches(data));
+    return data;
+  }
+};
 
 // reducer
 
@@ -27,7 +45,6 @@ const matchesReducer = (state = initialState, action) => {
   let matchesStateObj = { ...state };
   switch (action.type) {
     case ADD_MATCHES:
-      matchesStateObj.matchedUsers = action.matches;
       return matchesStateObj;
     case GET_MATCHES:
       return matchesStateObj;

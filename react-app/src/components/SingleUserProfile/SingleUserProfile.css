@@ -10,3 +10,13 @@
   display: flex;
   justify-content: center;
 }
+
+.upper-name-location-age-images-container {
+  display: flex;
+  border: 2px black solid;
+  width: 100%;
+  justify-content: center;
+}
+
+.name-age-location-match {
+}
