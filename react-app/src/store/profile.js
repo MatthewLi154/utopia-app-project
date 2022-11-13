@@ -110,12 +110,15 @@ export const deleteSingleProfile = (id) => async (dispatch) => {
   }
 };
 
-export const updateScoreProfile = (score, id) => async (dispatch) => {
-  const response = await fetch(`/api/profile/${id}/personality-questions`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(score),
-  });
+export const updateScoreProfile = (score, profileId) => async (dispatch) => {
+  const response = await fetch(
+    `/api/profile/${profileId}/personality-questions`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(score),
+    }
+  );
 
   if (response.ok) {
     const data = await response.json();

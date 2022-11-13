@@ -7,12 +7,12 @@ import {
   updateScoreProfile,
 } from "../../store/profile";
 import "./PersonalityQuesitons.css";
+import { storeAllMatches } from "../../store/match";
 
 function PersonalityQuestions() {
   const { profileId } = useParams();
   const dispatch = useDispatch();
   const allProfiles = useSelector((state) => state?.profiles.user_profiles);
-  console.log(allProfiles);
   const currentUserProfile = useSelector(
     (state) => state?.profiles.singleProfile
   );
@@ -49,6 +49,9 @@ function PersonalityQuestions() {
     let score = {
       score: total,
     };
+
+    console.log(score);
+
     dispatch(updateScoreProfile(score, profileId));
 
     // After updating score on user profile, create match tables that fit the criteria
@@ -57,12 +60,39 @@ function PersonalityQuestions() {
     // Add matches as a state
 
     // Get all profiles, compare total to other profiles scores
-    for (const profile in allProfiles) {
+    let matches = {};
+    // console.log(allProfiles);
+    for (const key in allProfiles) {
+      const profile = allProfiles[key];
       // Do not compare to self
-      if (profile.id !== profileId) {
+      let matchingPercentage = 0;
+      if (profile.id !== parseInt(profileId)) {
         // if score is about 60% the same, then add to match table
+        if (total > profile.score) {
+          matchingPercentage = profile.score / total;
+        } else {
+          matchingPercentage = total / profile.score;
+        }
+        console.log(matchingPercentage);
+        if (matchingPercentage >= 0.6) {
+          matches[profile.id] = {
+            profileId: profile.id,
+            matchPercentage: matchingPercentage,
+          };
+        }
       }
     }
+
+    // console.log(matches);
+    // // normalize matches
+    // let matchObj = {};
+    // for (const match of matches) {
+    //   matchObj[match.id] = match;
+    // }
+
+    console.log("OBJ", matches);
+    // Load matches into the state
+    dispatch(storeAllMatches(matches));
   };
 
   return (
@@ -94,7 +124,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice2"
                   name="question1"
-                  value={5}
+                  value={2}
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
                 <label for="choice2">Not sure</label>
@@ -105,7 +135,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice3"
                   name="question1"
-                  value={10}
+                  value={3}
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
                 <label for="choice3">To the bar</label>
@@ -133,7 +163,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice5"
                   name="question2"
-                  value={5}
+                  value={2}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
                 <label for="choice5">A normie</label>
@@ -144,7 +174,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice6"
                   name="question2"
-                  value={10}
+                  value={3}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
                 <label for="choice6">Jokester</label>
@@ -172,7 +202,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice8"
                   name="question3"
-                  value={5}
+                  value={2}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
                 <label for="choice8">Water</label>
@@ -183,7 +213,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice9"
                   name="question3"
-                  value={10}
+                  value={3}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
                 <label for="choice9">Coke and rum</label>
@@ -211,7 +241,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice11"
                   name="question4"
-                  value={5}
+                  value={2}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
                 <label for="choice11">Friends and family</label>
@@ -222,7 +252,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice12"
                   name="question4"
-                  value={10}
+                  value={3}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
                 <label for="choice12">Yacht party</label>
@@ -250,7 +280,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice14"
                   name="question5"
-                  value={5}
+                  value={2}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
                 <label for="choice14">Why not both</label>
@@ -261,7 +291,7 @@ function PersonalityQuestions() {
                   type="radio"
                   id="choice15"
                   name="question5"
-                  value={10}
+                  value={3}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
                 <label for="choice15">Horror only</label>

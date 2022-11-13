@@ -82,9 +82,10 @@ def get_personality_score(id):
 
     # Recieve data from request (should be the score of the questions)
     data = request.get_json()
+    print(data)
     profile = Profile.query.filter_by(id=id).first()
     profile.score = data['score']
     db.session.commit()
 
     # Return to matches page
-    return "Successfully updated"
+    return {"message": "Successfully updated"}
