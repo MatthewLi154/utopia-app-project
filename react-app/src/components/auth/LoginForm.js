@@ -60,10 +60,10 @@ const LoginForm = ({setLogin}) => {
         </label>
         <button className='log-in-button' type='submit'>Log  In</button>
         <button className='Demo-User-Button'
-        onClick={() => (dispatch(sessionActions.login(
+        onClick={() => {dispatch(sessionActions.login(
           "demo@aa.io",
           "password"
-        )))}
+        )).then(() => setLogin(false)) }}
         > Demo User </button>
     </form>
     </div>

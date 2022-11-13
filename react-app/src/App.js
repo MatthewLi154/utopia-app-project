@@ -33,7 +33,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loaded={loaded}/>
+      {loaded && (
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -72,6 +73,7 @@ function App() {
           <h1>My Home Page</h1>
         </Route>
       </Switch>
+      )}
     </BrowserRouter>
   );
 }
