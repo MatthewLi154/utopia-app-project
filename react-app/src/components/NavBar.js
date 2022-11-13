@@ -2,10 +2,9 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import LoginFormModal from './auth/LoginFormModal';
-import SignUpFormModal from './auth/SignUpFormModal';
 import { useSelector } from 'react-redux';
 import LoginForm from './auth/LoginForm';
+import SignUpForm from './auth/SignUpForm';
 import { Modal } from '../context/Modal';
 import './NavBar.css'
 
@@ -61,16 +60,15 @@ const NavBar = ({ loaded }) => {
             <div className='right-nav-items-splash'>
               <div>
                 <button className="login-button" onClick={() => {
-                  console.log(login)
                   setLogin(true)
-                  console.log(login)
                 }
                 }>Log In</button>
               </div>
               <div>
-                <NavLink to='/sign-up' exact={true} className="signup">
-                  Sign Up
-                </NavLink>
+              <button className="sign-up-button" onClick={() => {
+                  setShowSignup(true)
+                }
+                }>Sign Up</button>
               </div>
             </div>
           </div>
@@ -84,10 +82,12 @@ const NavBar = ({ loaded }) => {
     <div>
       {loaded && sessionLinks}
 
-        {login && <Modal onClose={() => setLogin(false)}>
-          <LoginForm setLogin={setLogin}/>
-        </Modal>}
-
+      {login && <Modal onClose={() => setLogin(false)}>
+        <LoginForm setLogin={setLogin} />
+      </Modal>}
+      {signup && <Modal onClose={() => setShowSignup(false)}>
+        <SignUpForm setShowSignup={setShowSignup} />
+      </Modal>}
     </div>
 
     // <div>
