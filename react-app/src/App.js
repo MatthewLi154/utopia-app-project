@@ -57,7 +57,7 @@ function App() {
         <Route exact path="/profile/create/about">
           <CreateProfileBio />
         </Route>
-        <Route path="/profile/:userId">
+        <Route path="/profile/:profileId">
           <SingleUserProfile />
         </Route>
         <Route path="/profiles">
