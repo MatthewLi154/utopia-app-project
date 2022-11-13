@@ -1,0 +1,46 @@
+.nav-bar {
+    margin: 0px;
+    width: 100%;
+}
+
+.nav-list {
+    position: fixed;
+    /* color: white; */
+    display: flex;
+    justify-content:space-evenly;
+    list-style: none;
+    height: 80px;
+    width: 100%;
+    margin: 0px;
+    top: 0;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.left-nav-items {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.discover {
+    padding: 12px;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+}
+
+.default-profile-pic {
+    border-radius: 50%;
+    height: 50px;
+}
+
+.Right-nav-user {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    padding: 5px;
+}
+
+
