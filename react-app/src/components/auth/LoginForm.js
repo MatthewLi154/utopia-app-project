@@ -12,7 +12,7 @@ const LoginForm = ({setLogin}) => {
   const dispatch = useDispatch();
 
   if(sessionUser) return (
-    <Redirect to="/"/>
+    <Redirect to="/profiles"/>
   )
 
   const onLogin = async (e) => {
@@ -22,11 +22,6 @@ const LoginForm = ({setLogin}) => {
       setErrors(data);
     }
   };
-
-  if (sessionUser) {
-    return <Redirect to='/' />;
-  }
-
 
 
   return (

@@ -8,9 +8,24 @@ def seed_profiles():
     )
 
     demo_profile_2 = Profile(
-        user_id=2, first_name='Marnie', last_name='Einram', birthday='01-12-1998', location='Venus, Milky Way', bio="This is Marnie's bio!", identify_as='Alien', looking_for='Human', img_url='image2.jpg', score=13
+        user_id=2, first_name='Nandor', last_name='the Relentless', birthday='01-12-1262', location='Ai Qoinidar', bio="Was once a ferocious warrior in the Ottoman Empire", identify_as='Vampire', looking_for='Human', img_url='image2.jpg', score=13
     )
 
+    demo_profile_3 = Profile(
+        user_id=3, first_name='Dion', last_name='Pham', birthday='03-05-1999', location='Torrance, CA',  bio="Gym Addict who loves good vibes", identify_as='Human', looking_for='Human', img_url='image3.jpg', score=14
+    )
+    demo_profile_3 = Profile(
+        user_id=3, first_name='Bobbie', last_name='Ross', birthday='03-05-2001', location='Pasadena, CA',  bio="This is Bobbies' bio!", identify_as='Raccoon', looking_for='Honey Badger', img_url='image3.jpg', score=14
+    )
+    demo_profile_3 = Profile(
+        user_id=3, first_name='Bobbie', last_name='Ross', birthday='03-05-2001', location='Pasadena, CA',  bio="This is Bobbies' bio!", identify_as='Raccoon', looking_for='Honey Badger', img_url='image3.jpg', score=14
+    )
+    demo_profile_3 = Profile(
+        user_id=3, first_name='Bobbie', last_name='Ross', birthday='03-05-2001', location='Pasadena, CA',  bio="This is Bobbies' bio!", identify_as='Raccoon', looking_for='Honey Badger', img_url='image3.jpg', score=14
+    )
+    demo_profile_3 = Profile(
+        user_id=3, first_name='Bobbie', last_name='Ross', birthday='03-05-2001', location='Pasadena, CA',  bio="This is Bobbies' bio!", identify_as='Raccoon', looking_for='Honey Badger', img_url='image3.jpg', score=14
+    )
     demo_profile_3 = Profile(
         user_id=3, first_name='Bobbie', last_name='Ross', birthday='03-05-2001', location='Pasadena, CA',  bio="This is Bobbies' bio!", identify_as='Raccoon', looking_for='Honey Badger', img_url='image3.jpg', score=14
     )

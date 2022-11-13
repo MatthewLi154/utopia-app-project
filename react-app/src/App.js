@@ -13,6 +13,7 @@ import CreateProfileName from "./components/CreateProfile/CreateProfileName";
 import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirthday";
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
+import CreateConversation from "./components/CreateConversation"
 import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
 
@@ -62,6 +63,9 @@ function App() {
         </Route>
         <Route path="/profiles">
           <Profile />
+        </Route>
+        <Route path='/conversations'>
+          <CreateConversation/>
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
