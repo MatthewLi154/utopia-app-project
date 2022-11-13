@@ -3,6 +3,10 @@ import { useSelector, useHistory, useDispatch } from "react-redux";
 import { fetchAllProfiles } from "../../store/profile";
 import { NavLink } from "react-router-dom";
 import "./Profiles.css";
+import {
+  getProfileMatches,
+  getProfileMatchPercentage,
+} from "../../store/match";
 
 function Profile() {
   const userProfiles = useSelector((state) => state.profiles.user_profiles);
@@ -10,6 +14,8 @@ function Profile() {
 
   useEffect(() => {
     dispatch(fetchAllProfiles());
+    dispatch(getProfileMatchPercentage());
+    dispatch(getProfileMatches());
   }, []);
 
   let userProfilesArray = [];

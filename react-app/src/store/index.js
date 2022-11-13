@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session";
 import profileReducer from "./profile";
+import matchesReducer from "./match";
 
 const rootReducer = combineReducers({
   session,
   profiles: profileReducer,
+  matches: matchesReducer,
 });
 
 let enhancer;

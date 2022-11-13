@@ -1,0 +1,22 @@
+.single-profile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.single-profile-container h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.upper-name-location-age-images-container {
+  display: flex;
+  border: 2px black solid;
+  width: 100%;
+  justify-content: center;
+}
+
+.name-age-location-match {
+}

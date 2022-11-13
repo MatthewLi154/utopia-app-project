@@ -14,6 +14,7 @@ import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirth
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
 import SingleUserProfile from "./components/SingleUserProfile";
+import PersonalityQuestions from "./components/PersonalityQuestions";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,13 +33,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar loaded={loaded}/>
+      {loaded && (
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/profile/:profileId/personality-questions">
+          <PersonalityQuestions />
         </Route>
         <Route path="/profile/create/name">
           <CreateProfileName />
@@ -52,7 +57,7 @@ function App() {
         <Route exact path="/profile/create/about">
           <CreateProfileBio />
         </Route>
-        <Route path="/profile/:userId">
+        <Route path="/profile/:profileId">
           <SingleUserProfile />
         </Route>
         <Route path="/profiles">
@@ -68,6 +73,7 @@ function App() {
           <h1>My Home Page</h1>
         </Route>
       </Switch>
+      )}
     </BrowserRouter>
   );
 }

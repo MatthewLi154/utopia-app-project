@@ -3,6 +3,8 @@ const LOAD_ALL_PROFILES = "profile/loadAllProfiles";
 const ADD_PROFILE = "profile/addProfile";
 const LOAD_SINGLE_PROFILE = "profile/loadSingleProfile";
 const EDIT_PROFILE = "profile/editProfile";
+const DELETE_PROFILE = "profile/deleteProfile";
+const UPDATE_SCORE_PROFILE = "profile/updateScore";
 
 // actions
 export const getUserProfiles = (data) => {
@@ -30,6 +32,20 @@ export const editProfile = (data) => {
   return {
     type: EDIT_PROFILE,
     profile: data,
+  };
+};
+
+export const deleteProfile = (id) => {
+  return {
+    type: DELETE_PROFILE,
+    id: id,
+  };
+};
+
+export const updateScore = (profileId) => {
+  return {
+    type: UPDATE_SCORE_PROFILE,
+    id: profileId,
   };
 };
 
@@ -68,8 +84,8 @@ export const createProfile = (newProfileData) => async (dispatch) => {
   }
 };
 
-export const editSingleProfile = (newProfileData) => async (dispatch) => {
-  const response = await fetch("/api/profile", {
+export const editSingleProfile = (newProfileData, id) => async (dispatch) => {
+  const response = await fetch(`/api/profile/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newProfileData),
@@ -79,6 +95,34 @@ export const editSingleProfile = (newProfileData) => async (dispatch) => {
     const data = await response.json();
     dispatch(editProfile(data));
     return data;
+  }
+};
+
+export const deleteSingleProfile = (id) => async (dispatch) => {
+  const response = await fetch(`/api/profile/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(deleteProfile(id));
+    return data;
+  }
+};
+
+export const updateScoreProfile = (score, profileId) => async (dispatch) => {
+  const response = await fetch(
+    `/api/profile/${profileId}/personality-questions`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(score),
+    }
+  );
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateScore(data));
   }
 };
 
@@ -98,6 +142,11 @@ const profileReducer = (state = initialState, action) => {
       profileStateObj.singleProfile = action.profile;
       return profileStateObj;
     case EDIT_PROFILE:
+      profileStateObj.singleProfile = action.profile;
+      return profileStateObj;
+    case DELETE_PROFILE:
+      delete profileStateObj.user_profiles[action.id];
+      profileStateObj.singleProfile = {};
       return profileStateObj;
     default:
       return state;

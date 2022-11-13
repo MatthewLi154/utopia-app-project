@@ -10,30 +10,39 @@ profile_routes = Blueprint('profile', __name__)
 @login_required
 def edit_profile(id):
     profile = Profile.query.filter_by(id=id).first()
-    parsed_profile = profile.__dict__
-    del parsed_profile['_sa_instance_state']
+    parsed_profile = profile.to_dict()
+    # del parsed_profile['_sa_instance_state']
     data = request.get_json()
 
     # Update parsed_profile with request body data
-    profile.first_name = data.first_name
-    profile.last_name = data.last_name
-    profile.bio = data.bio
-    profile.birthday = data.birthday
-    profile.identify_as = data.identify_as
+    profile.first_name = data['first_name']
+    profile.last_name = data['last_name']
+    profile.bio = data['bio']
+    profile.birthday = data['birthday']
+    profile.identify_as = data['identify_as']
+    profile.looking_for = data['looking_for']
+
+    db.session.commit()
+    return profile.to_dict()
 
 
-    return parsed_profile
+@profile_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_profile(id):
+    profile = Profile.query.filter_by(id=id).first()
+    db.session.delete(profile)
+    db.session.commit()
+    return "Successfully deleted"
+
 
 
 @profile_routes.route('', methods=['GET'])
 @login_required
 def user_profile():
     user_profiles = Profile.query.all()
-    print(user_profiles)
     parsed_user_dict = {}
     for profile in user_profiles:
-        parsed_user_dict[profile.id] = vars(profile)
-        del parsed_user_dict[profile.id]['_sa_instance_state']
+        parsed_user_dict[profile.id] = profile.to_dict()
     return parsed_user_dict
 
 
@@ -41,10 +50,7 @@ def user_profile():
 @login_required
 def single_user_profile(id):
     profile = Profile.query.filter_by(id=id).first()
-    parsed_profile = profile.__dict__
-    del parsed_profile['_sa_instance_state']
-    print(parsed_profile)
-    return parsed_profile
+    return profile.to_dict()
 
 
 @profile_routes.route('', methods=['POST'])
@@ -56,7 +62,6 @@ def create_profile():
     redirect them to their profile page
     """
     data = request.get_json()
-    print(data)
     new_profile = Profile(
         user_id=data['user_id'],
         first_name=data['first_name'],
@@ -71,3 +76,16 @@ def create_profile():
     db.session.add(new_profile)
     db.session.commit()
     return data
+
+@profile_routes.route("/<id>/personality-questions", methods=['PUT'])
+def get_personality_score(id):
+
+    # Recieve data from request (should be the score of the questions)
+    data = request.get_json()
+    print(data)
+    profile = Profile.query.filter_by(id=id).first()
+    profile.score = data['score']
+    db.session.commit()
+
+    # Return to matches page
+    return {"message": "Successfully updated"}
