@@ -91,6 +91,7 @@
 
 .left-column-biography-container {
   height: auto;
+  margin-bottom: 1.5rem;
 }
 
 .biography-container-label {
@@ -110,9 +111,17 @@
   padding: 1rem 1rem;
   font-size: 18px;
   background-color: white;
+  /* border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem; */
+}
+
+/* .current-goals-container {
+  padding: 1rem 1rem;
+  font-size: 18px;
+  background-color: white;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-}
+} */
 
 .bottom-right-column-container {
   width: 20rem;

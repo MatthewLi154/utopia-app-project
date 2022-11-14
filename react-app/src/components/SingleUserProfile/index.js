@@ -15,6 +15,30 @@ function SingleUserProfile() {
     dispatch(fetchAllProfiles());
   }, []);
 
+  const birthday = profile.birthday;
+  const calculateAge = (birthday) => {
+    const [month, day, year] = birthday.split("-");
+    const birthdate = new Date(`${year}-${month}-${day}`);
+    const today = new Date();
+
+    let years = today.getFullYear() - year;
+
+    if (
+      today.getMonth() < birthdate.getMonth() ||
+      (today.getMonth() == birthdate.getMonth() &&
+        today.getDate() < birthdate.getDate())
+    ) {
+      years--;
+    }
+    console.log(years);
+    return years;
+  };
+
+  let age;
+  if (birthday) {
+    age = calculateAge(birthday);
+  }
+
   return (
     <>
       <div className="single-profile-main-container">
@@ -27,7 +51,7 @@ function SingleUserProfile() {
                 </div>
                 <div className="age-location-container">
                   <span>
-                    {profile.birthday} • {profile.location}
+                    {profile.location} • {age}
                   </span>
                 </div>
               </div>
@@ -37,13 +61,13 @@ function SingleUserProfile() {
             </div>
             <div className="profile-images-container">
               <div className="profile-image">
-                <img src="https://i.pinimg.com/originals/10/91/94/1091948c6b80b65b9eef8c163f0ae42a.jpg"></img>
+                <img src={profile.img_url1}></img>
               </div>
               <div className="profile-image">
-                <img src="https://i.pinimg.com/originals/10/91/94/1091948c6b80b65b9eef8c163f0ae42a.jpg"></img>
+                <img src={profile.img_url2}></img>
               </div>
               <div className="profile-image">
-                <img src="https://i.pinimg.com/originals/10/91/94/1091948c6b80b65b9eef8c163f0ae42a.jpg"></img>
+                <img src={profile.img_url3}></img>
               </div>
             </div>
           </div>
@@ -54,6 +78,14 @@ function SingleUserProfile() {
                   <h4>About Me</h4>
                 </div>
                 <div className="biography-container-bio">{profile.bio}</div>
+              </div>
+              <div className="left-column-biography-container">
+                <div className="biography-container-label">
+                  <h4>Current goals</h4>
+                </div>
+                <div className="biography-container-bio">
+                  {profile.current_goals}
+                </div>
               </div>
             </div>
             <div className="bottom-right-column-container">
