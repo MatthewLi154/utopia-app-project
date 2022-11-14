@@ -15,19 +15,19 @@ def seed_profiles():
         user_id=3, first_name='Dion', last_name='Pham', birthday='03-05-1999', location='Torrance, CA',  bio="Gym Addict who loves good vibes", identify_as='Human', looking_for='Vampire', img_url='image3.jpg', score=15
     )
     demo_profile_4 = Profile(
-        user_id=3, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
+        user_id=4, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
     )
     demo_profile_5 = Profile(
-        user_id=3, first_name='Shrek', last_name='Ross', birthday='03-05-2001', location='Swamp',  bio="There is more to me than your average onion", identify_as='Ogre', looking_for='Princess', img_url='image3.jpg', score=17
+        user_id=5, first_name='Shrek', last_name='Ross', birthday='03-05-2001', location='Swamp',  bio="There is more to me than your average onion", identify_as='Ogre', looking_for='Princess', img_url='image3.jpg', score=17
     )
     demo_profile_6 = Profile(
-        user_id=3, first_name='Severus', last_name='Snape', birthday='01-09-1960', location='Hogwarts',  bio="Introverted, emotional, nerd and a one-woman man", identify_as='Wizard', looking_for='Fairy', img_url='image3.jpg', score=18
+        user_id=6, first_name='Severus', last_name='Snape', birthday='01-09-1960', location='Hogwarts',  bio="Introverted, emotional, nerd and a one-woman man", identify_as='Wizard', looking_for='Fairy', img_url='image3.jpg', score=18
     )
     demo_profile_7 = Profile(
-        user_id=3, first_name='Princess', last_name='Peach', birthday='01-08-1965', location="'Bowser's Castle'",  bio="Like's Cart racing, dislikes banana peels", identify_as='Princess', looking_for='Ogre', img_url='image3.jpg', score=19
+        user_id=7, first_name='Princess', last_name='Peach', birthday='01-08-1965', location="'Bowser's Castle'",  bio="Like's Cart racing, dislikes banana peels", identify_as='Princess', looking_for='Ogre', img_url='image3.jpg', score=19
     )
     demo_profile_8 = Profile(
-        user_id=3, first_name='Tsunade', last_name='Senju', birthday='03-05-2001', location='Konoha',  bio="5th Hokage, need I say more", identify_as='anime', looking_for='Human', img_url='image3.jpg', score=20
+        user_id=8, first_name='Tsunade', last_name='Senju', birthday='03-05-2001', location='Konoha',  bio="5th Hokage, need I say more", identify_as='anime', looking_for='Human', img_url='image3.jpg', score=20
     )
 
     db.session.add(demo_profile)
