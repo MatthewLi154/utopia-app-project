@@ -12,8 +12,8 @@ function SingleUserProfile() {
   const { profileId } = useParams();
   const dispatch = useDispatch();
 
-  const profile = useSelector((state) => state?.profiles.singleProfile);
-  const matchPercent = useSelector((state) => state?.matches.matchedPercent);
+  const profile = useSelector((state) => state.profiles.singleProfile);
+  const matchPercent = useSelector((state) => state.matches.matchedPercent);
 
   useEffect(() => {
     dispatch(fetchSingleProfile(profileId));
@@ -110,7 +110,7 @@ function SingleUserProfile() {
               </div>
               <div className="identify-as-container">
                 <div className="identify-as-icon">
-                  <i class="fa-sharp fa-solid fa-dna"></i>
+                  <i className="fa-sharp fa-solid fa-dna"></i>
                 </div>
                 <div className="identify-as-detials">{profile.identify_as}</div>
               </div>
@@ -122,19 +122,19 @@ function SingleUserProfile() {
               </div>
               <div className="hobbies-container">
                 <div className="hobbies-icon">
-                  <i class="fa-regular fa-face-smile"></i>
+                  <i className="fa-regular fa-face-smile"></i>
                 </div>
                 <div className="hobbies-details">{profile.hobbies}</div>
               </div>
               <div className="kids-container">
                 <div className="kids-icon">
-                  <i class="fa-solid fa-child"></i>
+                  <i className="fa-solid fa-child"></i>
                 </div>
                 <div className="kids-details">{profile.kids}</div>
               </div>
               <div className="pets-container">
                 <div className="pets-icon">
-                  <i class="fa-solid fa-cat"></i>
+                  <i className="fa-solid fa-cat"></i>
                 </div>
                 <div className="pets-details">Has {profile.pets}</div>
               </div>
