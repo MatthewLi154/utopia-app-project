@@ -9,7 +9,7 @@
 .main-profiles-page-container {
   margin: 2rem 3rem;
   width: 65rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
   border-top-right-radius: 0.5rem;
@@ -48,6 +48,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.profile-box-content h3 {
+  margin-top: 0.5rem;
 }
 
 .profile-box-sub-content {
