@@ -198,3 +198,19 @@
   font-size: 16px;
   padding: 0rem 1rem;
 }
+
+.pets-container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+}
+
+.pets-icon {
+  width: 1rem;
+}
+
+.pets-details {
+  font-size: 16px;
+  padding: 0rem 1rem;
+}
