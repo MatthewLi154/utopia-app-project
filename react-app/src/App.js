@@ -18,6 +18,7 @@ import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
 import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -45,6 +46,13 @@ function App() {
         <Route exact path="/profile/create/location">
           <CreateProfileLocation />
         </Route>
+        <Route exact path="/profile/create/other">
+          <CreateProfileOther />
+        </Route>
+        <Route exact path="/profile/create/about">
+          <CreateProfileBio />
+        </Route>
+        <Route exact path="/profile/create/other"></Route>
         <Route path="">
           <NavBar loaded={loaded} />
           {loaded && (
@@ -57,12 +65,6 @@ function App() {
               </Route>
               <Route path="/profile/:profileId/personality-questions">
                 <PersonalityQuestions />
-              </Route>
-              <Route path="/profile/create/other">
-                <CreateProfileOther />
-              </Route>
-              <Route exact path="/profile/create/about">
-                <CreateProfileBio />
               </Route>
               <Route exact path="/profile/:profileId">
                 <SingleUserProfile />

@@ -101,7 +101,6 @@ def get_match_percent():
             "matching_percentage": matching_percentage
         }
 
-    print(match_percent_dict)
     return match_percent_dict
 
 
