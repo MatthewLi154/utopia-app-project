@@ -12,6 +12,7 @@ const NavBar = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user)
   const [signup, setShowSignup] = useState(false)
   const [login, setLogin] = useState(false)
+  const userProfiles = useSelector(state => state.profiles.user_profiles)
 
   let sessionLinks;
   if (sessionUser) {
@@ -33,7 +34,7 @@ const NavBar = ({ loaded }) => {
           </div>
 
           <div className='Right-nav-user'>
-            <Link to='/profiles'>
+            <Link to={`/profile/${sessionUser.id}`}>
               <img src='https://i.imgur.com/1kY4QtL.png' alt="default-profile-pic" className='default-profile-pic'></img>
             </Link>
             <div className='user-name'>Matthew Li</div>
