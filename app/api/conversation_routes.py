@@ -89,18 +89,16 @@ def create_conversation():
             sender_id = current_profile_id,
             recipient_id = matched_id
         )
-
         conversations = Conversation.query.all()
-        for conversation in conversations:
+
+        for conv in conversations:
             # if conditional to check if there are already sender_id and recipien_id pairs
-            if(conversation.recipient_id == matched_id and conversation.sender_id == current_profile_id):
-                for conversation in conversations:
+            if ((conv.recipient_id == current_profile_id and conv.sender_id == matched_id)):
                     # will only return old unique pairs
-                    conversation_dict[conversation.id] = conversation.to_dict()
+                    conversation_dict[conv.id] = conv.to_dict()
+                    db.session.delete(conversation)
+                    db.session.commit()
                     
-        # if there isnt any unique pairs then add that instance to the DB
-        db.session.add(conversation)
-        db.session.commit()
     conversations = Conversation.query.filter_by(sender_id = current_profile_id)
     for conversation in conversations:
         conversation_dict[conversation.id] = conversation.to_dict()
