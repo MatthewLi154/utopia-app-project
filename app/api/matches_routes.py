@@ -13,8 +13,9 @@ def add_matches():
     # New profile with score will need to compare scores with existing profiles
 
     data = request.get_json()
-    print(data)
+    print('THIS IS MATCHES DATA', data)
     # add each dictionary from data list to match table as new match instance
+    Match.query.delete()
     for match in data:
         newMatch = Match(profile_id=match['profile_id'], matched_profile_id=match['matched_profile_id'])
         db.session.add(newMatch)
@@ -100,7 +101,6 @@ def get_match_percent():
             "matching_percentage": matching_percentage
         }
 
-    print(match_percent_dict)
     return match_percent_dict
 
 
