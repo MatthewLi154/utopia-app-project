@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useHistory, useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
+import "./CreateProfileLocation.css";
 
 function CreateProfileLocation() {
   const dispatch = useDispatch();
