@@ -1,4 +1,58 @@
+.entire-profiles-page {
+  background-color: lightblue;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-profiles-page-container {
+  margin: 2rem 3rem;
+  width: 65rem;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+
+.inner-profiles-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1rem 1rem;
+}
+
 .profile-box {
-  border: 1px black solid;
-  padding-left: 2rem;
+  width: 15rem;
+  height: 17rem;
+  margin: 0 0.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 0.75rem;
+}
+
+.profile-box img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
+
+.profile-box-content {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-box-sub-content {
+  color: gray;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
 }
