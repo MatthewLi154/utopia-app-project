@@ -57,4 +57,5 @@ def delete_message(id):
     # if not gettable, raise error saying cant find message
     db.session.delete(delete_message)
     db.session.commit()
-    return 'Successfully deleted'
+    return {"message":"Successfully deleted"}
+    # return "Successfully deleted"

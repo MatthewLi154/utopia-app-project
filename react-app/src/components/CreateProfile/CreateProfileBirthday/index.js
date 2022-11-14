@@ -84,25 +84,6 @@ function CreateProfileBirthday() {
           </div>
         </div>
       </div>
-      {/* <div>
-        <h1>When is your birthday?</h1>
-        <label>Birthday</label>
-        <form>
-          <input
-            placeholder="birthday"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-        </form>
-        <NavLink
-          to={{
-            pathname: "/profile/create/location",
-            state: { newProfile: newProfile },
-          }}
-        >
-          <button onClick={(e) => onSubmit(e)}>Next</button>
-        </NavLink>
-      </div> */}
     </>
   );
 }
