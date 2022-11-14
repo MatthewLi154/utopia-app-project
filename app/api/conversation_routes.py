@@ -60,17 +60,48 @@ def create_message(id):
 @conversation_routes.route('', methods = ['GET'])
 @login_required
 def create_conversation():
-    matches = Match.query.filter_by(profile_id=current_user.id).all()
-    for match in matches:
-        match.to_dict()
+    # create set based on Matches by user id
+    matched_profiles = Match.query.all()
+    matched_profiles_dict = {}
+    for matched in matched_profiles:
+        matched_profiles_dict[matched.to_dict()['id']] = matched.to_dict()
+
+    current_user_id = current_user.to_dict()['id']
+    current_profile = Profile.query.filter_by(user_id=current_user_id).first()
+    current_profile_id = current_profile.to_dict()['id']
+
+    matches_state_set = set()
+    for match_set in matched_profiles_dict:
+        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
+            matches_state_set.add(
+                matched_profiles_dict[match_set]['matched_profile_id'])
+        if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
+            matches_state_set.add(
+                matched_profiles_dict[match_set]['profile_id'])
+  
+    # global variable to dynmically render different information
+    conversation_dict = {}
+    for match in matches_state_set:
+        matched_id = match
+        
+        # create new instance of conversation based on set of unique matched ID's
         conversation = Conversation(
-            sender_id = match.profile_id,
-            recipient_id = match.matched_profile_id
+            sender_id = current_profile_id,
+            recipient_id = matched_id
         )
+
+        conversations = Conversation.query.all()
+        for conversation in conversations:
+            # if conditional to check if there are already sender_id and recipien_id pairs
+            if(conversation.recipient_id == matched_id and conversation.sender_id == current_profile_id):
+                for conversation in conversations:
+                    # will only return old unique pairs
+                    conversation_dict[conversation.id] = conversation.to_dict()
+                    
+        # if there isnt any unique pairs then add that instance to the DB
         db.session.add(conversation)
         db.session.commit()
-    conversations = Conversation.query.filter((Conversation.recipient_id == current_user.id) | (Conversation.sender_id==current_user.id))
-    conversation_dict = {}
+    conversations = Conversation.query.filter_by(sender_id = current_profile_id)
     for conversation in conversations:
         conversation_dict[conversation.id] = conversation.to_dict()
     return conversation_dict
