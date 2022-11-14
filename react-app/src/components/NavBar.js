@@ -12,15 +12,17 @@ import './NavBar.css'
 
 const NavBar = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user)
-  const profile = useSelector(state => state.profiles.user_profiles)
+  const profile = useSelector(state => Object.values(state.profiles.user_profiles))
   const [signup, setShowSignup] = useState(false)
   const [login, setLogin] = useState(false)
   const dispatch = useDispatch()
+  // console.log(profile)
+  // console.log("BLAH!!!", profile[sessionUser.id - 1]?.id)
 
   // let profileId
   // if(profile){
   //   for (const specificProfile in profile) {
-  //     if(specificProfile.user_id == sessionUser.id){
+  //     if(specificProfile.user_id == profile.user_id){
   //       profileId = specificProfile.id
   //     }
   //   }
@@ -53,8 +55,8 @@ const NavBar = ({ loaded }) => {
           </div>
 
           <div className='Right-nav-user'>
-            <NavLink onClick={() => dispatch(fetchSingleProfile(sessionUser.id))} to={`/profile/${sessionUser.id}`}>
-              <img src='https://i.imgur.com/1kY4QtL.png' alt="default-profile-pic" className='default-profile-pic'></img>
+            <NavLink onClick={() => dispatch(fetchSingleProfile(profile[sessionUser.id - 1]?.id))} to={`/profile/${profile[sessionUser.id - 1]?.id}`}>
+              <img src={profile[sessionUser.id - 1]?.img_url1} alt="default-profile-pic" className='default-profile-pic'></img>
             </NavLink>
             <div className='user-name'>{sessionUser.username}</div>
             <div>

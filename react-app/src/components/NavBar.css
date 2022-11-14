@@ -39,8 +39,10 @@
 }
 
 .default-profile-pic {
-    border-radius: 50%;
+    border-radius: 100%;
     height: 50px;
+    width: 50px;
+    object-fit: cover;
 }
 
 .Right-nav-user {
