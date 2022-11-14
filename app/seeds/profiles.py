@@ -23,6 +23,7 @@ def seed_profiles():
     db.session.add(demo_profile_2)
     db.session.add(demo_profile_3)
     db.session.add(demo_profile_4)
+
     db.session.commit()
 
 def undo_profiles():
