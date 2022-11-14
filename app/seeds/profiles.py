@@ -57,6 +57,7 @@ def seed_profiles():
         current_goals="My current goals!"
     )
     demo_profile_4 = Profile(
+
         user_id=4,
         first_name='Denji',
         last_name='Kun',
@@ -74,6 +75,14 @@ def seed_profiles():
         img_url3="https://c4.wallpaperflare.com/wallpaper/807/852/840/anime-chainsaw-man-denji-chainsaw-man-anime-boys-null-hd-wallpaper-preview.jpg",
         score=14,
         current_goals="My current goals!"
+    demo_profile_5 = Profile(
+        user_id=5, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", kids="Don't have but want them", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
+    )
+    demo_profile_6 = Profile(
+        user_id=6, first_name='Shrek', last_name='Ross', birthday='03-05-2001', location='Swamp',  bio="There is more to me than your average onion", identify_as='Ogre', looking_for='Princess', img_url='image3.jpg', score=17
+    )
+    demo_profile_7 = Profile(
+        user_id=7, first_name='Severus', last_name='Snape', birthday='01-09-1960', location='Hogwarts',  bio="Introverted, emotional, nerd and a one-woman man", identify_as='Wizard', looking_for='Fairy', img_url='image3.jpg', score=18
     )
 
     db.session.add(demo_profile_1)
