@@ -23,6 +23,7 @@ function CreateMessage({conversation, singleConversation}){
         }
         let newMessage = await dispatch(createMessage(conversation.id,payload))
         if (newMessage) {
+            dispatch(fetchAllMessages(conversation.id))
             history.push('/conversations')
         }
         setBody('')
