@@ -8,6 +8,9 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.profile_routes import profile_routes
+from .api.conversation_routes import conversation_routes
+from .api.message_routes import message_routes
+from .api.matches_routes import matches_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,6 +33,9 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(profile_routes, url_prefix='/api/profile')
+app.register_blueprint(matches_routes, url_prefix='/api/matches')
+app.register_blueprint(conversation_routes, url_prefix='/api/conversations')
+app.register_blueprint(message_routes, url_prefix='/api/messages')
 db.init_app(app)
 Migrate(app, db)
 

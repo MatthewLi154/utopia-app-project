@@ -1,0 +1,63 @@
+.create-name-main-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-name-header-container {
+  background: lightcoral;
+  height: 6rem;
+  width: 100%;
+}
+
+.create-name-center-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.2rem;
+  font-size: 24px;
+}
+
+.create-name-icon-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.create-name-icon i {
+  margin: 0rem 0.5rem;
+}
+
+.create-name-bottom-section-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-name-container {
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-name-container input {
+  height: 2.5rem;
+  width: 15rem;
+}
+
+.fa-angle-left {
+  cursor: pointer;
+}
+
+.create-name-button {
+  background-color: lightcoral;
+  border: 1px solid lightgray;
+  width: 4.5rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+}
+
+.create-name-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-right: 20rem;
+}

@@ -1,0 +1,54 @@
+.question-label {
+  display: flex;
+  justify-content: center;
+}
+
+.question-choices-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0rem;
+  justify-content: center;
+}
+
+.question-choices-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  border: 1px solid purple;
+  height: 1.5rem;
+  width: 9rem;
+}
+
+.question-choices-container input:after {
+  /* position: fixed;
+  opacity: 0;
+  pointer-events: none; */
+  accent-color: red;
+}
+
+.question-choices-container div:active {
+  background-color: aqua;
+}
+
+.question-choices {
+  /* background-color: purple; */
+}
+
+.question-choices-left {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  /* background-color: aqua; */
+}
+
+.question-choices-right {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  /* background-color: aqua; */
+}
+
+.submit-personality-questions-container {
+  display: flex;
+  justify-content: center;
+}
