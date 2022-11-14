@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import {
   getProfileMatches,
   getProfileMatchPercentage,
@@ -11,9 +11,11 @@ import "./SingleUserProfile.css";
 function SingleUserProfile() {
   const { profileId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const profile = useSelector((state) => state.profiles.singleProfile);
   const matchPercent = useSelector((state) => state.matches.matchedPercent);
+  const currentUserId = useSelector((state) => state.session.user.id);
 
   useEffect(() => {
     dispatch(fetchSingleProfile(profileId));
@@ -74,6 +76,21 @@ function SingleUserProfile() {
                   <h4>{percent}%</h4>
                 </div>
               )}
+              <div className="match-with-others-button-container">
+                {profile.id === currentUserId && (
+                  <div>
+                    <button
+                      onClick={() => {
+                        history.push(
+                          `/profile/${profile.id}/personality-questions`
+                        );
+                      }}
+                    >
+                      Match with Others
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="profile-images-container">
               <div className="profile-image">
