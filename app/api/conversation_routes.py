@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from app.models import db
 from app.models.conversation import Conversation
 from app.models.match import Match
+from app.models.profile import Profile
 from app.models.message import Message
 from app.forms.message_form import MessageForm
 
@@ -19,14 +20,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-# get all conversations
+# get all conversations by sender id
 @conversation_routes.route('', methods=['GET'])
 @login_required
-# figure out whether sender_id or recipient_id
 def get_all_conversations():
     conversations = Conversation.query.filter_by(sender_id=current_user.id)
-    print('THIS IS IT', current_user.id)
-    return {'all_conversations':[conversation.to_dict() for conversation in conversations]}
+    parsed_conversation_dict = {}
+    for conversation in conversations:
+        parsed_conversation_dict[conversation.id] = conversation.to_dict()
+    return parsed_conversation_dict
 
 # create a new message based on conversation id
 @conversation_routes.route('/<int:id>', methods = ['POST'])
@@ -48,17 +50,27 @@ def create_message(id):
 # for every match, create a new conversation
 
 # create a new conversation when a new match is made
+# be careful where we put this post
 @conversation_routes.route('', methods = ['POST'])
 @login_required
 def create_conversation():
-    matches = Match.query.filter_by(user_id=current_user.id).all()
+    matches = Match.query.filter_by(profile_id=current_user.id).all()
     for match in matches:
         match.to_dict()
         conversation = Conversation(
-            sender_id = match.user_id,
-            recipient_id = match.matched_user_id
+            sender_id = match.profile_id,
+            recipient_id = match.matched_profile_id
         )
         db.session.add(conversation)
         db.session.commit()
     conversations = Conversation.query.all()
     return {'conversations': [conversation.to_dict() for conversation in conversations]}
+
+#delete a conversation by id (similar to how blocking someone on a social media app would be?)
+@conversation_routes.route('/<int:id>', methods = ['DELETE'])
+@login_required
+def delete_conversation(id):
+    delete_conversation = Conversation.query.get(id)
+    db.session.delete(delete_conversation)
+    db.session.commit()
+    return 'Successfully deleted'

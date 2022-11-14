@@ -30,7 +30,7 @@ function CreateProfileLocation() {
       </form>
       <NavLink
         to={{
-          pathname: "/profile/create/about",
+          pathname: "/profile/create/other",
           state: { newProfile: newProfile },
         }}
       >

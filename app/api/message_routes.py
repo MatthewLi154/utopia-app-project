@@ -23,14 +23,21 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def get_all_messages():
     messages = Message.query.all()
-    return {'messages': [message.to_dict() for message in messages]}
+    parsed_message_dict = {}
+    for message in messages:
+        parsed_message_dict[message.id] = message.to_dict()
+    return parsed_message_dict
+
 
 # get all messages by conversation id
 @message_routes.route('/conversations/<int:id>', methods = ['GET'])
 @login_required
 def get_message_by_conversation_id(id):
     messages = Message.query.filter_by(conversation_id=f'{id}')
-    return {'conversation': [message.to_dict() for message in messages]}
+    parsed_message_dict = {}
+    for message in messages:
+        parsed_message_dict[message.id] = message.to_dict()
+    return parsed_message_dict
 
 # edit a message by id
 @message_routes.route('/<int:id>', methods = ['PUT'])

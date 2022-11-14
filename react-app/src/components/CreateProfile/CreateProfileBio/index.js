@@ -30,16 +30,13 @@ function CreateProfileBio() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(newProfile);
-
     // check for validations
 
     // if no errors
 
     // use newProfile data and send the post request to create new profile
     // new profile needs
-    // user_id, first_name, last_name, birthday, location, bio, identify_as, looking_for
+    // user_id, first_name, last_name, birthday, location, bio, identify_as, looking_for, languages, kids, hobbies, pets
     // img_url, score (later)
     let firstName, lastName;
     [firstName, lastName] = newProfile.name.split(" ");
@@ -50,6 +47,10 @@ function CreateProfileBio() {
       last_name: lastName,
       birthday: newProfile.birthday,
       bio: newProfile.bio,
+      languages: newProfile.languages,
+      kids: newProfile.kids,
+      pets: newProfile.pets,
+      hobbies: newProfile.hobbies,
       location: newProfile.location,
       identify_as: newProfile.identifyAs,
       looking_for: newProfile.lookingFor,
