@@ -43,7 +43,7 @@ const NavBar = ({ loaded }) => {
           <div className='left-nav-items'>
             <li className='left-nav'>
               <NavLink to='/' exact={true}>
-                <img src='https://i.imgur.com/TTcEnHK.png' alt='logo' className='home-logo'></img>
+                <img src='https://i.imgur.com/8e9KhiN.png' alt='logo' className='home-logo'></img>
               </NavLink>
               <NavLink className="discover" to='/profiles' exact={true}>
                 Discover
@@ -73,8 +73,8 @@ const NavBar = ({ loaded }) => {
           <div className='nav-list-splash'>
             <div className='left-logo'>
               <div>
-                <NavLink to='/' exact={true}>
-                  <img src='https://i.imgur.com/1kY4QtL.png' alt='logo' className='home-logo'></img>
+                <NavLink to='/' exact={true} style={{textDecoration: "none", color: "red"}}>
+                Utopia
                 </NavLink>
               </div>
             </div>
