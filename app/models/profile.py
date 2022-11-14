@@ -21,7 +21,9 @@ class Profile(db.Model):
     hobbies = db.Column(db.String, nullable=False)
     identify_as = db.Column(db.String, nullable=False)
     looking_for = db.Column(db.String, nullable=False)
-    img_url = db.Column(db.String, nullable=False)
+    img_url1 = db.Column(db.String, nullable=False)
+    img_url2 = db.Column(db.String, nullable=False)
+    img_url3 = db.Column(db.String, nullable=False)
     score = db.Column(db.Integer)
 
     user = db.relationship("User", back_populates='profile')
@@ -42,6 +44,8 @@ class Profile(db.Model):
             'hobbies': self.hobbies,
             'identify_as': self.identify_as,
             'looking_for': self.looking_for,
-            'img_url': self.img_url,
+            'img_url1': self.img_url1,
+            'img_url2': self.img_url2,
+            'img_url3': self.img_url3,
             'score': self.score
         }

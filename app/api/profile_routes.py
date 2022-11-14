@@ -56,7 +56,6 @@ def user_profile():
 @login_required
 def single_user_profile(id):
     profile = Profile.query.filter_by(id=id).first()
-    print(profile)
     return profile.to_dict()
 
 
@@ -83,7 +82,10 @@ def create_profile():
         hobbies = data['hobbies'],
         identify_as=data['identify_as'],
         looking_for=data['looking_for'],
-        img_url=data['img_url']
+        img_url1=data['img_url1'],
+        img_url2=data['img_url2'],
+        img_url3=data['img_url3']
+
     )
     db.session.add(new_profile)
     db.session.commit()
