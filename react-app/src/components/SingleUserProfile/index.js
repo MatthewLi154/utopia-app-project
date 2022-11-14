@@ -61,8 +61,28 @@ function SingleUserProfile() {
                 <h4>Details</h4>
               </div>
               <div className="identify-as-container">
-                <div className="identify-as-icon"></div>
+                <div className="identify-as-icon">
+                  <i class="fa-sharp fa-solid fa-dna"></i>
+                </div>
                 <div className="identify-as-detials">{profile.identify_as}</div>
+              </div>
+              <div className="languages-container">
+                <div className="languages-icon">
+                  <i class="fa-solid fa-hands-asl-interpreting"></i>
+                </div>
+                <div className="languages-details">{profile.languages}</div>
+              </div>
+              <div className="hobbies-container">
+                <div className="hobbies-icon">
+                  <i class="fa-regular fa-face-smile"></i>
+                </div>
+                <div className="hobbies-details">{profile.hobbies}</div>
+              </div>
+              <div className="kids-container">
+                <div className="kids-icon">
+                  <i class="fa-solid fa-child"></i>
+                </div>
+                <div className="kids-details">{profile.kids}</div>
               </div>
             </div>
           </div>

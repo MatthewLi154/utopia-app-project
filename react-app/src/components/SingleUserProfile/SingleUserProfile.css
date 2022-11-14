@@ -135,9 +135,66 @@
 
 .identify-as-container {
   background-color: white;
-  padding: 0.2rem 1rem;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+  /* border-bottom: 1px solid lightgray; */
+}
+
+.identify-as-icon {
+  width: 1rem;
 }
 
 .identify-as-detials {
   font-size: 16px;
+  padding: 0rem 1rem;
+}
+
+.languages-container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+  /* border-bottom: 1px solid lightgray; */
+}
+
+.languages-icon {
+  width: 1rem;
+}
+
+.languages-details {
+  font-size: 16px;
+  padding: 0rem 1rem;
+}
+
+.hobbies-container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+}
+
+.hobbies-icon {
+  width: 1rem;
+}
+
+.hobbies-details {
+  font-size: 16px;
+  padding: 0rem 1rem;
+}
+
+.kids-container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+}
+
+.kids-icon {
+  width: 1rem;
+}
+
+.kids-details {
+  font-size: 16px;
+  padding: 0rem 1rem;
 }

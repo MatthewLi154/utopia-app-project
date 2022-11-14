@@ -10,7 +10,6 @@ profile_routes = Blueprint('profile', __name__)
 @login_required
 def edit_profile(id):
     profile = Profile.query.filter_by(id=id).first()
-    parsed_profile = profile.to_dict()
     # del parsed_profile['_sa_instance_state']
     data = request.get_json()
 
@@ -18,12 +17,18 @@ def edit_profile(id):
     profile.first_name = data['first_name']
     profile.last_name = data['last_name']
     profile.bio = data['bio']
+    profile.languages = data['languages']
+    profile.kids = data['kids']
+    profile.pets = data['pets']
+    profile.hobbies = data['hobbies']
     profile.birthday = data['birthday']
     profile.identify_as = data['identify_as']
     profile.looking_for = data['looking_for']
 
     db.session.commit()
     return profile.to_dict()
+
+# @profile_routes.route('/<id>')
 
 
 @profile_routes.route('/<id>', methods=['DELETE'])
@@ -50,6 +55,7 @@ def user_profile():
 @login_required
 def single_user_profile(id):
     profile = Profile.query.filter_by(id=id).first()
+    print(profile)
     return profile.to_dict()
 
 
@@ -69,6 +75,10 @@ def create_profile():
         birthday=data['birthday'],
         location=data['location'],
         bio=data['bio'],
+        languages = data['languages'],
+        kids = data['kids'],
+        pets = data['pets'],
+        hobbies = data['hobbies'],
         identify_as=data['identify_as'],
         looking_for=data['looking_for'],
         img_url=data['img_url']

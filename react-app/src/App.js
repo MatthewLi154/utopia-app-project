@@ -13,9 +13,10 @@ import CreateProfileName from "./components/CreateProfile/CreateProfileName";
 import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirthday";
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
-import CreateConversation from "./components/CreateConversation"
+import CreateConversation from "./components/CreateConversation";
 import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
+import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,49 +35,52 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar loaded={loaded}/>
+      <NavBar loaded={loaded} />
       {loaded && (
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path="/profile/:profileId/personality-questions">
-          <PersonalityQuestions />
-        </Route>
-        <Route path="/profile/create/name">
-          <CreateProfileName />
-        </Route>
-        <Route path="/profile/create/birthday">
-          <CreateProfileBirthday />
-        </Route>
-        <Route exact path="/profile/create/location">
-          <CreateProfileLocation />
-        </Route>
-        <Route exact path="/profile/create/about">
-          <CreateProfileBio />
-        </Route>
-        <Route path="/profile/:profileId">
-          <SingleUserProfile />
-        </Route>
-        <Route path="/profiles">
-          <Profile />
-        </Route>
-        <Route path='/conversations'>
-          <CreateConversation/>
-        </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
-        <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm />
+          </Route>
+          <Route path="/profile/:profileId/personality-questions">
+            <PersonalityQuestions />
+          </Route>
+          <Route path="/profile/create/name">
+            <CreateProfileName />
+          </Route>
+          <Route path="/profile/create/other">
+            <CreateProfileOther />
+          </Route>
+          <Route path="/profile/create/birthday">
+            <CreateProfileBirthday />
+          </Route>
+          <Route exact path="/profile/create/location">
+            <CreateProfileLocation />
+          </Route>
+          <Route exact path="/profile/create/about">
+            <CreateProfileBio />
+          </Route>
+          <Route path="/profile/:profileId">
+            <SingleUserProfile />
+          </Route>
+          <Route path="/profiles">
+            <Profile />
+          </Route>
+          <Route path="/conversations">
+            <CreateConversation />
+          </Route>
+          <ProtectedRoute path="/users" exact={true}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true}>
+            <User />
+          </ProtectedRoute>
+          <Route path="/" exact={true}>
+            <h1>My Home Page</h1>
+          </Route>
+        </Switch>
       )}
     </BrowserRouter>
   );
