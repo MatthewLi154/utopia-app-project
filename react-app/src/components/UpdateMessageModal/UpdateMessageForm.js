@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector,  useDispatch } from "react-redux";
 import { editMessage } from "../../store/message";
 
@@ -17,6 +17,10 @@ function UpdateMessageForm({message, setShowModal}){
         }
         setBody('')
     }
+
+    useEffect(() => {
+        return () => {};
+    }, []);
 
     return (
         <form onSubmit={handleSubmit}>
