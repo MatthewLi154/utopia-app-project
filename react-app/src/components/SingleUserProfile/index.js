@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import {
   getProfileMatches,
   getProfileMatchPercentage,
@@ -11,9 +11,11 @@ import "./SingleUserProfile.css";
 function SingleUserProfile() {
   const { profileId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const profile = useSelector((state) => state?.profiles.singleProfile);
-  const matchPercent = useSelector((state) => state?.matches.matchedPercent);
+  const profile = useSelector((state) => state.profiles.singleProfile);
+  const matchPercent = useSelector((state) => state.matches.matchedPercent);
+  const currentUserId = useSelector((state) => state.session.user.id);
 
   useEffect(() => {
     dispatch(fetchSingleProfile(profileId));
@@ -74,6 +76,21 @@ function SingleUserProfile() {
                   <h4>{percent}%</h4>
                 </div>
               )}
+              <div className="match-with-others-button-container">
+                {profile.id === currentUserId && (
+                  <div>
+                    <button
+                      onClick={() => {
+                        history.push(
+                          `/profile/${profile.id}/personality-questions`
+                        );
+                      }}
+                    >
+                      Match with Others
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="profile-images-container">
               <div className="profile-image">
@@ -110,7 +127,7 @@ function SingleUserProfile() {
               </div>
               <div className="identify-as-container">
                 <div className="identify-as-icon">
-                  <i class="fa-sharp fa-solid fa-dna"></i>
+                  <i className="fa-sharp fa-solid fa-dna"></i>
                 </div>
                 <div className="identify-as-detials">{profile.identify_as}</div>
               </div>
@@ -122,19 +139,19 @@ function SingleUserProfile() {
               </div>
               <div className="hobbies-container">
                 <div className="hobbies-icon">
-                  <i class="fa-regular fa-face-smile"></i>
+                  <i className="fa-regular fa-face-smile"></i>
                 </div>
                 <div className="hobbies-details">{profile.hobbies}</div>
               </div>
               <div className="kids-container">
                 <div className="kids-icon">
-                  <i class="fa-solid fa-child"></i>
+                  <i className="fa-solid fa-child"></i>
                 </div>
                 <div className="kids-details">{profile.kids}</div>
               </div>
               <div className="pets-container">
                 <div className="pets-icon">
-                  <i class="fa-solid fa-cat"></i>
+                  <i className="fa-solid fa-cat"></i>
                 </div>
                 <div className="pets-details">Has {profile.pets}</div>
               </div>

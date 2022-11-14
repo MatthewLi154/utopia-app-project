@@ -55,6 +55,16 @@
   border-radius: 50%;
 }
 
+.match-with-others-button-container {
+  display: flex;
+  flex-direction: flex-end;
+  width: auto;
+  padding-left: 10rem;
+}
+
+.match-with-others-button-container button {
+}
+
 .name-container h3 {
   margin: 0px;
 }
