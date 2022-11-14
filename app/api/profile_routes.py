@@ -17,6 +17,7 @@ def edit_profile(id):
     profile.first_name = data['first_name']
     profile.last_name = data['last_name']
     profile.bio = data['bio']
+    profile.current_goals = data['current_goals']
     profile.languages = data['languages']
     profile.kids = data['kids']
     profile.pets = data['pets']
@@ -75,6 +76,7 @@ def create_profile():
         birthday=data['birthday'],
         location=data['location'],
         bio=data['bio'],
+        current_goals=data['current_goals'],
         languages = data['languages'],
         kids = data['kids'],
         pets = data['pets'],
