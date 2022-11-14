@@ -26,7 +26,7 @@ const NavBar = ({ loaded }) => {
               <NavLink className="discover" to='/profiles' exact={true}>
                 Discover
               </NavLink>
-              <NavLink className="discover" to='/messages' exact={true}>
+              <NavLink className="discover" to='/conversations' exact={true}>
                 Messages
               </NavLink>
             </li>
