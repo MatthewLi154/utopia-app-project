@@ -1,0 +1,26 @@
+.birthday-details-container {
+  display: flex;
+  height: 15rem;
+}
+
+.birthday-input {
+  /* background-color: black; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.birthday-input div {
+  margin: 0rem 0.5rem;
+}
+
+.birthday-input input {
+  width: 9rem;
+}
+
+.birthday-input-container {
+  display: flex;
+  flex-direction: column;
+}

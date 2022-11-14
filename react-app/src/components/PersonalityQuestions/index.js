@@ -7,7 +7,11 @@ import {
   updateScoreProfile,
 } from "../../store/profile";
 import "./PersonalityQuesitons.css";
-import { addNewMatches } from "../../store/match";
+import {
+  addNewMatches,
+  getProfileMatchPercentage,
+  getProfileMatches,
+} from "../../store/match";
 
 function PersonalityQuestions() {
   const { profileId } = useParams();
@@ -90,8 +94,11 @@ function PersonalityQuestions() {
       }
     }
 
+    console.log(matches);
     // Store matches into database
-    dispatch(addNewMatches(matches));
+    await dispatch(addNewMatches(matches));
+    await dispatch(getProfileMatches());
+    await dispatch(getProfileMatchPercentage());
 
     history.push("/profiles");
   };

@@ -1,8 +1,8 @@
 """create all table
 
-Revision ID: 7eb2c7365a14
+Revision ID: a4fb3c1ac36f
 Revises: 
-Create Date: 2022-11-12 13:25:08.181169
+Create Date: 2022-11-13 21:12:21.444868
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7eb2c7365a14'
+revision = 'a4fb3c1ac36f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,9 +43,16 @@ def upgrade():
     sa.Column('birthday', sa.String(), nullable=False),
     sa.Column('location', sa.String(), nullable=False),
     sa.Column('bio', sa.String(), nullable=False),
+    sa.Column('current_goals', sa.String(), nullable=False),
+    sa.Column('languages', sa.String(), nullable=False),
+    sa.Column('kids', sa.String(), nullable=False),
+    sa.Column('pets', sa.String(), nullable=False),
+    sa.Column('hobbies', sa.String(), nullable=False),
     sa.Column('identify_as', sa.String(), nullable=False),
     sa.Column('looking_for', sa.String(), nullable=False),
-    sa.Column('img_url', sa.String(), nullable=False),
+    sa.Column('img_url1', sa.String(), nullable=False),
+    sa.Column('img_url2', sa.String(), nullable=False),
+    sa.Column('img_url3', sa.String(), nullable=False),
     sa.Column('score', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

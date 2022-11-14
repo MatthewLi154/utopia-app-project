@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useHistory, useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 import { createProfile, fetchAllProfiles } from "../../../store/profile";
+import "./CreateProfileBio.css";
 
 function CreateProfileBio() {
   const dispatch = useDispatch();
@@ -30,16 +31,13 @@ function CreateProfileBio() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(newProfile);
-
     // check for validations
 
     // if no errors
 
     // use newProfile data and send the post request to create new profile
     // new profile needs
-    // user_id, first_name, last_name, birthday, location, bio, identify_as, looking_for
+    // user_id, first_name, last_name, birthday, location, bio, identify_as, looking_for, languages, kids, hobbies, pets
     // img_url, score (later)
     let firstName, lastName;
     [firstName, lastName] = newProfile.name.split(" ");
@@ -50,6 +48,10 @@ function CreateProfileBio() {
       last_name: lastName,
       birthday: newProfile.birthday,
       bio: newProfile.bio,
+      languages: newProfile.languages,
+      kids: newProfile.kids,
+      pets: newProfile.pets,
+      hobbies: newProfile.hobbies,
       location: newProfile.location,
       identify_as: newProfile.identifyAs,
       looking_for: newProfile.lookingFor,
@@ -66,55 +68,71 @@ function CreateProfileBio() {
   };
 
   return (
-    <div>
-      <h1>About me</h1>
-      <form>
-        <div>
-          <textarea
-            placeholder="Biography"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-          ></textarea>
+    <>
+      <div className="create-name-main-page-container">
+        <div className="create-name-header-container">
+          <div className="create-name-center-content">
+            <div className="create-name-icon-details">
+              <div className="create-name-icon">
+                <NavLink
+                  to={{
+                    pathname: "/profile/create/location",
+                    state: { newProfile: newProfile },
+                  }}
+                >
+                  <i className="fa-solid fa-angle-left"></i>
+                </NavLink>
+              </div>
+              <div className="create-name-icon">
+                <i class="fa-solid fa-circle-user"></i>
+              </div>
+              <div className="create-name-details">About me</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Identify As</label>
-          <select
-            value={identifyAs}
-            onChange={(e) => setIdentifyAs(e.target.value)}
-          >
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="other">Other</option>
-          </select>
+        <div className="create-name-bottom-section-details-container">
+          <div className="input-name-container birthday-input">
+            <form className="birthday-input">
+              <div className="input-content-container">
+                <div className="text-area-container">
+                  <div>
+                    <label>Biography</label>
+                  </div>
+                  <div>
+                    <textarea placeholder="Please use at least 30 characters"></textarea>
+                  </div>
+                </div>
+                <div className="text-area-container">
+                  <div>
+                    <label>Current Goals</label>
+                  </div>
+                  <div>
+                    <textarea placeholder="Now tell us about your current goals..."></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="create-name-button-container">
+            <div className="create-name-button-sub-container">
+              <NavLink
+                to={{
+                  pathname: "/profile/create/other",
+                  state: { newProfile: newProfile },
+                }}
+              >
+                <button
+                  className="create-name-button"
+                  onClick={(e) => onSubmit(e)}
+                >
+                  Next
+                </button>
+              </NavLink>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Looking For</label>
-          <select
-            value={lookingFor}
-            onChange={(e) => setLookingFor(e.target.value)}
-          >
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div>
-          <label>Image URL</label>
-          <input
-            value={imgUrl}
-            onChange={(e) => setImgUrl(e.target.value)}
-            placeholder="Image must end in jpg or png"
-          ></input>
-        </div>
-      </form>
-      <NavLink
-        to={{
-          pathname: "/profile",
-        }}
-      >
-        <button onClick={(e) => onSubmit(e)}>Create Profile</button>
-      </NavLink>
-    </div>
+      </div>
+    </>
   );
 }
 

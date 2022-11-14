@@ -7,9 +7,9 @@ import { useHistory } from 'react-router-dom';
 const LogoutButton = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const onLogout = async (e) => {
+  const onLogout =  (e) => {
     e.preventDefault();
-    await dispatch(sessionActions.logout());
+    dispatch(sessionActions.logout());
     history.push('/')
   };
 

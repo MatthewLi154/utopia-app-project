@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useHistory, useDispatch } from "react-redux";
-import { fetchAllProfiles } from "../../store/profile";
+import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import { NavLink } from "react-router-dom";
 import "./Profiles.css";
 import {
@@ -10,6 +10,7 @@ import {
 
 function Profile() {
   const userProfiles = useSelector((state) => state.profiles.user_profiles);
+  const currentUserId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,28 +24,63 @@ function Profile() {
     userProfilesArray.push(userProfiles[profile]);
   }
 
+  const calculateAge = (birthday) => {
+    const [month, day, year] = birthday.split("-");
+    const birthdate = new Date(`${year}-${month}-${day}`);
+    const today = new Date();
+
+    let years = today.getFullYear() - year;
+
+    if (
+      today.getMonth() < birthdate.getMonth() ||
+      (today.getMonth() == birthdate.getMonth() &&
+        today.getDate() < birthdate.getDate())
+    ) {
+      years--;
+    }
+    return years;
+  };
+
   return (
-    <div>
-      <h1>Utopia Profile</h1>
-      <div className="main-profiles-page-container">
-        <h2>I'm working on it...</h2>
-        {userProfiles &&
-          userProfilesArray.map((profile) => (
-            <div className="profile-box" key={profile.id}>
-              <NavLink
-                to={{
-                  pathname: `/profile/${profile.id}`,
-                }}
-              >
-                <h3>{profile.first_name}</h3>
-              </NavLink>
-              <h3>{profile.last_name}</h3>
-              <h3>{profile.bio}</h3>
-              <h3>{profile.score}</h3>
-            </div>
-          ))}
+    <>
+      <div className="entire-profiles-page">
+        <div className="main-profiles-page-container">
+          <div className="inner-profiles-container">
+            {userProfiles &&
+              userProfilesArray.map(
+                (profile) =>
+                  profile.user_id !== currentUserId && (
+                    <div className="profile-box" key={profile.id}>
+                      <div className="profile-box-content">
+                        <img src={profile.img_url1}></img>
+                        <NavLink
+                          // onClick={async (e) => {
+                          //   await dispatch(fetchSingleProfile(profile.id));
+                          // }}
+                          to={{
+                            pathname: `/profile/${profile.id}`,
+                          }}
+                          style={{
+                            textDecoration: "none",
+                            color: "rgb(00, 82, 94)",
+                          }}
+                        >
+                          <h3>{profile.first_name}</h3>
+                        </NavLink>
+                        <div className="profile-box-sub-content">
+                          <div>
+                            {profile.location} •{" "}
+                            {calculateAge(profile.birthday)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+              )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
