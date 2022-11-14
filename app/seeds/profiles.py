@@ -77,19 +77,70 @@ def seed_profiles():
         current_goals="My current goals!"
     )
     demo_profile_5 = Profile(
-        user_id=5, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", kids="Don't have but want them", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
+        user_id=5,
+        first_name='Tinker',
+        last_name='Bell',
+        birthday='03-05-1953',
+        location='Neverland',
+        bio="A sassy fairy that is tired of playing sidekick.",
+        kids="Don't have but want them",
+        languages="English",
+        identify_as='Fairy',
+        pets="Peter Pan",
+        hobbies="big interest in lost things that come from the Mainland",
+        looking_for='Wizard',
+        img_url1='https://i.imgur.com/MMnVRiI.png',
+        img_url2='https://i.imgur.com/iLhUns5.png',
+        img_url3='https://i.imgur.com/XkQnh6O.png',
+        score=16,
+        current_goals="My current goals!"
     )
     demo_profile_6 = Profile(
-        user_id=6, first_name='Shrek', last_name='Ross', birthday='03-05-2001', location='Swamp',  bio="There is more to me than your average onion", identify_as='Ogre', looking_for='Princess', img_url='image3.jpg', score=17
+        user_id=6,
+        first_name='Shrek',
+        last_name='Ross',
+        birthday='03-05-2001',
+        location='Swamp',
+        bio="There is more to me than your average onion",
+        kids="Don't have but want them",
+        pets="Donkey",
+        hobbies="Hunting, foraging, cooking ",
+        languages="English",
+        identify_as='Ogre',
+        looking_for='Princess',
+        img_url1='https://i.imgur.com/pjhg35J.png',
+        img_url2='https://i.imgur.com/jQCN2Mp.png',
+        img_url3='https://i.imgur.com/Yi6hAlT.png',
+        score=17,
+        current_goals="My current goals!"
     )
     demo_profile_7 = Profile(
-        user_id=7, first_name='Severus', last_name='Snape', birthday='01-09-1960', location='Hogwarts',  bio="Introverted, emotional, nerd and a one-woman man", identify_as='Wizard', looking_for='Fairy', img_url='image3.jpg', score=18
+        user_id=7,
+        first_name='Severus',
+        last_name='Snape',
+        birthday='01-09-1960',
+        location='Hogwarts',
+        bio="Introverted, emotional, nerd and a one-woman man",
+        kids="Don't have but want them",
+        pets="Draco Malfoy",
+        hobbies="Potion Making ",
+        languages="English",
+        identify_as='Wizard',
+        looking_for='Fairy',
+        img_url1='https://i.imgur.com/NIA5HAe.png',
+        img_url2='https://i.imgur.com/aH914zk.png',
+        img_url3='https://i.imgur.com/SrGifqX.png',
+        score=18,
+        current_goals="My current goals!"
     )
 
     db.session.add(demo_profile_1)
     db.session.add(demo_profile_2)
     db.session.add(demo_profile_3)
     db.session.add(demo_profile_4)
+    db.session.add(demo_profile_5)
+    db.session.add(demo_profile_6)
+    db.session.add(demo_profile_7)
 
     db.session.commit()
 
