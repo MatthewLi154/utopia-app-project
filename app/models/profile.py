@@ -14,6 +14,7 @@ class Profile(db.Model):
     birthday = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=False)
+    current_goals = db.Column(db.String, nullable=False)
     languages = db.Column(db.String, nullable=False)
     kids = db.Column(db.String, nullable=False)
     pets = db.Column(db.String, nullable=False)
@@ -34,6 +35,7 @@ class Profile(db.Model):
             'birthday': self.birthday,
             'location': self.location,
             'bio': self.bio,
+            'current_goals': self.current_goals,
             'languages': self.languages,
             'kids': self.kids,
             'pets': self.pets,
