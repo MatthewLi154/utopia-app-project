@@ -75,6 +75,7 @@ def seed_profiles():
         img_url3="https://c4.wallpaperflare.com/wallpaper/807/852/840/anime-chainsaw-man-denji-chainsaw-man-anime-boys-null-hd-wallpaper-preview.jpg",
         score=14,
         current_goals="My current goals!"
+    )
     demo_profile_5 = Profile(
         user_id=5, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", kids="Don't have but want them", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
     )
