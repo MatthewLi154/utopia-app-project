@@ -15,7 +15,7 @@ def seed_profiles():
         user_id=3, first_name='Dion', last_name='Pham', birthday='03-05-1999', location='Torrance, CA',  bio="Gym Addict who loves good vibes", kids="Don't have but want them", languages="Viet, English", pets="Cats", hobbies="Gym and Music", identify_as='Human', looking_for='Human', img_url='image3.jpg', score=14, current_goals="My current goals!"
     )
     demo_profile_4 = Profile(
-        user_id=3, first_name='Denji', last_name='Kun', birthday='03-01-1980', location='Tokyo, Japan',  bio="I am chainsaw man", kids="Don't have", languages="Japanese", pets="Dogs", hobbies="Killing devils", identify_as='Devil', looking_for='Human', img_url='https://cdn.myanimelist.net/images/characters/3/492407.jpg', score=14, current_goals="My current goals!"
+        user_id=4, first_name='Denji', last_name='Kun', birthday='03-01-1980', location='Tokyo, Japan',  bio="I am chainsaw man", kids="Don't have", languages="Japanese", pets="Dogs", hobbies="Killing devils", identify_as='Devil', looking_for='Human', img_url='https://cdn.myanimelist.net/images/characters/3/492407.jpg', score=14, current_goals="My current goals!"
     )
 
 

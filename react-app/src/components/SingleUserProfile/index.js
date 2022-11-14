@@ -55,6 +55,11 @@ function SingleUserProfile() {
                 </div>
                 <div className="biography-container-bio">{profile.bio}</div>
               </div>
+              <div className="left-column-biography-container">
+                <div className="biography-container-label">
+                  <h4>Current goals</h4>
+                </div>
+              </div>
             </div>
             <div className="bottom-right-column-container">
               <div className="details-label-container">
