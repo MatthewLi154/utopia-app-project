@@ -17,7 +17,7 @@ def seed_profiles():
         user_id=3, first_name='Denji', last_name='Kun', birthday='03-01-1980', location='Tokyo, Japan',  bio="I am chainsaw man", kids="Don't have", languages="Japanese", pets="Dogs", hobbies="Killing devils", identify_as='Devil', looking_for='Human', img_url='https://cdn.myanimelist.net/images/characters/3/492407.jpg', score=14
     )
     demo_profile_5 = Profile(
-        user_id=4, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
+        user_id=4, first_name='Tinker', last_name='Bell', birthday='03-05-1953', location='Neverland',  bio="A sassy fairy that is tired of playing sidekick.", kids="Don't have but want them", identify_as='Fairy', looking_for='Wizard', img_url='image3.jpg', score=16
     )
     demo_profile_6 = Profile(
         user_id=3, first_name='Shrek', last_name='Ross', birthday='03-05-2001', location='Swamp',  bio="There is more to me than your average onion", identify_as='Ogre', looking_for='Princess', img_url='image3.jpg', score=17

@@ -9,6 +9,8 @@ def seed_users():
         username='Nandor', email='Nandor@aa.io', password='password')
     Dion = User(
         username='Dion', email='Dion@aa.io', password='password')
+    Denji = User(
+        username='Denji', email='Denji@aa.io', password='password')
     TinkerBell = User(
         username='TinkerBell', email='TinkerBell@aa.io', password='password')
     Shrek = User(
@@ -22,6 +24,7 @@ def seed_users():
     db.session.add(demo)
     db.session.add(Nandor)
     db.session.add(Dion)
+    db.session.add(Denji)
     db.session.add(TinkerBell)
     db.session.add(Shrek)
     db.session.add(Severus)
