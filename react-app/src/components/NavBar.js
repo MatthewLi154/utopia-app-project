@@ -1,19 +1,38 @@
 
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, Link, useParams } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm';
 import { Modal } from '../context/Modal';
+import { fetchSingleProfile } from '../store/profile';
+import { fetchAllProfiles } from '../store/profile';
 import './NavBar.css'
 
 const NavBar = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user)
+  const profile = useSelector(state => state.profiles.user_profiles)
   const [signup, setShowSignup] = useState(false)
   const [login, setLogin] = useState(false)
-  const userProfiles = useSelector(state => state.profiles.user_profiles)
+  const dispatch = useDispatch()
 
+  // let profileId
+  // if(profile){
+  //   for (const specificProfile in profile) {
+  //     if(specificProfile.user_id == sessionUser.id){
+  //       profileId = specificProfile.id
+  //     }
+  //   }
+  // }
+  // console.log(profileId)
+  // useEffect(() => {
+  //   dispatch(fetchSingleProfile(profileId))
+  //   dispatch(fetchAllProfiles())
+  // }, [dispatch])
+  // if(!profile){
+  //   return null
+  // }
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -34,10 +53,10 @@ const NavBar = ({ loaded }) => {
           </div>
 
           <div className='Right-nav-user'>
-            <Link to={`/profile/${sessionUser.id}`}>
+            <NavLink onClick={() => dispatch(fetchSingleProfile(sessionUser.id))} to={`/profile/${sessionUser.id}`}>
               <img src='https://i.imgur.com/1kY4QtL.png' alt="default-profile-pic" className='default-profile-pic'></img>
-            </Link>
-            <div className='user-name'>Matthew Li</div>
+            </NavLink>
+            <div className='user-name'>{sessionUser.username}</div>
             <div>
               <LogoutButton />
             </div>
