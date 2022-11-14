@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import {
+  getProfileMatches,
+  getProfileMatchPercentage,
+} from "../../store/match";
 import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import "./SingleUserProfile.css";
 
@@ -9,11 +13,21 @@ function SingleUserProfile() {
   const dispatch = useDispatch();
 
   const profile = useSelector((state) => state?.profiles.singleProfile);
+  const matchPercent = useSelector((state) => state?.matches.matchedPercent);
 
   useEffect(() => {
     dispatch(fetchSingleProfile(profileId));
     dispatch(fetchAllProfiles());
+    dispatch(getProfileMatchPercentage());
+    dispatch(getProfileMatches());
   }, []);
+
+  let percent = 0;
+  for (const match in matchPercent) {
+    if (matchPercent[match].matched_profile_id === parseInt(profileId)) {
+      percent = Math.floor(matchPercent[match].matching_percentage * 100);
+    }
+  }
 
   const birthday = profile.birthday;
   const calculateAge = (birthday) => {
@@ -55,9 +69,11 @@ function SingleUserProfile() {
                   </span>
                 </div>
               </div>
-              <div className="match-percent-container">
-                <h4>{profile.id}%</h4>
-              </div>
+              {percent !== 0 && (
+                <div className="match-percent-container">
+                  <h4>{percent}%</h4>
+                </div>
+              )}
             </div>
             <div className="profile-images-container">
               <div className="profile-image">
