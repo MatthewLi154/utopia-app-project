@@ -5,14 +5,28 @@ from app.models import db, User, environment, SCHEMA
 def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User( 
-        username='bobbie', email='bobbie@aa.io', password='password')
-
+    Nandor = User(
+        username='Nandor', email='Nandor@aa.io', password='password')
+    Dion = User(
+        username='Dion', email='Dion@aa.io', password='password')
+    TinkerBell = User(
+        username='TinkerBell', email='TinkerBell@aa.io', password='password')
+    Shrek = User(
+        username='Shrek', email='Shrek@aa.io', password='password')
+    Severus = User(
+        username='Severus', email='Severus@aa.io', password='password')
+    PrincessPeach = User(
+        username='PrincessPeach', email='PrincessPeach@aa.io', password='password')
+    Tsunade = User(
+        username='Tsunade', email='Tsunade@aa.io', password='password')
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(Nandor)
+    db.session.add(Dion)
+    db.session.add(TinkerBell)
+    db.session.add(Shrek)
+    db.session.add(Severus)
+    db.session.add(PrincessPeach)
+    db.session.add(Tsunade)
     db.session.commit()
 
 
