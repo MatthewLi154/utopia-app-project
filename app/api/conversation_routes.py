@@ -21,22 +21,6 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-# get all conversations by sender id
-# @conversation_routes.route('', methods=['GET'])
-# @login_required
-# def get_all_conversations():
-#     conversations = Conversation.query.filter_by(sender_id=current_user.id)
-#     parsed_conversation_dict = {}
-#     for conversation in conversations:
-#         parsed_conversation_dict[conversation.id] = conversation.to_dict()
-#     return parsed_conversation_dict
-
-# @conversation_routes.route('', methods = ['GET'])
-# @login_required
-# def get_matched_conversations():
-
-
-# create a new message based on conversation id
 @conversation_routes.route('/<int:id>', methods = ['POST'])
 @login_required
 def create_message(id):
@@ -60,7 +44,7 @@ def create_message(id):
 @conversation_routes.route('', methods = ['GET'])
 @login_required
 def create_conversation():
-    # create set based on Matches by user id
+    
     matched_profiles = Match.query.all()
     matched_profiles_dict = {}
     for matched in matched_profiles:
@@ -79,31 +63,34 @@ def create_conversation():
             matches_state_set.add(
                 matched_profiles_dict[match_set]['profile_id'])
   
-    # global variable to dynmically render different information
     conversation_dict = {}
-    for match in matches_state_set:
-        matched_id = match
+    found_conversations = Conversation.query.filter(or_(Conversation.sender_id == current_profile_id, Conversation.recipient_id == current_profile_id)).all()
+    print(found_conversations)
+    for match_id in matches_state_set:
         
-        # create new instance of conversation based on set of unique matched ID's
         conversation = Conversation(
-            sender_id = current_profile_id,
-            recipient_id = matched_id
+            recipient_id = match_id,
+            sender_id = current_user.id
         )
-        conversations = Conversation.query.all()
 
-        for conv in conversations:
-            # if conditional to check if there are already sender_id and recipien_id pairs
-            if ((conv.recipient_id == current_profile_id and conv.sender_id == matched_id)):
-                    # will only return old unique pairs
-                    conversation_dict[conv.id] = conv.to_dict()
-                    db.session.delete(conversation)
-                    db.session.commit()
-                    
-    conversations = Conversation.query.filter_by(sender_id = current_profile_id)
-    for conversation in conversations:
-        conversation_dict[conversation.id] = conversation.to_dict()
+        if(len(found_conversations) == 0):
+            db.session.add(conversation)
+            db.session.commit()
+       
+        for conv in found_conversations:
+            if((conv.to_dict()["sender_id"] != conversation.to_dict()["sender_id"])
+               or (conv.to_dict()["recipient_id"] != conversation.to_dict()["sender_id"])):
+                db.session.add(conversation)
+                db.session.commit()
+               
+
+    new_conversations = Conversation.query.filter(or_(Conversation.sender_id == current_profile_id, Conversation.recipient_id == current_profile_id)).all()
+    print(new_conversations, "------------------")
+    for conv in new_conversations:
+        conversation_dict[conv.id] = conv.to_dict()
     return conversation_dict
-
+    
+   
 #delete a conversation by id (similar to how blocking someone on a social media app would be?)
 @conversation_routes.route('/<int:id>', methods = ['DELETE'])
 @login_required
