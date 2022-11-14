@@ -14,6 +14,10 @@ class Profile(db.Model):
     birthday = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=False)
+    languages = db.Column(db.String, nullable=False)
+    kids = db.Column(db.String, nullable=False)
+    pets = db.Column(db.String, nullable=False)
+    hobbies = db.Column(db.String, nullable=False)
     identify_as = db.Column(db.String, nullable=False)
     looking_for = db.Column(db.String, nullable=False)
     img_url = db.Column(db.String, nullable=False)
@@ -30,6 +34,10 @@ class Profile(db.Model):
             'birthday': self.birthday,
             'location': self.location,
             'bio': self.bio,
+            'languages': self.languages,
+            'kids': self.kids,
+            'pets': self.pets,
+            'hobbies': self.hobbies,
             'identify_as': self.identify_as,
             'looking_for': self.looking_for,
             'img_url': self.img_url,
