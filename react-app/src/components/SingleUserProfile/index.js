@@ -55,6 +55,24 @@ function SingleUserProfile() {
     age = calculateAge(birthday);
   }
 
+  let editProfileData;
+  // if (profile) {
+  editProfileData = {
+    bio: profile.bio,
+    current_goals: profile.current_goals,
+    hobbies: profile.hobbies,
+    kids: profile.kids,
+    languages: profile.languages,
+    location: profile.location,
+    looking_for: profile.looking_for,
+    pets: profile.pets,
+    identify_as: profile.identify_as,
+    age: age,
+    img_url1: profile.img_url1,
+    first_name: profile.first_name,
+  };
+  // }
+
   return (
     <>
       <div className="single-profile-main-container">
@@ -123,7 +141,21 @@ function SingleUserProfile() {
             </div>
             <div className="bottom-right-column-container">
               <div className="details-label-container">
-                <h4>Details</h4>
+                <div>
+                  <h4>Details</h4>
+                </div>
+                {currentUserId === profile.user_id && (
+                  <div>
+                    <NavLink
+                      to={{
+                        pathname: `/profile/${profileId}/edit`,
+                        state: { editProfileData: editProfileData },
+                      }}
+                    >
+                      <h4>Edit</h4>
+                    </NavLink>
+                  </div>
+                )}
               </div>
               <div className="identify-as-container">
                 <div className="identify-as-icon">

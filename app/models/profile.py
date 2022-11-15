@@ -22,8 +22,8 @@ class Profile(db.Model):
     identify_as = db.Column(db.String, nullable=False)
     looking_for = db.Column(db.String, nullable=False)
     img_url1 = db.Column(db.String, nullable=False)
-    img_url2 = db.Column(db.String, nullable=False)
-    img_url3 = db.Column(db.String, nullable=False)
+    img_url2 = db.Column(db.String)
+    img_url3 = db.Column(db.String)
     score = db.Column(db.Integer)
 
     user = db.relationship("User", back_populates='profile')

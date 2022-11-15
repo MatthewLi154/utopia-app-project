@@ -17,7 +17,7 @@ import CreateConversation from "./components/CreateConversation";
 import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
 import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
-
+import EditProfile from "./components/EditProfile";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +65,9 @@ function App() {
               </Route>
               <Route path="/profile/:profileId/personality-questions">
                 <PersonalityQuestions />
+              </Route>
+              <Route exact path="/profile/:profileId/edit">
+                <EditProfile />
               </Route>
               <Route exact path="/profile/:profileId">
                 <SingleUserProfile />
