@@ -9,6 +9,7 @@ import { Modal } from '../context/Modal';
 import { fetchSingleProfile } from '../store/profile';
 import { fetchAllProfiles } from '../store/profile';
 import './NavBar.css'
+import ProfileButton from './profileButton';
 
 const NavBar = ({ loaded }) => {
   const sessionUser = useSelector(state => state.session.user)
@@ -16,29 +17,12 @@ const NavBar = ({ loaded }) => {
   const [signup, setShowSignup] = useState(false)
   const [login, setLogin] = useState(false)
   const dispatch = useDispatch()
-  // console.log(profile)
-  // console.log("BLAH!!!", profile[sessionUser.id - 1]?.id)
 
-  // let profileId
-  // if(profile){
-  //   for (const specificProfile in profile) {
-  //     if(specificProfile.user_id == profile.user_id){
-  //       profileId = specificProfile.id
-  //     }
-  //   }
-  // }
-  // console.log(profileId)
-  // useEffect(() => {
-  //   dispatch(fetchSingleProfile(profileId))
-  //   dispatch(fetchAllProfiles())
-  // }, [dispatch])
-  // if(!profile){
-  //   return null
-  // }
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <div className='nav-bar'>
+
         <ul className='nav-list'>
           <div className='left-nav-items'>
             <li className='left-nav'>
@@ -55,13 +39,7 @@ const NavBar = ({ loaded }) => {
           </div>
 
           <div className='Right-nav-user'>
-            <NavLink onClick={() => dispatch(fetchSingleProfile(profile[sessionUser.id - 1]?.id))} to={`/profile/${profile[sessionUser.id - 1]?.id}`}>
-              <img src={profile[sessionUser.id - 1]?.img_url1} alt="default-profile-pic" className='default-profile-pic'></img>
-            </NavLink>
-            <div className='user-name'>{sessionUser.username}</div>
-            <div>
-              <LogoutButton />
-            </div>
+            <ProfileButton />
           </div>
         </ul>
       </div>
@@ -73,8 +51,8 @@ const NavBar = ({ loaded }) => {
           <div className='nav-list-splash'>
             <div className='left-logo'>
               <div>
-                <NavLink to='/' exact={true} style={{textDecoration: "none", color: "red"}}>
-                Utopia
+                <NavLink to='/' exact={true} style={{ textDecoration: "none", color: "red" }}>
+                  Utopia
                 </NavLink>
               </div>
             </div>
@@ -87,7 +65,7 @@ const NavBar = ({ loaded }) => {
                 }>Log In</button>
               </div>
               <div className='right-nav-items-splash-login'>
-              <button className="sign-up-button" onClick={() => {
+                <button className="sign-up-button" onClick={() => {
                   setShowSignup(true)
                 }
                 }>Join Utopia</button>
