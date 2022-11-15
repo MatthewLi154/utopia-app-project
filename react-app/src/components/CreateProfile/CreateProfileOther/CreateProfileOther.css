@@ -1,0 +1,34 @@
+.create-final-details-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0rem;
+}
+
+.create-final-details-content-container input {
+  width: 14rem;
+  height: 1.5rem;
+}
+.create-final-details-content-container select {
+  width: 14rem;
+}
+
+.final-details-input-container {
+  margin: 1rem 0rem;
+}
+
+.create-profile-button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 13rem;
+}
+
+.create-profile-button {
+  background-color: lightcoral;
+  border: 1px solid lightgray;
+  width: 4.5rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+}

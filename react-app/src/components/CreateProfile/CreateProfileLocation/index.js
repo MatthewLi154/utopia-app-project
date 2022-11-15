@@ -9,15 +9,36 @@ function CreateProfileLocation() {
   const history = useHistory();
   const newProfile = uselocation.state?.newProfile;
 
-  const [location, setLocation] = useState("");
-  const [validationErrors, setValidationErrors] = useState("");
+  const [location, setLocation] = useState(
+    localStorage.getItem("location") || ""
+  );
+  const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
     newProfile.location = location;
-    console.log(newProfile);
+    localStorage.setItem("location", location);
   }, [location]);
 
-  const onSubmit = async (e) => {};
+  const validate = () => {
+    let validationErrors = [];
+
+    if (location.length > 55) {
+      validationErrors.push("Location must be 55 characters or less");
+    } else if (location.length < 3) {
+      validationErrors.push("Location must be 2 or more characters");
+    }
+
+    return validationErrors;
+  };
+
+  const onSubmit = async (e) => {
+    const validationErrors = validate();
+
+    if (validationErrors.length > 0) {
+      e.preventDefault();
+      setValidationErrors(validationErrors);
+    }
+  };
 
   return (
     <>
@@ -46,10 +67,18 @@ function CreateProfileLocation() {
           <div className="input-name-container birthday-input">
             <form className="birthday-input">
               <div>
+                {validationErrors &&
+                  validationErrors.map((error) => <div>{error}</div>)}
+              </div>
+              <div>
                 <label>Location</label>
               </div>
               <div className="location-input-container">
-                <input placeholder="Planet Earth"></input>
+                <input
+                  placeholder="Planet Earth"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                ></input>
               </div>
             </form>
           </div>
