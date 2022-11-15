@@ -1,54 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { io } from "socket.io-client";
-let socket;
+import { useSelector, useHistory, useDispatch } from "react-redux";
+import { NavLink, useLocation } from "react-router-dom";
+import { fetchAllProfiles } from "../../store/profile";
+import ChatCard from "./chatCard";
 
-const Chat = () => {
-  const [chatInput, setChatInput] = useState("");
-  const [messages, setMessages] = useState([]);
-  const user = useSelector((state) => state.session.user);
 
-  console.log(messages, "--------------------------")
+function CreateConversation() {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // open socket connection
-    // create websocket
-    socket = io();
-
-    socket.on("chat", (chat) => {
-      setMessages((messages) => [...messages, chat]);
-    });
-    // when component unmounts, disconnect
-    return () => {
-      socket.disconnect();
-    };
+    dispatch(fetchAllProfiles());
   }, []);
 
-  const updateChatInput = (e) => {
-    setChatInput(e.target.value);
-  };
-
-  const sendChat = (e) => {
-    e.preventDefault();
-    socket.emit("chat", { user: user.username, msg: chatInput });
-    setChatInput("");
-  };
+  let matches = useSelector((state) => Object.values(state.matches.matchedProfiles)
+  );
 
   return (
-    user && (
-      <div>
-        <div>
-          {messages.map((message, ind) => (
-            <div key={ind}>{`${message.user}: ${message.msg}`}</div>
-          ))}
-        </div>
-        <form onSubmit={sendChat}>
-          <input value={chatInput} onChange={updateChatInput} />
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    )
+    <div>
+      {matches.map((match) => (
+        <ChatCard key={match.id} match={match} />
+      ))}
+    </div>
   );
-};
+}
 
-export default Chat;
+export default CreateConversation;
