@@ -1,8 +1,8 @@
 """create all tables
 
-Revision ID: 56add5993b5a
+Revision ID: dbecd870d028
 Revises: 
-Create Date: 2022-11-14 19:18:25.644030
+Create Date: 2022-11-14 22:15:52.114746
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '56add5993b5a'
+revision = 'dbecd870d028'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,14 +26,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
-    )
-    op.create_table('conversations',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('sender_id', sa.Integer(), nullable=False),
-    sa.Column('recipient_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('profiles',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -68,8 +60,8 @@ def upgrade():
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(), nullable=False),
-    sa.Column('conversation_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['conversation_id'], ['conversations.id'], ),
+    sa.Column('matched_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['matched_id'], ['matches.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
@@ -80,6 +72,5 @@ def downgrade():
     op.drop_table('messages')
     op.drop_table('matches')
     op.drop_table('profiles')
-    op.drop_table('conversations')
     op.drop_table('users')
     # ### end Alembic commands ###

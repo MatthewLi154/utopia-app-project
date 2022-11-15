@@ -9,13 +9,13 @@ class Message(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String, nullable=False)
-    conversation_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('conversations.id')), nullable=False)
+    matched_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('matches.id')), nullable=False)
 
-    conversation = db.relationship("Conversation", back_populates='message')
+    matches = db.relationship("Match", back_populates='messages')
 
     def to_dict(self):
         return {
             'id': self.id,
             'body': self.body,
-            'conversation_id': self.conversation_id
+            'matched_id': self.matched_id
         }
