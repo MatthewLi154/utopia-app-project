@@ -144,16 +144,18 @@ function SingleUserProfile() {
                 <div>
                   <h4>Details</h4>
                 </div>
-                <div>
-                  <NavLink
-                    to={{
-                      pathname: `/profile/${profileId}/edit`,
-                      state: { editProfileData: editProfileData },
-                    }}
-                  >
-                    <h4>Edit</h4>
-                  </NavLink>
-                </div>
+                {currentUserId === profile.user_id && (
+                  <div>
+                    <NavLink
+                      to={{
+                        pathname: `/profile/${profileId}/edit`,
+                        state: { editProfileData: editProfileData },
+                      }}
+                    >
+                      <h4>Edit</h4>
+                    </NavLink>
+                  </div>
+                )}
               </div>
               <div className="identify-as-container">
                 <div className="identify-as-icon">
