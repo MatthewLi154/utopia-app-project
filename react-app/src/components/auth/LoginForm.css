@@ -259,9 +259,9 @@ input {
 
 .profile-dropdown {
     position: absolute;
-    right: 40px;
+    /* right: 40px; */
     top: 70px;
-    max-width: 180px;
+    /* max-width: 180px; */
     flex-basis: content;
     width: 180px;
     height: 150px;
