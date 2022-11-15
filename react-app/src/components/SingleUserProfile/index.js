@@ -109,7 +109,7 @@ function SingleUserProfile() {
                 </div>
               )}
               <div className="match-with-others-button-container">
-                {profile.id === currentUserId && (
+                {profile.id === currentUserId && profile.score < 5 && (
                   <div>
                     <button
                       onClick={() => {
