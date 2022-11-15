@@ -41,7 +41,7 @@ def create_message(id):
 
 # create a new conversation when a new match is made
 # be careful where we put this post
-@conversation_routes.route('', methods = ['GET'])
+@conversation_routes.route('', methods = ['GET', 'POST'])
 @login_required
 def create_conversation():
     
@@ -73,13 +73,13 @@ def create_conversation():
             sender_id = current_user.id
         )
 
-        if(len(found_conversations) == 0):
-            db.session.add(conversation)
-            db.session.commit()
+        # if(len(found_conversations) == 0):
+            # db.session.add(conversation)
+            # db.session.commit()
        
         for conv in found_conversations:
-            if((conv.to_dict()["sender_id"] != conversation.to_dict()["sender_id"])
-               or (conv.to_dict()["recipient_id"] != conversation.to_dict()["sender_id"])):
+            if(((conv.to_dict()["sender_id"] == conversation.to_dict()["sender_id"]) and (conv.to_dict()["recipient_id"] == conversation.to_dict()["recipient_id"])) or 
+            ((conv.to_dict()["sender_id"] == conversation.to_dict()["recipient_id"]) and ((conv.to_dict()["recipient_id"] == conversation.to_dict()["sender_id"])))):
                 db.session.add(conversation)
                 db.session.commit()
                

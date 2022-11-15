@@ -5,6 +5,7 @@ import { fetchAllConversations, makeSingleConversation } from "../../store/conve
 import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import ConversationCard from "./ConversationCard";
 import { fetchAllMessages } from "../../store/message";
+import Chat from '../Chat'
 
 function CreateConversation(){
     const dispatch = useDispatch()
@@ -16,14 +17,7 @@ function CreateConversation(){
     }, [])
 
 
-    let conversations = useSelector((state) => Object.values(state.conversations.all_user_conversations))
-
-
-    // let profile = useSelector((state) => Object.values(state.profiles.user_profiles))
-    // const findProfile = (id) => profile.find(p => p.user_id === id)
-
-    // there is a matches table so that we can use a match table slice of state to auto-generate conversations
-    // confirm w matt after merge.
+    let conversations = useSelector((state) => Object.values(state.matches.matchedProfiles))
 
 
     return (
@@ -32,7 +26,7 @@ function CreateConversation(){
                 <ConversationCard key={c.id} conversation={c}
                 />
             ))}
-
+            <Chat />
         </div>
     )
 }
