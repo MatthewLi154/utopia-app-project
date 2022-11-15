@@ -13,8 +13,10 @@ from .api.message_routes import message_routes
 from .api.matches_routes import matches_routes
 from .seeds import seed_commands
 from .config import Config
+from .socket import socketio
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -37,6 +39,7 @@ app.register_blueprint(matches_routes, url_prefix='/api/matches')
 app.register_blueprint(conversation_routes, url_prefix='/api/conversations')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
 db.init_app(app)
+socketio.init_app(app)
 Migrate(app, db)
 
 # Application Security
@@ -93,3 +96,6 @@ def api_help():
                     app.view_functions[rule.endpoint].__doc__ ]
                     for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
     return route_list
+
+if __name__ == "__main__":
+    socketio.run(app)
