@@ -59,14 +59,8 @@ const NavBar = ({ loaded }) => {
 
             <div className='right-nav-items-splash'>
               <div className='right-nav-items-splash-login'>
-                <button className="login-button" onClick={() => {
-                  setLogin(true)
-                }
-                }>Log In</button>
-              </div>
-              <div className='right-nav-items-splash-login'>
                 <button className="sign-up-button" onClick={() => {
-                  setShowSignup(true)
+                  setLogin(true)
                 }
                 }>Join Utopia</button>
               </div>
