@@ -3,7 +3,7 @@ const LOAD_ALL_MESSAGES_BY_CONV_ID = 'matched/loadAllMessagesByConvId'
 const ADD_MESSAGE = 'matched/CreateMessage'
 const UPDATE_MESSAGE = 'matched/UpdateMessage'
 const DELETE_MESSAGE = 'matched/DeleteMessage'
-
+const CURRENT_CONV = 'matched/CURRENT'
 // actions
 export const loadAllMessages = (data) => {
     return {
@@ -33,10 +33,16 @@ export const deleteMessage = (id) => {
     }
 }
 
+export const currentConv = id => {
+    return {
+        type: CURRENT_CONV,
+        id
+    }
+}
+
 
 // thunk
 export const fetchAllMessages = (id) => async (dispatch) => {
-    console.log(id, 'this is my id')
     const response = await fetch(`/api/messages/matched/${id}`)
 
     if (response.ok) {
@@ -87,7 +93,7 @@ export const deletingMessage = (id) => async(dispatch) => {
 }
 
 // reducer
-const initialState = {matched_messages: {}}
+const initialState = {matched_messages: {}, current: {}}
 
 const messageReducer = (state = initialState, action) => {
     let messageStateObj = {...state}
@@ -96,7 +102,7 @@ const messageReducer = (state = initialState, action) => {
             messageStateObj.matched_messages = action.messages
             return messageStateObj
         case ADD_MESSAGE:
-            messageStateObj[action.message.id] = action.message
+            messageStateObj.matched_messages[action.message.id] = action.message
             return messageStateObj
         case UPDATE_MESSAGE:
             messageStateObj.matched_messages[action.message.id] = action.message
@@ -104,6 +110,11 @@ const messageReducer = (state = initialState, action) => {
         case DELETE_MESSAGE:
             delete messageStateObj.matched_messages[action.id]
             return messageStateObj
+        case CURRENT_CONV:
+            return {
+                ...state,
+                current: action.id
+            }
         default:
             return state
     }

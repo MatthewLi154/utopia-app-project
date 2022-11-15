@@ -15,7 +15,7 @@ const Chat = ({match}) => {
   const user = useSelector((state) => state.session.user);
   const chatmessages = useSelector((state) => Object.values(state.messages?.matched_messages))
   
-
+  console.log(messages)
   
 
   useEffect(() => {
@@ -23,13 +23,28 @@ const Chat = ({match}) => {
     // create websocket
     socket = io();
     socket.on("chat", (chat) => {
+      console.log(chat)
       setMessages((messages) => [...messages, chat]);
     });
+
     // when component unmounts, disconnect
     return () => {
       socket.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    socket = io()
+    socket.on("last_25_messages", (messageObj) => {
+      console.log("Last 25 Messages: ", messageObj);
+      messageObj = JSON.parse(messageObj);
+      setMessages((message) => [...messageObj, ...message]);
+    });
+
+    return () => {
+      socket.disconnect()
+    }
+  }, [])
 
   const updateChatInput = (e) => {
     setBody(e.target.value);
@@ -38,6 +53,7 @@ const Chat = ({match}) => {
   const sendChat = async (e) => {
     e.preventDefault();
     socket.emit("chat", { user: user.username, msg: body });
+
 
     const payload = {
             body
@@ -53,17 +69,16 @@ const Chat = ({match}) => {
 
   return (
     user && (
-      <div>
+      <div 
+      style={{ background: "red"}}
+      >
         <div>
           {messages.map((message, ind) => (
             <div key={ind}>{`${message.user}: ${message.msg}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
-          <input 
-          value={body} 
-          onChange={updateChatInput} 
-          />
+          <input value={body} onChange={updateChatInput} />
           <button type="submit">Send</button>
         </form>
       </div>

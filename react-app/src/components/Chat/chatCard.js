@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
-import { fetchAllMessages } from "../../store/message";
+import React, { useRef, useState } from "react";
+import { useSelector, useDispatch,  } from "react-redux";
+import { fetchAllMessages,currentConv } from "../../store/message";
 import Chat from "../Chat/chat";
+
 
 function ChatCard({ match }) {
 
     const [selected, setSelected] = useState(false)
+    const [open, setOpen] = useState()
+    
+    const current = useSelector(state => state.messages.current)
+
     const dispatch = useDispatch();
 
-    const toggleSelect = () => {
-        if(selected) setSelected(false)
-        setSelected(true)
-    }
 
 
     return (
-        <div
-        onClick={() => {
-            dispatch(fetchAllMessages(match.id))
-            setSelected(!selected)
-        }}
-
+        <div>
+        <p
+            onClick={() => {
+                dispatch(fetchAllMessages(match.id))
+                dispatch(currentConv(match.id))
+                setSelected(!selected)
+            }}
         >
-        <p>
             {match.first_name}
             {match.last_name}
         </p>
