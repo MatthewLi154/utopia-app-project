@@ -13,13 +13,26 @@ const Chat = ({match}) => {
   const dispatch = useDispatch()
 
   const user = useSelector((state) => state.session.user);
-  const chatmessages = useSelector((state) => Object.values(state.messages?.matched_messages))
-    
+
+
+//   const joinRoom = () => {
+//     if (match.id !== '' && user.username !== '') {
+//       socket.emit('join_room', { user: user.username, match: match.id });
+//     }
+//   }
+// // call on this function when clicking on a versation
+
+    // Redirect to /chat
+    // navigate('/chat', { replace: true }); // Add this
+  // };
+
+
 
   useEffect(() => {
     // open socket connection
     // create websocket
     socket = io();
+    socket.emit("join", {'match': match.id})
     socket.on("chat", (chat) => {
       console.log(chat)
       setMessages((messages) => [...messages, chat]);
@@ -32,9 +45,9 @@ const Chat = ({match}) => {
   }, []);
 
   useEffect(() => {
-    chatmessages.forEach(message =>{
-      let msg = message.body
-      setMessages((message) => [...message, {msg: msg}])
+    socket.on("last_25_messages", (messageObj) => {
+      console.log("Last 25 messages:", (messageObj))
+      setMessages((message) => [...messageObj, ...message])
     })
     }
   , [])
@@ -45,7 +58,7 @@ const Chat = ({match}) => {
 
   const sendChat = async (e) => {
     e.preventDefault();
-    socket.emit("chat", { user: user.username, msg: body });
+    socket.emit("chat", { user: user.username, body:body });
 
 
     const payload = {
@@ -62,12 +75,12 @@ const Chat = ({match}) => {
 
   return (
     user && (
-      <div 
+      <div
       style={{ background: "red"}}
       >
         <div>
           {messages.map((message, ind) => (
-            <div key={ind}>{`${message.msg}`}</div>
+            <div key={ind}>{`${message.body}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
