@@ -29,8 +29,6 @@ def edit_profile(id):
     db.session.commit()
     return profile.to_dict()
 
-# @profile_routes.route('/<id>')
-
 
 @profile_routes.route('/<id>', methods=['DELETE'])
 @login_required
