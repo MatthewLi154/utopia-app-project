@@ -9,6 +9,20 @@ function BrowseBar() {
   const history = useHistory();
 
   const [matches, setMatches] = useState(false);
+
+  const allProfiles = useSelector((state) =>
+    Object.values(state?.profiles.user_profiles)
+  );
+
+  // const currentUserId = useSelector((state) => state?.session.user.id);
+
+  // let userProfile;
+  // for (const profile of allProfiles) {
+  //   if (profile.user_id === currentUserId) {
+  //     userProfile = profile;
+  //   }
+  // }
+
   return (
     <>
       <div className="browse-bar-main-container">
@@ -29,7 +43,11 @@ function BrowseBar() {
           className="bubble-container"
           onClick={(e) => {
             setMatches(true);
-            console.log(matches);
+            // if (userProfile.score < 5) {
+            //   history.push(`/profile/${userProfile.id}/personality-questions`);
+            // } else {
+            history.push("/profiles/matches");
+            // }
           }}
         >
           <div>
@@ -39,7 +57,10 @@ function BrowseBar() {
             <label>Matches</label>
           </div>
         </div>
-        <div className="bubble-container">
+        <div
+          className="bubble-container"
+          onClick={(e) => history.push("/profiles/humans")}
+        >
           <div>
             <img src="https://images.medicinenet.com/images/article/main_image/transgender-person.jpg"></img>
           </div>
@@ -47,7 +68,10 @@ function BrowseBar() {
             <label>Humans</label>
           </div>
         </div>
-        <div className="bubble-container">
+        <div
+          className="bubble-container"
+          onClick={(e) => history.push("/profiles/vampires")}
+        >
           <div>
             <img src="https://www.listchallenges.com/f/lists/c7d04cbe-c796-4764-9f70-db3e9f8c38b6.jpg"></img>
           </div>
@@ -55,7 +79,10 @@ function BrowseBar() {
             <label>Vampires</label>
           </div>
         </div>
-        <div className="bubble-container">
+        <div
+          className="bubble-container"
+          onClick={(e) => history.push("/profiles/fairies")}
+        >
           <div>
             <img src="https://cdn.myanimelist.net/s/common/uploaded_files/1478835353-305d486a1d2c7527b8f778ef176c21e6.png"></img>
           </div>
@@ -63,7 +90,10 @@ function BrowseBar() {
             <label>Fairies</label>
           </div>
         </div>
-        <div className="bubble-container">
+        <div
+          className="bubble-container"
+          onClick={(e) => history.push("/profiles/other")}
+        >
           <div>
             <img src="https://washingtondl.org/wp-content/uploads/2018/05/anime-night-560x380.jpg"></img>
           </div>
