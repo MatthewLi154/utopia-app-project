@@ -18,6 +18,7 @@ import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
 import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
 import EditProfile from "./components/EditProfile";
+import BrowseBar from "./components/BrowseBar";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/profile/create/other"></Route>
         <Route path="">
           <NavBar loaded={loaded} />
+          <BrowseBar></BrowseBar>
           {loaded && (
             <Switch>
               <Route path="/login" exact={true}>

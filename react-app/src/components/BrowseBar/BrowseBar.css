@@ -1,0 +1,24 @@
+.browse-bar-main-container {
+  display: flex;
+  flex-direction: row;
+  height: 6.5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: lightcoral;
+}
+
+.bubble-container {
+  margin: 0rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bubble-container img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid lightgray;
+}
