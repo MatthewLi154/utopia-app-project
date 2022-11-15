@@ -1,17 +1,20 @@
-import React, { useRef, useState } from "react";
-import { useSelector, useDispatch,  } from "react-redux";
+import React, { useRef, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchAllMessages,currentConv } from "../../store/message";
+
 import Chat from "../Chat/chat";
 
 
 function ChatCard({ match }) {
 
     const [selected, setSelected] = useState(false)
+
     const [open, setOpen] = useState()
     
     const current = useSelector(state => state.messages.current)
 
     const dispatch = useDispatch();
+
 
 
 
