@@ -14,15 +14,15 @@ def edit_profile(id):
     data = request.get_json()
 
     # Update parsed_profile with request body data
-    profile.first_name = data['first_name']
-    profile.last_name = data['last_name']
+    # profile.first_name = data['first_name']
+    # profile.last_name = data['last_name']
     profile.bio = data['bio']
     profile.current_goals = data['current_goals']
     profile.languages = data['languages']
+    profile.location = data['location']
     profile.kids = data['kids']
     profile.pets = data['pets']
     profile.hobbies = data['hobbies']
-    profile.birthday = data['birthday']
     profile.identify_as = data['identify_as']
     profile.looking_for = data['looking_for']
 
