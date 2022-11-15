@@ -5,7 +5,11 @@ import {
   getProfileMatches,
   getProfileMatchPercentage,
 } from "../../store/match";
-import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
+import {
+  fetchAllProfiles,
+  fetchSingleProfile,
+  deleteSingleProfile,
+} from "../../store/profile";
 import "./SingleUserProfile.css";
 
 function SingleUserProfile() {
@@ -46,7 +50,6 @@ function SingleUserProfile() {
     ) {
       years--;
     }
-    console.log(years);
     return years;
   };
 
@@ -72,6 +75,17 @@ function SingleUserProfile() {
     first_name: profile.first_name,
   };
   // }
+
+  const deleteProfile = async (e) => {
+    e.preventDefault();
+    const response = window.confirm("Are you sure you want to do that?");
+    if (response) {
+      await deleteSingleProfile(profileId);
+      await fetchAllProfiles();
+      history.push("/profiles");
+    }
+    return;
+  };
 
   return (
     <>
@@ -145,16 +159,29 @@ function SingleUserProfile() {
                   <h4>Details</h4>
                 </div>
                 {currentUserId === profile.user_id && (
-                  <div>
-                    <NavLink
-                      to={{
-                        pathname: `/profile/${profileId}/edit`,
-                        state: { editProfileData: editProfileData },
-                      }}
-                    >
-                      <h4>Edit</h4>
-                    </NavLink>
-                  </div>
+                  <>
+                    <div>
+                      <div>
+                        <NavLink
+                          to={{
+                            pathname: `/profile/${profileId}/edit`,
+                            state: { editProfileData: editProfileData },
+                          }}
+                        >
+                          <h4>Edit</h4>
+                        </NavLink>
+                      </div>
+                    </div>
+                    <div>
+                      <h4
+                        onClick={(e) => {
+                          deleteProfile(e);
+                        }}
+                      >
+                        Delete
+                      </h4>
+                    </div>
+                  </>
                 )}
               </div>
               <div className="identify-as-container">

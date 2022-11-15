@@ -13,6 +13,8 @@ function Profile() {
   const currentUserId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
 
+  const [matches, setMatches] = useState(false);
+
   useEffect(() => {
     dispatch(fetchAllProfiles());
     dispatch(getProfileMatchPercentage());
