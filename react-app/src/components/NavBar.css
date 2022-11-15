@@ -1,139 +1,148 @@
 .nav-bar {
-    margin: 0px;
-    width: 100%;
+  margin: 0px;
+  width: 100%;
 }
 
 .nav-list {
-    /* color: white; */
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    height: 80px;
-    width: 100%;
-    margin: 0px;
-    top: 0;
-    align-items: center;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* color: white; */
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  height: 80px;
+  width: 100%;
+  margin: 0px;
+  top: 0;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .left-nav {
-    display: flex;
-    flex-direction: row;
-    /* justify-content: center; */
-    align-items: center;
-    /* margin: 0; */
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  /* margin: 0; */
 }
 
 .discover {
-    padding: 5px;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  font-size: 20px;
 }
 
 .discover:hover {
-    cursor: pointer;
-    background:
-        linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  cursor: pointer;
+  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
 .default-profile-pic {
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
 }
 
 .Right-nav-user {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .user-name {
-    padding: 5px;
+  padding: 5px;
 }
 
 .logout {
-    width: 80px;
-    height: 30px;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
+  width: 80px;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
 }
 
 .logout:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
 .logout:active {
-    color: #000
+  color: #000;
 }
 
 .logout:active:after {
-    background: transparent;
+  background: transparent;
 }
 
 .logout:hover:before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .logout:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #111;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
 
 .nav-bar-splash {
-    margin: 0px;
-    width: 100%;
+  margin: 0px;
+  width: 100%;
 }
 
 .nav-list-splash {
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    height: 80px;
-    width: 100%px;
-    margin: 0px;
-    top: 0;
-    align-items: center;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  height: 80px;
+  width: 100%px;
+  margin: 0px;
+  top: 0;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .right-nav-items-splash {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .right-nav-items-splash-login {
-    padding: 10px;
-
+  padding: 10px;
 }
 
 /* .login-button {
@@ -148,80 +157,89 @@
 } */
 
 .sign-up-button {
-    font-family: 'Nunito', sans-serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.3px;
-    font-weight: 700;
-    color: #313133;
-    background: #4FD1C5;
-    background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
-    border: none;
-    border-radius: 1000px;
-    box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
-    transition: all 0.3s ease-in-out 0s;
-    cursor: pointer;
-    outline: none;
-    position: relative;
-    padding: 10px;
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4fd1c5;
+  background: linear-gradient(
+    90deg,
+    rgba(129, 230, 217, 1) 0%,
+    rgba(79, 209, 197, 1) 100%
+  );
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
 }
 
 sign-up-button::before {
-    content: '';
-    border-radius: 1000px;
-    min-width: calc(300px + 12px);
-    min-height: calc(60px + 12px);
-    border: 6px solid #00FFCB;
-    box-shadow: 0 0 60px rgba(0, 255, 203, .64);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: all .3s ease-in-out 0s;
+  content: "";
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00ffcb;
+  box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .sign-up-button:hover,
 .sign-up-button:focus {
-    color: #313133;
-    transform: translateY(-6px);
+  color: #313133;
+  transform: translateY(-6px);
 }
 
 sign-up-button:hover::before,
 sign-up-button:focus::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 sign-up-button::after {
-    content: '';
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    border: 6px solid #00FFCB;
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: ring 1.5s infinite;
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00ffcb;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
 }
 
 sign-up-button:hover::after,
 sign-up-button:focus::after {
-    animation: none;
-    display: none;
+  animation: none;
+  display: none;
+}
+
+.profile-button {
+  background-color: white;
+  border: none;
 }
 
 @keyframes ring {
-    0% {
-        width: 30px;
-        height: 30px;
-        opacity: 1;
-    }
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
 
-    100% {
-        width: 300px;
-        height: 300px;
-        opacity: 0;
-    }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
 }

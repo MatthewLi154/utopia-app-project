@@ -19,6 +19,7 @@ import PersonalityQuestions from "./components/PersonalityQuestions";
 import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
 import EditProfile from "./components/EditProfile";
 import BrowseBar from "./components/BrowseBar";
+import ProfileCategory from "./components/ProfileCategories";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,6 +65,9 @@ function App() {
               </Route>
               <Route path="/sign-up" exact={true}>
                 <SignUpForm />
+              </Route>
+              <Route path="/profiles/:category">
+                <ProfileCategory />
               </Route>
               <Route path="/profile/:profileId/personality-questions">
                 <PersonalityQuestions />
