@@ -45,6 +45,9 @@ function ProfileButton() {
           <li className="dropdown-button border">
             <NavLink className='account-button' onClick={() => dispatch(fetchSingleProfile(profile[sessionUser.id - 1]?.id))} to={`/profile/${profile[sessionUser.id - 1]?.id}`}>Account</NavLink>
           </li>
+          <li className="dropdown-button border">
+            <NavLink className='account-button' to={'/profile/create/name'}>Create Profile</NavLink>
+          </li>
           <li className="dropdown-button">
             <button className='logout-button' onClick={logout}>Log Out</button>
           </li>
