@@ -20,6 +20,7 @@ import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
 import EditProfile from "./components/EditProfile";
 import BrowseBar from "./components/BrowseBar";
 import ProfileCategory from "./components/ProfileCategories";
+import Home from "./components/Home";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -91,7 +92,7 @@ function App() {
                 <User />
               </ProtectedRoute>
               <Route path="/" exact={true}>
-                <h1>My Home Page</h1>
+                <Home />
               </Route>
             </Switch>
           )}
