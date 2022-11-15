@@ -14,9 +14,7 @@ const Chat = ({match}) => {
 
   const user = useSelector((state) => state.session.user);
   const chatmessages = useSelector((state) => Object.values(state.messages?.matched_messages))
-  
-  console.log(messages)
-  
+    
 
   useEffect(() => {
     // open socket connection
@@ -34,17 +32,12 @@ const Chat = ({match}) => {
   }, []);
 
   useEffect(() => {
-    socket = io()
-    socket.on("last_25_messages", (messageObj) => {
-      console.log("Last 25 Messages: ", messageObj);
-      messageObj = JSON.parse(messageObj);
-      setMessages((message) => [...messageObj, ...message]);
-    });
-
-    return () => {
-      socket.disconnect()
+    chatmessages.forEach(message =>{
+      let msg = message.body
+      setMessages((message) => [...message, {msg: msg}])
+    })
     }
-  }, [])
+  , [])
 
   const updateChatInput = (e) => {
     setBody(e.target.value);
@@ -74,7 +67,7 @@ const Chat = ({match}) => {
       >
         <div>
           {messages.map((message, ind) => (
-            <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+            <div key={ind}>{`${message.msg}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
