@@ -7,15 +7,39 @@ function CreateProfileName() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [name, setName] = useState("");
-  const [validationErrors, setValidationErrors] = useState("");
+  const [name, setName] = useState(localStorage.getItem("name") || "");
+  const [validationErrors, setValidationErrors] = useState([]);
 
   let newProfile = {};
   useEffect(() => {
     newProfile.name = name;
+    localStorage.setItem("name", name);
   }, [name]);
 
+  const validate = () => {
+    const validationErrors = [];
+
+    if (!name.includes(" ")) {
+      validationErrors.push("Please enter a first and last name.");
+    }
+
+    if (name.length < 3) {
+      validationErrors.push("Name must be more than 3 characters long.");
+    }
+
+    if (name.length > 55) {
+      validationErrors.push("Name must be 55 characters or less.");
+    }
+    return validationErrors;
+  };
+
   const onSubmit = async (e) => {
+    setValidationErrors([]);
+    const validationErrors = validate();
+    if (validationErrors.length > 0) {
+      e.preventDefault();
+      return setValidationErrors(validationErrors);
+    }
     // check for validations
     // if no errors
     // add it to
@@ -54,6 +78,8 @@ function CreateProfileName() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
+              {validationErrors &&
+                validationErrors.map((error) => <div>{error}</div>)}
             </form>
           </div>
           <div className="create-name-button-container">
