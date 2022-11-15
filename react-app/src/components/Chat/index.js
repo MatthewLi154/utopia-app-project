@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useHistory, useDispatch } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProfiles } from "../../store/profile";
 import ChatCard from "./chatCard";
 
@@ -10,7 +9,7 @@ function CreateConversation() {
 
   useEffect(() => {
     dispatch(fetchAllProfiles());
-  }, []);
+  }, [dispatch]);
 
   let matches = useSelector((state) => Object.values(state.matches.matchedProfiles)
   );
