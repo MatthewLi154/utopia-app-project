@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useHistory, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import { NavLink } from "react-router-dom";
 import "./Profiles.css";
