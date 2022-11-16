@@ -6,12 +6,12 @@ import { io } from "socket.io-client";
 let socket;
 
 
-function ChatCard({ match }) {
+function ChatCard({profile, matches }) {
 
     const [selected, setSelected] = useState(false)
     const dispatch = useDispatch();
 
-    const user = useSelector((state) => state.session.user);
+    const match = matches.find(match => profile.id === match.profile_id || profile.id === match.matched_profile_id)
 
     useEffect(() => {
         // open socket connection
@@ -44,8 +44,8 @@ function ChatCard({ match }) {
         <div>
         <p
             onClick={() => {
-                dispatch(fetchAllMessages(match.id))
-                dispatch(currentConv(match.id))
+                dispatch(fetchAllMessages(profile.id))
+                dispatch(currentConv(profile.id))
                 joinRoom()
                 setSelected(!selected)
             }}
@@ -53,11 +53,10 @@ function ChatCard({ match }) {
                 leaveRoom()
             }}
         >
-            {match?.first_name}
-            {/* {match?.last_name} */}
+            {profile?.first_name}
         </p>
         {selected && (
-            <Chat match={match}/>
+            <Chat profile={profile} match={match}/>
         )}
         </div>
     );

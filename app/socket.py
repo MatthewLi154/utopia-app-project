@@ -19,6 +19,7 @@ socketio = SocketIO(cors_allowed_origins=origins)
 # handle chat messages
 @socketio.on("chat")
 def handle_chat(data):
+    print('@@@@@@@@@@@@@@@@@@@@@@hitting chat')
     emit("chat", data, room=data['room'] )
 
 @socketio.on("join")
@@ -35,9 +36,9 @@ def last_25_messages(data):
 # a room will be denote by matched instance id??
 @socketio.on("join_room")
 def on_join(data):
-    matched_room = data['match']
+    matched_room_id = data['match']
     # join_room(matched_room)
-    join_room(f'room{matched_room}')
+    join_room(f'room{matched_room_id}')
     print('joined successfully!!')
     print(rooms(sid=None, namespace=None))
 
@@ -47,8 +48,8 @@ def on_join(data):
 # leave room function that will be called on the backend off-focus
 @socketio.on('leave_room')
 def on_leave(data):
-    matched_room = data['match']
-    leave_room(f'room{matched_room}')
+    matched_room_id = data['match']
+    leave_room(f'room{matched_room_id}')
     print('left successfully!!')
     # print(rooms(sid=None, namespace=None))
 

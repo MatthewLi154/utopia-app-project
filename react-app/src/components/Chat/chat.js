@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 import {createMessage, fetchAllMessages} from "../../store/message"
 let socket;
 
-const Chat = ({match}) => {
+const Chat = ({profile, match}) => {
   const [body, setBody] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -13,6 +13,7 @@ const Chat = ({match}) => {
   const dispatch = useDispatch()
 
   const user = useSelector((state) => state.session.user);
+  console.log('MATCHID', match.id)
 
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Chat = ({match}) => {
       setMessages((message) => [...message_list, ...message])
     })
     }
-  , [])
+  , [messages])
 
   const updateChatInput = (e) => {
     setBody(e.target.value);
@@ -45,7 +46,7 @@ const Chat = ({match}) => {
 
   const sendChat = async (e) => {
     e.preventDefault();
-    socket.emit("chat", {message: { user: user.username, body:body} });
+    socket.emit("chat", {message: body, room: match.id });
     // add room: property with room name as a key
     // update emits and ons with new message: object
 

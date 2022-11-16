@@ -43,24 +43,6 @@ def add_matches():
             print("there is a profile in database")
     db.session.commit()
 
-    # for existing_match in existing_matches:
-    #     if not (existing_match.to_dict()['profile_id'] == data['profile_id'] and existing_match.to_dict()['matched_profile_id'] == data['matched_profile_id']):
-    #         if not (existing_match.to_dict()['profile_id'] == data['matched_profile_id'] and existing_match.to_dict()['matched_profile_id'] == data['profile_id']):
-    #             if (f"{data['profile_id'], data['matched_profile_id']}") not in unique_pairs_set or (f"{data['matched_profile_id'], data['profile_id']}") not in unique_pairs_set:
-    #                 print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', data['profile_id'], existing_match.to_dict()['profile_id'])
-    #                 print("################################", data['matched_profile_id'], existing_match.to_dict()['matched_profile_id'])
-    #                 # print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",  unique_pairs_set)
-    #                 newMatch = Match(profile_id=data['profile_id'], matched_profile_id=data['matched_profile_id'])
-    #                 tup1 = (data['profile_id'], data['matched_profile_id'])
-    #                 tup2 = (data['matched_profile_id'], data['profile_id'])
-    #                 print(f'{tup1}')
-    #                 print(f'{tup2}')
-    #                 unique_pairs_set.add(f'{tup1}')
-    #                 unique_pairs_set.add(f'{tup2}')
-    #                 print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", unique_pairs_set)
-    #                 db.session.add(newMatch)
-    # db.session.commit()
-
     matched_profiles = Match.query.all()
     matched_profiles_dict = {}
     for matched in matched_profiles:
