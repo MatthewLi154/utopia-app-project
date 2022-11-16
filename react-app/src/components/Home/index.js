@@ -9,12 +9,6 @@ function Home() {
   const [signup, setShowSignup] = useState(false);
   const [login, setLogin] = useState(false);
 
-  const transition = () => {
-    const carousel = document.getElementById('carousel');
-    carousel.carousel({
-      pause: "false"
-    })
-  }
   return (
     <div className="container-fluid main">
 

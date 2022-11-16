@@ -11,7 +11,7 @@
     font-weight: 600;
     font-size: 60px;
     color: #ffffff;
-    text-align:left;
+    text-align:center;
     margin: 0rem 3rem;
     width: 40rem;
     text-shadow: -8px 5px 5px black
@@ -22,13 +22,13 @@
     font-family: Verdana;
     font-size: 23px;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
     margin: 1rem 3rem;
     width: 40rem;
   }
 
   .explore {
-    text-align: left;
+    text-align: center;
     padding-top: 10px;
     margin: 1rem 3rem;
   }
@@ -39,5 +39,6 @@
 
 .covertext  {
     display: flex;
-
+    /* align-items: center; */
+    justify-content: center;
 }
