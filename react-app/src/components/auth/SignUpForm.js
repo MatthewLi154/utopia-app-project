@@ -17,7 +17,6 @@ const SignUpForm = ({ setLogin }) => {
 
   const transition = () => {
     const container = document.getElementById('container');
-    console.log("CONTAINER", container)
     container.classList.add("right-panel-active");
   }
   const transition2 = () => {

@@ -89,7 +89,7 @@ def seed_profiles():
         pets="Peter Pan",
         hobbies="big interest in lost things that come from the Mainland",
         looking_for='Wizard',
-        img_url1='https://i.imgur.com/MMnVRiI.png',
+        img_url1='https://i.imgur.com/nPBdWgq.png',
         img_url2='https://i.imgur.com/iLhUns5.png',
         img_url3='https://i.imgur.com/XkQnh6O.png',
         score=16,
