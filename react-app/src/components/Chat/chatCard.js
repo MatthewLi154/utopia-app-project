@@ -6,13 +6,12 @@ import { io } from "socket.io-client";
 let socket;
 
 
-function ChatCard({ match }) {
+function ChatCard({profile, matches }) {
 
     const [selected, setSelected] = useState(false)
     const dispatch = useDispatch();
-    const [room , setRoom] = useState('')
 
-    const user = useSelector((state) => state.session.user);
+    const match = matches.find(match => profile.id === match.profile_id || profile.id === match.matched_profile_id)
 
     useEffect(() => {
         // open socket connection
@@ -27,76 +26,37 @@ function ChatCard({ match }) {
 
     const joinRoom = () => {
         if (match.id !== '') {
-        socket.emit('join_room', { match: match.id });
+        socket.emit('join_room',{ match: match.id });
+        // need to edit match.id so that both users share the same
         }
         return
     }
-    // call on this function when clicking on a conversation
-
-        // Redirect to /chat
-    // navigate('/chat', { replace: true }); // Add this
-  // };
-
 
     const leaveRoom = ()=> {
     // return chatRoomUsers.filter((user) => user.id != userID);
     socket.emit('leave_room', {  match: match.id })
+    // need to edit match.id so that both users share the same
     return
     }
-
-
-    // socket.on("users", (users) => {
-    //     users.forEach((user) => {
-    //     user.self = user.userID === socket.id;
-    //     initReactiveProperties(user);
-    //     });
-    //     // put the current user first, and then sort by username
-    //     this.users = users.sort((a, b) => {
-    //     if (a.self) return -1;
-    //     if (b.self) return 1;
-    //     if (a.username < b.username) return -1;
-    //     return a.username > b.username ? 1 : 0;
-    //     });
-    // });
-
-    // socket.on("user connected", (user) => {
-    //     initReactiveProperties(user);
-    //     this.users.push(user);
-    // });
-
-    // const onMessage =(content) => {
-    //     if (this.selectedUser) {
-    //     socket.emit("private-message", {
-    //         content,
-    //         to: this.selectedUser.userID,
-    //     });
-    //     this.selectedUser.messages.push({
-    //         content,
-    //         fromSelf: true,
-    //     });
-    //     }
-    // }
 
 
     return (
         <div>
         <p
             onClick={() => {
-                dispatch(fetchAllMessages(match.id))
-                dispatch(currentConv(match.id))
+                dispatch(fetchAllMessages(profile.id))
+                dispatch(currentConv(profile.id))
                 joinRoom()
-                setRoom(match.id)
                 setSelected(!selected)
             }}
             onBlur={() => {
                 leaveRoom()
             }}
         >
-            {match?.first_name}
-            {/* {match?.last_name} */}
+            {profile?.first_name}
         </p>
         {selected && (
-            <Chat match={match}/>
+            <Chat profile={profile} match={match}/>
         )}
         </div>
     );

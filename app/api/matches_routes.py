@@ -15,10 +15,32 @@ def add_matches():
     data = request.get_json()
     print('THIS IS MATCHES DATA', data)
     # add each dictionary from data list to match table as new match instance
-    Match.query.delete()
-    for match in data:
-        newMatch = Match(profile_id=match['profile_id'], matched_profile_id=match['matched_profile_id'])
-        db.session.add(newMatch)
+    # Match.query.delete()
+    print('data', data)
+    existing_matches = Match.query.all()
+    print(existing_matches)
+
+    # unique_pairs_set = set((),)
+
+    ## query all matches
+    ## check if new match is in all matches
+        ## if not, add to matches
+    ## for next new match, query all matches again
+    ## check if new match is in all matches
+        ## if not, add to matches
+    ## repeat
+    for new_match in data:
+        all_matches = Match.query.all()
+        print("all matches", all_matches)
+        matches_obj = [match.to_dict_without_id() for match in all_matches]
+        print("matches to dict", matches_obj)
+        flipped_match = {'profile_id': new_match['matched_profile_id'], 'matched_profile_id': new_match['profile_id']}
+        if new_match not in matches_obj and flipped_match not in matches_obj:
+            print("no profile in database")
+            new_match_instance = Match(profile_id=new_match['profile_id'], matched_profile_id=new_match['matched_profile_id'])
+            db.session.add(new_match_instance)
+        else:
+            print("there is a profile in database")
     db.session.commit()
 
     matched_profiles = Match.query.all()
