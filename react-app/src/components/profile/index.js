@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useHistory, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import { NavLink } from "react-router-dom";
 import "./Profiles.css";
@@ -12,6 +12,8 @@ function Profile() {
   const userProfiles = useSelector((state) => state.profiles.user_profiles);
   const currentUserId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
+
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllProfiles());

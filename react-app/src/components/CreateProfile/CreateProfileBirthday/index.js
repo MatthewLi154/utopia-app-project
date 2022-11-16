@@ -9,21 +9,78 @@ function CreateProfileBirthday() {
   const newProfile = uselocation.state?.newProfile;
   const history = useHistory();
 
-  console.log(newProfile);
-
-  const [birthday, setBirthday] = useState("");
-  const [validationErrors, setValidationErrors] = useState("");
+  const [day, setDay] = useState(localStorage.getItem("day") || "");
+  const [month, setMonth] = useState(localStorage.getItem("month") || "");
+  const [year, setYear] = useState(localStorage.getItem("year") || "");
+  // const [birthday, setBirthday] = useState(
+  //   localStorage.getItem("birthday") || ""
+  // );
+  const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
-    newProfile.birthday = birthday;
-    console.log(newProfile);
-  }, [birthday]);
+    localStorage.setItem("day", day);
+    localStorage.setItem("month", month);
+    localStorage.setItem("year", year);
+    newProfile.birthday = `${month}-${day}-${year}`;
+  }, [day, month, year]);
+
+  const validate = () => {
+    const validationErrors = [];
+
+    // validations for day
+    if (day.length !== 2) {
+      validationErrors.push(
+        "Please input a valid number for day e.g. 06, 15, 31"
+      );
+    } else if (isNaN(day)) {
+      validationErrors.push(
+        "Please input a valid number for day e.g. 06, 15, 31"
+      );
+    }
+
+    // validations for month
+    if (month.length !== 2) {
+      validationErrors.push(
+        "Please input a valid number month e.g. 01, 06, 12"
+      );
+    } else if (isNaN(month)) {
+      validationErrors.push(
+        "Please input a valid number month e.g. 01, 06, 12"
+      );
+    }
+
+    // if (isNaN(month)) {
+    //   validationErrors.push(
+    //     "Please input a valid number month e.g. 01, 06, 12"
+    //   );
+    // }
+
+    if (year.length !== 4) {
+      validationErrors.push(
+        "Please input a valid number year e.g. 1920, 1988, 2004"
+      );
+    }
+
+    if (isNaN(year)) {
+      validationErrors.push(
+        "Please input a valid number year e.g. 1920, 1988, 2004"
+      );
+    }
+
+    return validationErrors;
+  };
 
   const onSubmit = async (e) => {
     // check for validations
     // if no errors
     // add it to
     // redirect to new profile page
+    const validationErrors = validate();
+
+    if (validationErrors.length > 0) {
+      e.preventDefault();
+      setValidationErrors(validationErrors);
+    }
   };
 
   return (
@@ -51,17 +108,33 @@ function CreateProfileBirthday() {
         <div className="create-name-bottom-section-details-container">
           <div className="input-name-container birthday-input">
             <form className="birthday-input">
+              <div>
+                {validationErrors &&
+                  validationErrors.map((error) => <div>{error}</div>)}
+              </div>
               <div className="birthday-input-container">
                 <label>Month</label>
-                <input placeholder="01" />
+                <input
+                  placeholder="01"
+                  value={month}
+                  onChange={(e) => setMonth(e.target.value)}
+                />
               </div>
               <div className="birthday-input-container">
                 <label>Day</label>
-                <input placeholder="01" />
+                <input
+                  placeholder="01"
+                  value={day}
+                  onChange={(e) => setDay(e.target.value)}
+                />
               </div>
               <div className="birthday-input-container">
                 <label>Year</label>
-                <input placeholder="2022" />
+                <input
+                  placeholder="2022"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                />
               </div>
             </form>
           </div>

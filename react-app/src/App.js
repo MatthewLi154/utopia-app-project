@@ -13,11 +13,14 @@ import CreateProfileName from "./components/CreateProfile/CreateProfileName";
 import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirthday";
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
-import CreateConversation from "./components/CreateConversation";
+import CreateConversation from "./components/Chat"
 import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
 import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";
-
+import EditProfile from "./components/EditProfile";
+import BrowseBar from "./components/BrowseBar";
+import ProfileCategory from "./components/ProfileCategories";
+import Home from "./components/Home";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +58,7 @@ function App() {
         <Route exact path="/profile/create/other"></Route>
         <Route path="">
           <NavBar loaded={loaded} />
+          <BrowseBar></BrowseBar>
           {loaded && (
             <Switch>
               <Route path="/login" exact={true}>
@@ -63,8 +67,14 @@ function App() {
               <Route path="/sign-up" exact={true}>
                 <SignUpForm />
               </Route>
+              <Route path="/profiles/:category">
+                <ProfileCategory />
+              </Route>
               <Route path="/profile/:profileId/personality-questions">
                 <PersonalityQuestions />
+              </Route>
+              <Route exact path="/profile/:profileId/edit">
+                <EditProfile />
               </Route>
               <Route exact path="/profile/:profileId">
                 <SingleUserProfile />
@@ -82,7 +92,7 @@ function App() {
                 <User />
               </ProtectedRoute>
               <Route path="/" exact={true}>
-                <h1>My Home Page</h1>
+                <Home />
               </Route>
             </Switch>
           )}

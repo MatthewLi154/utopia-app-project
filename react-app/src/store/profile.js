@@ -103,7 +103,7 @@ export const deleteSingleProfile = (id) => async (dispatch) => {
     method: "DELETE",
   });
 
-  if (response.ok) {
+  if (response) {
     const data = await response.json();
     dispatch(deleteProfile(id));
     return data;
@@ -142,6 +142,7 @@ const profileReducer = (state = initialState, action) => {
       profileStateObj.singleProfile = action.profile;
       return profileStateObj;
     case EDIT_PROFILE:
+      profileStateObj.user_profiles[action.profile.id] = action.profile;
       profileStateObj.singleProfile = action.profile;
       return profileStateObj;
     case DELETE_PROFILE:

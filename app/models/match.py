@@ -13,6 +13,7 @@ class Match(db.Model):
 
     user = db.relationship("Profile", foreign_keys=[profile_id])
     matched_user = db.relationship("Profile",foreign_keys=[matched_profile_id])
+    messages = db.relationship("Message", back_populates='matches')
 
     def to_dict(self):
         return {
