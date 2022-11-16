@@ -39,5 +39,6 @@
 
 .covertext  {
     display: flex;
+    justify-content: center;
 
 }

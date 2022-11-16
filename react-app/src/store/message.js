@@ -4,6 +4,8 @@ const ADD_MESSAGE = 'matched/CreateMessage'
 const UPDATE_MESSAGE = 'matched/UpdateMessage'
 const DELETE_MESSAGE = 'matched/DeleteMessage'
 const CURRENT_CONV = 'matched/CURRENT'
+const MESSAGE_MATCHES = 'matched/MessageMatches'
+
 // actions
 export const loadAllMessages = (data) => {
     return {
@@ -37,6 +39,13 @@ export const currentConv = id => {
     return {
         type: CURRENT_CONV,
         id
+    }
+}
+
+export const messageMatch = (data) => {
+    return {
+        type: MESSAGE_MATCHES,
+        data
     }
 }
 
@@ -92,8 +101,18 @@ export const deletingMessage = (id) => async(dispatch) => {
     }
 }
 
+export const messageMatching = (data) => async(dispatch) => {
+    const response = await fetch('/api/messages/matches')
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(messageMatch(data))
+        return data
+    }
+}
+
 // reducer
-const initialState = {matched_messages: {}, current: {}}
+const initialState = {matched_messages: {}, current: {}, matches: {}}
 
 const messageReducer = (state = initialState, action) => {
     let messageStateObj = {...state}
@@ -115,6 +134,9 @@ const messageReducer = (state = initialState, action) => {
                 ...state,
                 current: action.id
             }
+        case MESSAGE_MATCHES:
+            messageStateObj.matches = action.data
+            return messageStateObj
         default:
             return state
     }

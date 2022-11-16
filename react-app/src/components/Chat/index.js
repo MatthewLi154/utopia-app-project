@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfileMatches } from "../../store/match";
+import { messageMatching } from "../../store/message";
 import { fetchAllProfiles } from "../../store/profile";
 import ChatCard from "./chatCard";
 
@@ -11,15 +12,17 @@ function CreateConversation() {
   useEffect(() => {
     dispatch(fetchAllProfiles());
     dispatch(getProfileMatches())
+    dispatch(messageMatching())
   }, [dispatch]);
 
-  let matches = useSelector((state) => Object.values(state.matches.matchedProfiles)
-  );
+  let profileMatches = useSelector((state) => Object.values(state.matches.matchedProfiles));
+  let matches = useSelector((state) => Object.values(state.messages.matches))
+  console.log('matches', matches)
 
   return (
     <div>
-      {matches?.map((match) => (
-        <ChatCard key={match.id} match={match} />
+      {profileMatches?.map((profile) => (
+        <ChatCard key={profile.id} profile={profile} matches={matches} />
       ))}
     </div>
   );

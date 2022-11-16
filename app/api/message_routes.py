@@ -1,7 +1,9 @@
 # get all messages
 from flask import Blueprint, jsonify, redirect, request
 from flask_login import current_user, login_required
+from sqlalchemy import or_
 from app.models import db
+from app.models.match import Match
 from app.models.message import Message
 from app.forms.message_form import MessageForm
 
@@ -38,6 +40,17 @@ def get_message_by_matched_id(id):
     for message in messages:
         parsed_message_dict[message.id] = message.to_dict()
     return parsed_message_dict
+
+# create a conversation based on if session user id is either profile_id or matched_profile_id
+@message_routes.route('/matches', methods = ['GET'])
+@login_required
+def get_matches():
+    id = current_user.id
+    matches = Match.query.filter(or_(Match.profile_id==id, Match.matched_profile_id==id)).all()
+    parsed_matches_dict = {}
+    for match in matches:
+        parsed_matches_dict[match.id] = match.to_dict()
+    return parsed_matches_dict
 
 
 @message_routes.route('/matched/<int:id>', methods=['POST'])
