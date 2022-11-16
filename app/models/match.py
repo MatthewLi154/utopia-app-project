@@ -21,3 +21,9 @@ class Match(db.Model):
             'profile_id': self.profile_id,
             'matched_profile_id': self.matched_profile_id
         }
+
+    def to_dict_without_id(self):
+        return {
+            'profile_id': self.profile_id,
+            'matched_profile_id': self.matched_profile_id
+        }

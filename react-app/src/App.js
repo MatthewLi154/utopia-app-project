@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -21,17 +21,23 @@ import EditProfile from "./components/EditProfile";
 import BrowseBar from "./components/BrowseBar";
 import ProfileCategory from "./components/ProfileCategories";
 import Home from "./components/Home";
+import { fetchAllProfiles } from "./store/profile";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => Object.values(state?.session));
+  console.log(sessionUser === null);
 
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      dispatch(fetchAllProfiles());
       setLoaded(true);
     })();
   }, [dispatch]);
+
+  useEffect(() => {}, []);
 
   if (!loaded) {
     return null;
@@ -57,44 +63,51 @@ function App() {
         </Route>
         <Route exact path="/profile/create/other"></Route>
         <Route path="">
-          <NavBar loaded={loaded} />
-          <BrowseBar></BrowseBar>
-          {loaded && (
-            <Switch>
-              <Route path="/login" exact={true}>
-                <LoginForm />
-              </Route>
-              <Route path="/sign-up" exact={true}>
-                <SignUpForm />
-              </Route>
-              <Route path="/profiles/:category">
-                <ProfileCategory />
-              </Route>
-              <Route path="/profile/:profileId/personality-questions">
-                <PersonalityQuestions />
-              </Route>
-              <Route exact path="/profile/:profileId/edit">
-                <EditProfile />
-              </Route>
-              <Route exact path="/profile/:profileId">
-                <SingleUserProfile />
-              </Route>
-              <Route exact path="/profiles">
-                <Profile />
-              </Route>
-              <Route path="/conversations">
-                <CreateConversation />
-              </Route>
-              <ProtectedRoute path="/users" exact={true}>
-                <UsersList />
-              </ProtectedRoute>
-              <ProtectedRoute path="/users/:userId" exact={true}>
-                <User />
-              </ProtectedRoute>
-              <Route path="/" exact={true}>
-                <Home />
-              </Route>
-            </Switch>
+          {sessionUser[0] === null ? (
+            <Route>
+              <Home />
+            </Route>
+          ) : (
+            <>
+              {loaded && (
+                <>
+                  <NavBar loaded={loaded} />
+                  <BrowseBar />
+                  <Switch>
+                    <Route path="/login" exact={true}>
+                      <LoginForm />
+                    </Route>
+                    <Route path="/sign-up" exact={true}>
+                      <SignUpForm />
+                    </Route>
+                    <Route path="/profiles/:category">
+                      <ProfileCategory />
+                    </Route>
+                    <Route path="/profile/:profileId/personality-questions">
+                      <PersonalityQuestions />
+                    </Route>
+                    <Route exact path="/profile/:profileId/edit">
+                      <EditProfile />
+                    </Route>
+                    <Route exact path="/profile/:profileId">
+                      <SingleUserProfile />
+                    </Route>
+                    <Route exact path="/profiles">
+                      <Profile />
+                    </Route>
+                    <Route path="/conversations">
+                      <CreateConversation />
+                    </Route>
+                    <ProtectedRoute path="/users" exact={true}>
+                      <UsersList />
+                    </ProtectedRoute>
+                    <ProtectedRoute path="/users/:userId" exact={true}>
+                      <User />
+                    </ProtectedRoute>
+                  </Switch>
+                </>
+              )}
+            </>
           )}
         </Route>
       </Switch>
