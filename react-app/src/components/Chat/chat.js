@@ -8,26 +8,17 @@ import {createMessage, fetchAllMessages} from "../../store/message"
 const Chat = ({profile, match,socket}) => {
   const [body, setBody] = useState("");
   const [messages, setMessages] = useState([]);
-  console.log('this is messages', messages)
   const history = useHistory()
   const dispatch = useDispatch()
 
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    // open socket connection
-    // create websocket
-    // socket = io();
     socket.emit("fetch", {'match': match.id})
     socket.on("chat", (chat) => {
       console.log("recent chat:",chat)
       setMessages((messages) => [...messages, chat.message]);
     });
-
-    // when component unmounts, disconnect
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   useEffect(() => {

@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllMessages,currentConv } from "../../store/message";
+import { getProfileMatches } from "../../store/match";
+import { messageMatching } from "../../store/message";
+import { fetchAllProfiles } from "../../store/profile";
 import Chat from "../Chat/chat";
 import { io } from "socket.io-client";
 let socket;
@@ -41,6 +44,9 @@ function ChatCard({profile, matches,socket }) {
         <div>
         <p
             onClick={() => {
+                // dispatch(fetchAllProfiles());
+                // dispatch(getProfileMatches())
+                // dispatch(messageMatching())
                 dispatch(fetchAllMessages(profile.id))
                 dispatch(currentConv(profile.id))
                 joinRoom()
@@ -50,11 +56,14 @@ function ChatCard({profile, matches,socket }) {
         >
             {profile?.first_name}
         </p>
-        {/* <button
-            onClick={leaveRoom}
+        <button
+            onClick={()=>{
+                setSelected(!selected)
+                leaveRoom()
+            }}
             >
                 Leave Conversation
-        </button> */}
+        </button>
             {selected && (
                 <Chat profile={profile} match={match} socket={socket}/>
         )}
