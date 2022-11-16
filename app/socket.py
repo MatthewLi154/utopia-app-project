@@ -19,10 +19,11 @@ socketio = SocketIO(cors_allowed_origins=origins)
 # handle chat messages
 @socketio.on("chat")
 def handle_chat(data):
-    print('@@@@@@@@@@@@@@@@@@@@@@hitting chat')
-    emit("chat", data, room=data['room'] )
+    print('@@@@@@@@@@@@@@@@@@@@@@hitting it')
+    room_id=data['room']
+    emit("chat", data, room=f'room{room_id}' )
 
-@socketio.on("join")
+@socketio.on("fetch")
 def last_25_messages(data):
     last_25_messages = Message.query.filter(Message.matched_id==data['match']).order_by(Message.id.desc()).limit(25)
     last_25_messages = last_25_messages[::-1]
@@ -51,7 +52,4 @@ def on_leave(data):
     matched_room_id = data['match']
     leave_room(f'room{matched_room_id}')
     print('left successfully!!')
-    # print(rooms(sid=None, namespace=None))
-
-
-        # if not (existing_match.to_dict()['profile_id'] == data['profile_id'] and existing_match.to_dict()['matched_profile_id'] == data['matched_profile_id']) or  not (existing_match.to_dict()['profile_id'] == data['matched_profile_id'] and existing_match.to_dict()['matched_profile_id'] == data['profile_id']):
+    print(rooms(sid=None, namespace=None))

@@ -6,39 +6,36 @@ import { io } from "socket.io-client";
 let socket;
 
 
-function ChatCard({profile, matches }) {
+function ChatCard({profile, matches,socket }) {
 
     const [selected, setSelected] = useState(false)
     const dispatch = useDispatch();
 
     const match = matches.find(match => profile.id === match.profile_id || profile.id === match.matched_profile_id)
 
-    useEffect(() => {
-        // open socket connection
-        // create websocket
-        socket = io();
-    // when component unmounts, disconnect
-        return () => {
-        socket.disconnect();
-        };
-    }, []);
-
+    // useEffect(() => {
+    //     // open socket connection
+    //     // create websocket
+    //     socket = io();
+    // // when component unmounts, disconnect
+    //     return () => {
+    //     socket.disconnect();
+    //     };
+    // }, []);
 
     const joinRoom = () => {
         if (match.id !== '') {
         socket.emit('join_room',{ match: match.id });
-        // need to edit match.id so that both users share the same
         }
         return
     }
 
     const leaveRoom = ()=> {
-    // return chatRoomUsers.filter((user) => user.id != userID);
-    socket.emit('leave_room', {  match: match.id })
-    // need to edit match.id so that both users share the same
-    return
+        if (match.id !== '') {
+        socket.emit('leave_room',{ match: match.id });
+        }
+        return
     }
-
 
     return (
         <div>
@@ -49,15 +46,19 @@ function ChatCard({profile, matches }) {
                 joinRoom()
                 setSelected(!selected)
             }}
-            onBlur={() => {
-                leaveRoom()
-            }}
+            // onBlur={leaveRoom}
         >
             {profile?.first_name}
         </p>
-        {selected && (
-            <Chat profile={profile} match={match}/>
+        {/* <button
+            onClick={leaveRoom}
+            >
+                Leave Conversation
+        </button> */}
+            {selected && (
+                <Chat profile={profile} match={match} socket={socket}/>
         )}
+
         </div>
     );
 }
