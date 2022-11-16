@@ -9,16 +9,8 @@ function Home() {
   const [signup, setShowSignup] = useState(false);
   const [login, setLogin] = useState(false);
 
-  const transition = () => {
-    const carousel = document.getElementById('carousel');
-    carousel.carousel({
-      pause: "false"
-    })
-  }
   return (
     <div className="container-fluid main">
-
-
       <div className="covertext">
         <div className="col-lg-10">
           <h1 className="title">DATING FOR EVERY SINGLE FANTASY</h1>
