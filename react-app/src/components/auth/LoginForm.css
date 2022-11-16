@@ -82,7 +82,7 @@ button.ghost {
   border-color: #ffffff;
 }
 
-form {
+.form-modal {
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -93,7 +93,7 @@ form {
   text-align: center;
 }
 
-input {
+.modal-inputs {
   background-color: #eee;
   border: none;
   padding: 12px 15px;
@@ -247,4 +247,3 @@ input {
     align-items: center;
     text-decoration: none;
  } */
-

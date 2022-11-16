@@ -16,7 +16,7 @@ const LoginForm = ({ setLogin }) => {
 
   const transition = () => {
     const container = document.getElementById('container');
-  
+
     container.classList.add("right-panel-active");
   }
   const transition2 = () => {
@@ -52,7 +52,7 @@ const LoginForm = ({ setLogin }) => {
   return (
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="#" onClick={(e) => e.stopPropagation()} onSubmit={onSignUp}>
+        <form className='form-modal' onClick={(e) => e.stopPropagation()} onSubmit={onSignUp}>
           <h1>Create Account</h1>
           <div>
             {errors.map((error, ind) => (
@@ -63,17 +63,21 @@ const LoginForm = ({ setLogin }) => {
             type='text'
             onChange={(e) => setUsername(e.target.value)}
             value={username}
-            placeholder="Username" />
+            placeholder="Username"
+            className="modal-inputs" />
+
           <input
             type='text'
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            placeholder="Email" />
+            placeholder="Email"
+            className="modal-inputs" />
           <input
             type='password'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder="Password"
+            className="modal-inputs"
           />
           <input
             type='password'
@@ -81,23 +85,26 @@ const LoginForm = ({ setLogin }) => {
             value={repeatPassword}
             placeholder="Confirm Password"
             required={true}
+            className="modal-inputs"
           />
           <button className="sign-up">Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="#" onClick={e => e.stopPropagation()} onSubmit={onLogin}>
+        <form className='form-modal' onClick={e => e.stopPropagation()} onSubmit={onLogin}>
           <h1>Sign in</h1>
           <input
             type="text"
             placeholder="Email"
             value={email}
-            onChange={e => setEmail(e.target.value)} />
+            onChange={e => setEmail(e.target.value)}
+            className="modal-inputs" />
           <input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={e => setPassword(e.target.value)} />
+            onChange={e => setPassword(e.target.value)}
+            className="modal-inputs"/>
           <button className='sign-up' type='submit'>Sign In</button>
           <button className='sign-up'
             onClick={() => {
