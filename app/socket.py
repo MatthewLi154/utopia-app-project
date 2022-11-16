@@ -23,7 +23,7 @@ def handle_chat(data):
 
 @socketio.on("join")
 def last_25_messages(data):
-    last25Messages = Message.query.filter(Message.matched_id==data['match']).limit(25)
+    last25Messages = Message.query.filter(Message.matched_id==data['match']).order_by(Message.id.desc()).limit(25)
     messageObj = [message.to_dict() for message in last25Messages ]
     emit("last_25_messages", messageObj, broadcast=True)
 # socket flow: socket.emit('join) emits from chat.js to sockio.on HERE
@@ -37,7 +37,6 @@ def on_join(data):
     matched_room = data['match']
     # join_room(matched_room)
     join_room(f'room{matched_room}')
-
     print('joined successfully!!')
     # send('has entered the room.', to=f'room{matched_room}')
 
@@ -45,6 +44,26 @@ def on_join(data):
 @socketio.on('leave_room')
 def on_leave(data):
     matched_room = data['match']
-    leave_room(matched_room)
+    leave_room(f'room{matched_room}')
     print('left successfully!!')
     # send(username + ' has left the room.', to=matched_room)
+
+# @socketio.on("connection")
+# def connection(data):
+#     users = []
+#     users.append({
+#         "userId": data['id'],
+#         "username": data['username']
+#     })
+#     emit('users', users)
+
+#     emit("user-connected"), {
+#         "userId": data['id'],
+#         "username": data['username']
+#     }
+
+# @socketio.on("private-message")
+# def private_message(data):
+#     emit("private-message", {
+
+#     })
