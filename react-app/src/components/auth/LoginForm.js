@@ -89,7 +89,7 @@ const LoginForm = ({ setLogin }) => {
             required={true}
             className="modal-inputs"
           />
-          <button className="sign-up">Sign Up</button>
+          <button className="sign-up" type='submit'>Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">

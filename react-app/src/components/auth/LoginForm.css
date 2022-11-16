@@ -46,10 +46,16 @@ a {
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
-  padding: 12px 45px;
+  padding: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  margin: 0.5rem 0rem;
+
+}
+
+.sign-in-container button {
+  width: 171px;
 }
 
 .sign-up:active {

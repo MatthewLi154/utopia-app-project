@@ -13,6 +13,7 @@ const SignUpForm = ({ setLogin }) => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const history = useHistory()
 
   const transition = () => {
     const container = document.getElementById('container');
@@ -42,12 +43,10 @@ const SignUpForm = ({ setLogin }) => {
       if (data) {
         setErrors(data)
       }
+      history.push('/profiles')
     }
-  };
 
-  if (sessionUser) {
-    return <Redirect to='/' />;
-  }
+  };
 
   return (
     <div class="container" id="container">

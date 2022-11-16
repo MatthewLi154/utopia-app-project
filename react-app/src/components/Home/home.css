@@ -1,9 +1,12 @@
 .container-fluid.main{
     position: relative; /* To make the navbar positions relative to this container */
-    padding: 0;
+    padding-top: 13rem;
     background-color: rgb(34, 118, 192);
     width: 100%;
     height: 100%;
+    /* padding-bottom: 28.75rem; */
+    overflow: none;
+
   }
 
   .title {
