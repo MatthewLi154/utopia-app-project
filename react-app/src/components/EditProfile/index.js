@@ -177,7 +177,7 @@ function EditProfile() {
                 <label>My self-summary</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}

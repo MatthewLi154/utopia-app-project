@@ -31,10 +31,26 @@
   border: 1px solid black;
   width: 25rem;
   height: 9rem;
-  border-radius: 0.25rem;
+  border-radius: 0.55rem;
   flex-wrap: wrap;
   margin-bottom: 2rem;
 }
+
+.edit-bio-container:hover {
+  box-shadow: inset 0 2px 2px rgba(237, 190, 24, 0.075), 0 0 8px rgba(217, 206, 10, 0.6);
+}
+.bio-box textarea{
+  margin-left: 2px;
+  border-radius: 1rem;
+}
+
+/* .bio-box textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+} */
+
 
 .edit-bio-upper {
   display: flex;
