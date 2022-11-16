@@ -13,7 +13,7 @@ import CreateProfileName from "./components/CreateProfile/CreateProfileName";
 import CreateProfileBirthday from "./components/CreateProfile/CreateProfileBirthday";
 import CreateProfileLocation from "./components/CreateProfile/CreateProfileLocation";
 import CreateProfileBio from "./components/CreateProfile/CreateProfileBio";
-import CreateConversation from "./components/CreateConversation";
+import CreateConversation from "./components/Chat"
 import SingleUserProfile from "./components/SingleUserProfile";
 import PersonalityQuestions from "./components/PersonalityQuestions";
 import CreateProfileOther from "./components/CreateProfile/CreateProfileOther";

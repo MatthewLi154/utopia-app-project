@@ -29,15 +29,31 @@ def get_all_messages():
     return parsed_message_dict
 
 
-# get all messages by conversation id
-@message_routes.route('/conversations/<int:id>', methods = ['GET'])
+# get all messages by match id
+@message_routes.route('/matched/<int:id>', methods = ['GET'])
 @login_required
-def get_message_by_conversation_id(id):
-    messages = Message.query.filter_by(conversation_id=f'{id}')
+def get_message_by_matched_id(id):
+    messages = Message.query.filter_by(matched_id=f'{id}')
     parsed_message_dict = {}
     for message in messages:
         parsed_message_dict[message.id] = message.to_dict()
     return parsed_message_dict
+
+
+@message_routes.route('/matched/<int:id>', methods=['POST'])
+@login_required
+def create_message_by_matched_id(id):
+    form = MessageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        message = Message(
+            body=form.data["body"],
+            matched_id=f'{id}'
+        )
+        db.session.add(message)
+        db.session.commit()
+        return message.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # edit a message by id
 @message_routes.route('/<int:id>', methods = ['PUT'])
