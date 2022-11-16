@@ -3,14 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import profileReducer from "./profile";
 import matchesReducer from "./match";
-import conversationReducer from "./conversation";
+
 import messageReducer from "./message";
 
 const rootReducer = combineReducers({
   session,
   profiles: profileReducer,
   matches: matchesReducer,
-  conversations: conversationReducer,
   messages: messageReducer
 });
 

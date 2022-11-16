@@ -5,18 +5,19 @@ def seed_messages():
     demo_conversation1 = [
         {
             'body':'Hey! whatsup man',
-            'conversation_id': 1
+            'matched_id': 2
         },
         {
             'body':'Yo! How have you been bro',
-            'conversation_id': 1
+            'matched_id': 2
         },
         {
             'body':'Where are you living now?',
-            'conversation_id': 1
-        }, {
+            'matched_id': 2
+        }, 
+        {
             'body':'Florida!',
-            'conversation_id': 1
+            'matched_id': 2
         }
     ]
 

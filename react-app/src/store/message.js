@@ -1,8 +1,10 @@
 // constants
-const LOAD_ALL_MESSAGES_BY_CONV_ID = 'conversation/loadAllMessagesByConvId'
-const ADD_MESSAGE = 'conversation/CreateMessage'
-const UPDATE_MESSAGE = 'conversation/UpdateMessage'
-const DELETE_MESSAGE = 'conversation/DeleteMessage'
+const LOAD_ALL_MESSAGES_BY_CONV_ID = 'matched/loadAllMessagesByConvId'
+const ADD_MESSAGE = 'matched/CreateMessage'
+const UPDATE_MESSAGE = 'matched/UpdateMessage'
+const DELETE_MESSAGE = 'matched/DeleteMessage'
+const CURRENT_CONV = 'matched/CURRENT'
+const MESSAGE_MATCHES = 'matched/MessageMatches'
 
 // actions
 export const loadAllMessages = (data) => {
@@ -33,10 +35,24 @@ export const deleteMessage = (id) => {
     }
 }
 
+export const currentConv = id => {
+    return {
+        type: CURRENT_CONV,
+        id
+    }
+}
+
+export const messageMatch = (data) => {
+    return {
+        type: MESSAGE_MATCHES,
+        data
+    }
+}
+
 
 // thunk
 export const fetchAllMessages = (id) => async (dispatch) => {
-    const response = await fetch(`/api/messages/conversations/${id}`)
+    const response = await fetch(`/api/messages/matched/${id}`)
 
     if (response.ok) {
         const data = await response.json()
@@ -47,7 +63,7 @@ export const fetchAllMessages = (id) => async (dispatch) => {
 
 export const createMessage = (id, payload) => async(dispatch) => {
 
-    const response = await fetch(`/api/conversations/${id}`, {
+    const response = await fetch(`/api/messages/matched/${id}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
@@ -85,26 +101,41 @@ export const deletingMessage = (id) => async(dispatch) => {
     }
 }
 
+export const messageMatching = (data) => async(dispatch) => {
+    const response = await fetch('/api/messages/matches')
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(messageMatch(data))
+        return data
+    }
+}
+
 // reducer
-const initialState = {conversation_messages: {}}
+const initialState = {matched_messages: {}, current: {}, matches: {}}
 
 const messageReducer = (state = initialState, action) => {
     let messageStateObj = {...state}
     switch (action.type) {
         case LOAD_ALL_MESSAGES_BY_CONV_ID:
-            messageStateObj.conversation_messages = action.messages
+            messageStateObj.matched_messages = action.messages
             return messageStateObj
-            // const conversationMessagesObj = {...action.messages}
-            // // messageStateObj.conversation_messages = action.messages
-            // return conversationMessagesObj
         case ADD_MESSAGE:
-            messageStateObj[action.message.id] = action.message
+            messageStateObj.matched_messages[action.message.id] = action.message
             return messageStateObj
         case UPDATE_MESSAGE:
-            messageStateObj.conversation_messages[action.message.id] = action.message
+            messageStateObj.matched_messages[action.message.id] = action.message
             return messageStateObj
         case DELETE_MESSAGE:
-            delete messageStateObj.conversation_messages[action.id]
+            delete messageStateObj.matched_messages[action.id]
+            return messageStateObj
+        case CURRENT_CONV:
+            return {
+                ...state,
+                current: action.id
+            }
+        case MESSAGE_MATCHES:
+            messageStateObj.matches = action.data
             return messageStateObj
         default:
             return state
