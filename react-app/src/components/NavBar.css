@@ -6,11 +6,12 @@
 .nav-list {
   /* color: white; */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+
   list-style: none;
   height: 80px;
   width: 100%;
-  margin: 0px;
+  margin: 0rem 3rem;
   top: 0;
   align-items: center;
   box-sizing: border-box;
@@ -47,13 +48,14 @@
 .Right-nav-user {
   display: flex;
   align-items: center;
+  margin: 0rem 11rem;
 }
 
 .user-name {
   padding: 5px;
 }
 
-.logout {
+/* .logout {
   width: 80px;
   height: 30px;
   border: none;
@@ -116,7 +118,7 @@
   left: 0;
   top: 0;
   border-radius: 10px;
-}
+} */
 
 .nav-bar-splash {
   margin: 0px;
@@ -125,11 +127,11 @@
 
 .nav-list-splash {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   list-style: none;
   height: 80px;
   width: 100%px;
-  margin: 0px;
+  margin: 0rem 3rem;
   top: 0;
   align-items: center;
   box-sizing: border-box;
@@ -145,16 +147,16 @@
   padding: 10px;
 }
 
-.login-button {
-  border-color: blue;
-  color: #fff;
-  box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
-  transition: all 150ms ease-in-out;
+/* .login-button {
+    border-color: blue;
+    color: #fff;
+    box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
+    transition: all 150ms ease-in-out;
 }
 
 .login-button:hover {
-  box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
-}
+    box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+} */
 
 .sign-up-button {
   font-family: "Nunito", sans-serif;
@@ -243,3 +245,93 @@ sign-up-button:focus::after {
     opacity: 0;
   }
 }
+
+.left-logo img {
+    height: 3.5rem;
+}
+
+.profile-button img:hover {
+    cursor: pointer;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.8);
+  }
+
+  .Right-nav-user {
+    text-decoration: none;
+    background-color: white;
+  }
+
+  .profile-dropdown {
+    position: absolute;
+    /* right: 40px; */
+    top: 70px;
+    /* max-width: 180px; */
+    flex-basis: content;
+    width: 180px;
+    height: auto;
+    list-style: none;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    display: block;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-between;
+    padding: 5px 0px 15px 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+  .profile-dropdown li,
+  .profile-dropdown-no-user li {
+    padding-left: 15px;
+    line-height: 40px;
+  }
+
+  .profile-dropdown-no-user li:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .login-button:hover {
+    cursor: pointer;
+  }
+
+  .dropdown-button:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+  }
+
+  .account-button {
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  .dropdown-button.border {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .account-button,
+  .logout-button {
+    background: none;
+    border: none;
+    font-family: "Helvetica";
+    font-size: 14px;
+    padding: 0px;
+    width: 160px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .dropdown-button:hover,
+  .logout-button:hover {
+    cursor: pointer;
+  }

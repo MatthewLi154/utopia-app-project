@@ -39,9 +39,9 @@ const NavBar = ({ loaded }) => {
         <ul className="nav-list">
           <div className="left-nav-items">
             <li className="left-nav">
-              <NavLink to="/" exact={true}>
+              <NavLink to="/profiles" exact={true}>
                 <img
-                  src="https://i.imgur.com/8e9KhiN.png"
+                  src="https://i.imgur.com/G4xDlfp.jpg"
                   alt="logo"
                   className="home-logo"
                 ></img>
@@ -66,38 +66,24 @@ const NavBar = ({ loaded }) => {
       <div>
         <div className="nav-bar-splash">
           <div className="nav-list-splash">
-            <div className="left-logo">
-              <div>
-                <NavLink
-                  to="/"
-                  exact={true}
-                  style={{ textDecoration: "none", color: "red" }}
-                >
-                  Utopia
-                </NavLink>
+            <div >
+              <div className="left-logo">
+              <NavLink to="/" exact={true}>
+                <img
+                  src="https://i.imgur.com/2T9mtso.png"
+                  alt="logo"
+                  className="home-logo"
+                ></img>
+              </NavLink>
               </div>
             </div>
 
-            <div className="right-nav-items-splash">
-              <div className="right-nav-items-splash-login">
-                <button
-                  className="login-button"
-                  onClick={() => {
-                    setLogin(true);
-                  }}
-                >
-                  Log In
-                </button>
-              </div>
-              <div className="right-nav-items-splash-login">
-                <button
-                  className="sign-up-button"
-                  onClick={() => {
-                    setShowSignup(true);
-                  }}
-                >
-                  Join Utopia
-                </button>
+            <div className='right-nav-items-splash'>
+              <div className='right-nav-items-splash-login'>
+                <button className="sign-up-button" onClick={() => {
+                  setLogin(true)
+                }
+                }>Join Utopia</button>
               </div>
             </div>
           </div>

@@ -1,19 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { fetchAllProfiles } from "../../store/profile";
+import './home.css'
+import LoginForm from "../auth/LoginForm";
+import SignUpForm from "../auth/SignUpForm";
+import { Modal } from "../../context/Modal";
 
 function Home() {
-  const dispatch = useDispatch();
-  const profiles = useSelector((state) => state.profiles.user_profiles);
+  const [signup, setShowSignup] = useState(false);
+  const [login, setLogin] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchAllProfiles());
-  }, []);
+  const transition = () => {
+    const carousel = document.getElementById('carousel');
+    carousel.carousel({
+      pause: "false"
+    })
+  }
   return (
-    <div>
-      <h1>Utopia Home</h1>
-      <h2>Hello</h2>
+    <div className="container-fluid main">
+
+
+      <div className="covertext">
+        <div className="col-lg-10">
+          <h1 className="title">DATING FOR EVERY SINGLE FANTASY</h1>
+          <h3 className="subtitle">A new dating app for all types of creatures, races, species and everything in between. Find your soulmate no what your preference is</h3>
+          <div className="explore">
+            <button className="sign-up-button" onClick={() => {
+              setLogin(true)
+            }
+            }>Join Utopia</button>
+          </div>
+        </div>
+
+        <div className="right-img">
+          <img src="https://i.imgur.com/92FpnPd.png" alt="home-page"></img>
+        </div>
+      </div>
+      {login && (
+        <Modal onClose={() => setLogin(false)}>
+          <LoginForm setLogin={setLogin} />
+        </Modal>
+      )}
+      {signup && (
+        <Modal onClose={() => setShowSignup(false)}>
+          <SignUpForm setShowSignup={setShowSignup} />
+        </Modal>
+      )}
     </div>
   );
 }
