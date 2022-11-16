@@ -24,6 +24,7 @@ def handle_chat(data):
 @socketio.on("join")
 def last_25_messages(data):
     last25Messages = Message.query.filter(Message.matched_id==data['match']).order_by(Message.id.desc()).limit(25)
+    last25Messages = last25Messages[::-1]
     messageObj = [message.to_dict() for message in last25Messages ]
     emit("last_25_messages", messageObj, broadcast=True)
 # socket flow: socket.emit('join) emits from chat.js to sockio.on HERE
