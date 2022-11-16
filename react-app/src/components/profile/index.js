@@ -8,12 +8,14 @@ import {
   getProfileMatchPercentage,
 } from "../../store/match";
 
+
 function Profile() {
   const userProfiles = useSelector((state) => state.profiles.user_profiles);
   const currentUserId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
 
   const [matches, setMatches] = useState(false);
+
 
   useEffect(() => {
     dispatch(fetchAllProfiles());
