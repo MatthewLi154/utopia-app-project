@@ -5,7 +5,11 @@ import {
   getProfileMatches,
   getProfileMatchPercentage,
 } from "../../store/match";
-import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
+import {
+  fetchAllProfiles,
+  fetchSingleProfile,
+  deleteSingleProfile,
+} from "../../store/profile";
 import "./SingleUserProfile.css";
 
 function SingleUserProfile() {
@@ -46,7 +50,6 @@ function SingleUserProfile() {
     ) {
       years--;
     }
-    console.log(years);
     return years;
   };
 
@@ -54,6 +57,35 @@ function SingleUserProfile() {
   if (birthday) {
     age = calculateAge(birthday);
   }
+
+  let editProfileData;
+  // if (profile) {
+  editProfileData = {
+    bio: profile.bio,
+    current_goals: profile.current_goals,
+    hobbies: profile.hobbies,
+    kids: profile.kids,
+    languages: profile.languages,
+    location: profile.location,
+    looking_for: profile.looking_for,
+    pets: profile.pets,
+    identify_as: profile.identify_as,
+    age: age,
+    img_url1: profile.img_url1,
+    first_name: profile.first_name,
+  };
+  // }
+
+  const deleteProfile = async (e) => {
+    e.preventDefault();
+    const response = window.confirm("Are you sure you want to do that?");
+    if (response) {
+      await deleteSingleProfile(profileId);
+      await fetchAllProfiles();
+      history.push("/profiles");
+    }
+    return;
+  };
 
   return (
     <>
@@ -77,7 +109,7 @@ function SingleUserProfile() {
                 </div>
               )}
               <div className="match-with-others-button-container">
-                {profile.id === currentUserId && (
+                {profile.id === currentUserId && profile.score < 5 && (
                   <div>
                     <button
                       onClick={() => {
@@ -123,7 +155,34 @@ function SingleUserProfile() {
             </div>
             <div className="bottom-right-column-container">
               <div className="details-label-container">
-                <h4>Details</h4>
+                <div>
+                  <h4>Details</h4>
+                </div>
+                {currentUserId === profile.user_id && (
+                  <>
+                    <div>
+                      <div>
+                        <NavLink
+                          to={{
+                            pathname: `/profile/${profileId}/edit`,
+                            state: { editProfileData: editProfileData },
+                          }}
+                        >
+                          <h4>Edit</h4>
+                        </NavLink>
+                      </div>
+                    </div>
+                    <div>
+                      <h4
+                        onClick={(e) => {
+                          deleteProfile(e);
+                        }}
+                      >
+                        Delete
+                      </h4>
+                    </div>
+                  </>
+                )}
               </div>
               <div className="identify-as-container">
                 <div className="identify-as-icon">
