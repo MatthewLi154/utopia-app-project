@@ -56,9 +56,9 @@ function App() {
           <CreateProfileBio />
         </Route>
         <Route exact path="/profile/create/other"></Route>
-        <Route path="">
+        <Route path="/">
           <NavBar loaded={loaded} />
-          <BrowseBar></BrowseBar>
+          <BrowseBar />
           {loaded && (
             <Switch>
               <Route path="/login" exact={true}>
