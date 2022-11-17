@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { io } from "socket.io-client";
-import {createMessage, fetchAllMessages} from "../../store/message"
+import {createMessage, fetchAllMessages, deletingMessage} from "../../store/message"
+import UpdateMessage from "../UpdateMessageModal";
 
 
 const Chat = ({profile, match,socket}) => {
@@ -12,6 +12,11 @@ const Chat = ({profile, match,socket}) => {
   const dispatch = useDispatch()
 
   const user = useSelector((state) => state.session.user);
+
+//   useEffect(() => {
+//     dispatch(fetchAllMessages(match?.id))
+// }, [dispatch])
+
 
   useEffect(() => {
     socket.emit("fetch", {'match': match.id})
@@ -24,7 +29,7 @@ const Chat = ({profile, match,socket}) => {
   useEffect(() => {
     socket.on("last_25_messages", (message_list) => {
       console.log("Last 25 messages:", (message_list))
-      setMessages((message) => [...message_list, ...message])
+      setMessages([...message_list])
     })
     }
   , [])
@@ -35,22 +40,25 @@ const Chat = ({profile, match,socket}) => {
 
   const sendChat = async (e) => {
     e.preventDefault();
-    // add room: property with room name as a key
-    // update emits and ons with new message: object
 
     const payload = {
-      body
+      body,
+      user_sending_id: user.id
     }
 
     let newMessage = await dispatch(createMessage(match.id,payload))
     socket.emit("chat", {message: {...newMessage}, room: match.id });
-    // if (newMessage) {
-    //     dispatch(fetchAllMessages(match.id))
-    //     // history.push('/conversations')
-    // }
-
     setBody("");
   };
+
+    const deleteMessage = async(id) => {
+        await dispatch(deletingMessage(id))
+        socket.emit("fetch", {'match': match.id})
+        socket.on("last_25_messages", (message_list) => {
+            console.log("deleting recent message", (message_list))
+            setMessages([...message_list])
+        })
+    }
 
   return (
     user && (
@@ -59,7 +67,19 @@ const Chat = ({profile, match,socket}) => {
       >
         <div>
           {messages.map((message, ind) => (
-            <div key={ind}>{`${message.body}`}</div>
+            <div key={ind}>
+                <div>
+              {`${message.body}`}
+                </div>
+                {user.id === message.user_sending_id && (
+                  <div>
+                    <UpdateMessage message={message} setMessages={setMessages} match={match} socket={socket}/>
+                    <button
+                    onClick={() => deleteMessage(message.id)}
+                    >Delete</button>
+                  </div>
+                )}
+            </div>
           ))}
         </div>
         <form onSubmit={sendChat}>
