@@ -5,13 +5,17 @@ import { messageMatching } from "../../store/message";
 import { fetchAllProfiles } from "../../store/profile";
 import ChatCard from "./chatCard";
 import { io } from "socket.io-client";
+import { use } from "express/lib/router";
+import './chat.css'
 let socket;
 
 // instantiate socket io instance and then prop it down
 // socket = io()
 
 function CreateConversation() {
+
   const dispatch = useDispatch();
+
 
     useEffect(() => {
         // open socket connection
@@ -32,14 +36,23 @@ function CreateConversation() {
 
   }, [dispatch, messages]);
 
+
+
   let profileMatches = useSelector((state) => Object.values(state.matches.matchedProfiles));
   let matches = useSelector((state) => Object.values(state.messages.matches))
 
   return (
-    <div>
-      {profileMatches?.map((profile) => (
-        <ChatCard key={profile.id} profile={profile} matches={matches} socket={socket} />
-      ))}
+    <div className="chat_main_container">
+      <div className="chat_container">
+        {profileMatches?.map((profile) => (
+          <ChatCard 
+          key={profile.id} 
+          profile={profile} 
+          matches={matches} 
+          socket={socket} 
+          />
+        ))}
+      </div>
     </div>
   );
 }
