@@ -80,7 +80,7 @@
 
 .profile-box:hover {
   /* /* box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08); */
-width: 400px;
+width: 480px;
 border-radius: 100px 10px 100px 100px;
 transition: all 1s ease-out;
 }

@@ -139,7 +139,7 @@ def seed_profiles():
         last_name='Toadstool',
         birthday='01-08-1965',
         location='Mushroom Kingdom',
-        bio="What can I say? Tired of dating jerks with hot tempers. Looking for someone who will stand up for me in a tough situation and likes being active (jumping, go-karting, turning into squirrels).",
+        bio="Tired of dating jerks with hot tempers. Looking for someone who will stand up for me in a tough situation and likes being active (jumping, go-karting, turning into squirrels).",
         kids="Don't have but want them",
         pets="Toads",
         hobbies="Playing Games",
