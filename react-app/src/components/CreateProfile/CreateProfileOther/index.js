@@ -64,8 +64,8 @@ function CreateProfileOther() {
     localStorage.setItem("imgUrl1", imgUrl1);
     localStorage.setItem("imgUrl2", imgUrl2);
     localStorage.setItem("imgUrl3", imgUrl3);
-    console.log(profileDataStorage);
-    console.log(newProfile);
+    // console.log(profileDataStorage);
+    // console.log(newProfile);
   }, [languages, pets, hobbies, kids, imgUrl1, imgUrl2, imgUrl3]);
 
   const validate = () => {
@@ -138,14 +138,17 @@ function CreateProfileOther() {
       //   )
       // );
       let newUserDataCreate = await dispatch(
-        sessionActions.signUp("test13", "test13@gmail.com", "password")
+        sessionActions.signUp("test17", "test17@gmail.com", "password")
       );
-      console.log(newUserDataCreate);
+      const userId = await fetch(
+        `/api/auth/${JSON.parse(profileDataStorage).email}`
+      );
+      console.log("is there an id:", userId);
     };
 
     createUser();
 
-    console.log("AFTER");
+    console.log("CREATE PROFILE");
 
     const data = {
       // user_id: currentUserId,

@@ -23,3 +23,11 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<email>')
+def get_user(email):
+    """
+    Query for user by email and returns that user id a dictionary
+    """
+    user = User.query.filter_by(email=email)
+    return user.to_dict()
