@@ -61,6 +61,7 @@ def create_message_by_matched_id(id):
     if form.validate_on_submit():
         message = Message(
             body=form.data["body"],
+            user_sending_id=form.data['user_sending_id'],
             matched_id=f'{id}'
         )
         db.session.add(message)
