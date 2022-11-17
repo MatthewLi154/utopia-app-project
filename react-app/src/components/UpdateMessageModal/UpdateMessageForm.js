@@ -8,26 +8,6 @@ function UpdateMessageForm({message, setMessages, showModal, setShowModal, match
     const history = useHistory()
     const [body, setBody] = useState(message.body || '')
 
-    // const fetchFunction = async() => {
-    //     // socket.emit("fetch", {'match': match.id})
-    //     socket.on("last_25_messages", (message_list) => {
-    //         console.log("Last 25 messages:", (message_list))
-    //         setMessages((message) => [...message_list, ...message])
-    //     })
-    // }
-
-    // useEffect(() => {
-    //     socket.emit("fetch", {'match': match.id})
-    //     socket.on("last_25_messages", (message_list) => {
-    //     console.log("Last 25 messages:", (message_list))
-    //     setMessages((message) => [...message_list, ...message])
-    //     })
-    //     }
-    // , [])
-
-    // useEffect(() => {
-    //     dispatch(fetchAllMessages(message.matched_id))
-    // }, [message])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -39,7 +19,11 @@ function UpdateMessageForm({message, setMessages, showModal, setShowModal, match
 
         if (updatedMessage) {
             setShowModal(false)
-            dispatch(fetchAllMessages(message.matched_id))
+            socket.emit("fetch", {'match': match.id})
+                socket.on("last_25_messages", (message_list) => {
+                console.log("Last 25 messages:", (message_list))
+                setMessages([...message_list])
+                })
         }
         setBody('')
     }

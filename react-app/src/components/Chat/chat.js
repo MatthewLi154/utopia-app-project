@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {createMessage, fetchAllMessages} from "../../store/message"
+import {createMessage, fetchAllMessages, deletingMessage} from "../../store/message"
 import UpdateMessage from "../UpdateMessageModal";
 
 
@@ -17,6 +17,7 @@ const Chat = ({profile, match,socket}) => {
 //     dispatch(fetchAllMessages(match?.id))
 // }, [dispatch])
 
+
   useEffect(() => {
     socket.emit("fetch", {'match': match.id})
     socket.on("chat", (chat) => {
@@ -28,7 +29,7 @@ const Chat = ({profile, match,socket}) => {
   useEffect(() => {
     socket.on("last_25_messages", (message_list) => {
       console.log("Last 25 messages:", (message_list))
-      setMessages((message) => [...message_list, ...message])
+      setMessages([...message_list])
     })
     }
   , [])
@@ -50,6 +51,15 @@ const Chat = ({profile, match,socket}) => {
     setBody("");
   };
 
+    const deleteMessage = async(id) => {
+        await dispatch(deletingMessage(id))
+        socket.emit("fetch", {'match': match.id})
+        socket.on("last_25_messages", (message_list) => {
+            console.log("deleting recent message", (message_list))
+            setMessages([...message_list])
+        })
+    }
+
   return (
     user && (
       <div
@@ -64,7 +74,9 @@ const Chat = ({profile, match,socket}) => {
                 {user.id === message.user_sending_id && (
                   <div>
                     <UpdateMessage message={message} setMessages={setMessages} match={match} socket={socket}/>
-                    <button>Delete</button>
+                    <button
+                    onClick={() => deleteMessage(message.id)}
+                    >Delete</button>
                   </div>
                 )}
             </div>
