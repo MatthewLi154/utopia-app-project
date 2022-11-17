@@ -56,11 +56,13 @@ function Profile() {
                     <li className="profile-box" key={profile.id}>
                       <div className="profile-box-content" id="main">
                         <NavLink to={`/profile/${profile.id}`}>
-                        <img className="profile-img" src={profile.img_url1}></img>
+                          <img className="profile-img" src={profile.img_url1}></img>
                         </NavLink>
-                        </div>
+                      </div>
 
-                        <NavLink
+
+                      <div className="profile-box-sub-content">
+                        {/* <NavLink
                           // onClick={async (e) => {
                           //   await dispatch(fetchSingleProfile(profile.id));
                           // }}
@@ -72,17 +74,32 @@ function Profile() {
                             textDecoration: "none",
                             color: "rgb(00, 82, 94)",
                           }}
-                        >
+                        > */}
 
 
                           <h3 className="card-title" id="texting">{profile.first_name}</h3>
-                        </NavLink>
-                        <div className="profile-box-sub-content">
-                          <div id="texting">
-                            {profile.location} •{" "}
-                            {calculateAge(profile.birthday)}
-                          </div>
+                        {/* </NavLink> */}
+                        <div id="texting">
+                          <ul>
+                            <li>
+                              Location:{profile.location}
+                            </li>
+                            <li>
+                            Age: {calculateAge(profile.birthday)}
+                            </li>
+                            <li>
+                            Looking for: {profile.looking_for}
+                            </li>
+                            <li>
+                             Biography: {profile.bio}
+                            </li>
+                            <li>
+                             Current Goals: {profile.current_goals}
+                            </li>
+                          </ul>
+
                         </div>
+                      </div>
 
                     </li>
                   )
