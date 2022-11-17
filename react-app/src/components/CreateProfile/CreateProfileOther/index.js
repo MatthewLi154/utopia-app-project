@@ -15,7 +15,95 @@ function CreateProfileOther() {
   const uselocation = useLocation();
   const history = useHistory();
 
+  const [submitted, setSubmitted] = useState(false);
+  const [userIdData, setUserIdData] = useState({});
+
+  const profileDataStorage = localStorage.getItem("hashedProfileData");
   const newProfile = uselocation.state?.newProfile;
+
+  useEffect(() => {
+    dispatch(fetchAllProfiles());
+  }, []);
+
+  useEffect(async () => {
+    if (submitted) {
+      const signUpData = {
+        username: JSON.parse(profileDataStorage).username,
+        email: JSON.parse(profileDataStorage).email,
+        password: JSON.parse(profileDataStorage).password,
+      };
+      console.log(signUpData);
+      fetch(`/api/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signUpData),
+      }).then((res) => res.json());
+
+      console.log(JSON.parse(profileDataStorage).email);
+
+      fetch(`/api/users/email/${JSON.parse(profileDataStorage).email}`)
+        .then((response) => {
+          if (response.ok) {
+            // console.log(response.json());
+            return response.json();
+          }
+          throw response;
+        })
+        .then((data) => {
+          setUserIdData(data);
+        });
+      // const newUserId = userIdData.id;
+      if (userIdData) {
+        // MAKE THE PROFILE
+        let firstName, lastName;
+        [firstName, lastName] = newProfile.name.split(" ");
+
+        const newUserId = userIdData.id;
+
+        const data = {
+          user_id: newUserId,
+          first_name: firstName,
+          last_name: lastName,
+          birthday: newProfile.birthday,
+          bio: newProfile.bio,
+          current_goals: newProfile.currentGoals,
+          languages: newProfile.languages,
+          kids: newProfile.kids,
+          pets: newProfile.pets,
+          hobbies: newProfile.hobbies,
+          location: newProfile.location,
+          identify_as: newProfile.identifyAs,
+          looking_for: newProfile.lookingFor,
+          img_url1: newProfile.imgUrl1,
+          img_url2: newProfile.imgUrl2,
+          img_url3: newProfile.imgUrl3,
+        };
+
+        let newCreatedProfile = await dispatch(createProfile(data));
+        const anotherNewCreatedProfile = await dispatch(fetchAllProfiles());
+
+        let profileId;
+        for (const profile in anotherNewCreatedProfile) {
+          if (anotherNewCreatedProfile[profile].user_id === newUserId) {
+            profileId = profile;
+          }
+        }
+        if (profileId) {
+          const logindata = await dispatch(
+            sessionActions.login(
+              JSON.parse(profileDataStorage).email,
+              JSON.parse(profileDataStorage).password
+            )
+          );
+
+          history.push(`/profile/${profileId}`);
+        }
+      }
+    }
+  }, [submitted, setSubmitted]);
+
   // const currentUserId = useSelector((state) => state?.session.user.id);
   const profiles = useSelector((state) => state.profiles.user_profiles);
   const { profileData, setProfileData } = useProfile();
@@ -42,8 +130,6 @@ function CreateProfileOther() {
     localStorage.getItem("imageUrl3") || null
   );
   const [validationErrors, setValidationErrors] = useState([]);
-
-  let profileDataStorage = localStorage.getItem("hashedProfileData");
 
   useEffect(() => {
     newProfile.languages = languages;
@@ -119,57 +205,13 @@ function CreateProfileOther() {
 
     if (validationErrors.length > 0) {
       e.preventDefault();
+      setSubmitted(false);
       return setValidationErrors(validationErrors);
+    } else {
+      setSubmitted(true);
     }
 
-    let firstName, lastName;
-    [firstName, lastName] = newProfile.name.split(" ");
-
     // const { username, email, password } = profileDataStorage;
-
-    console.log(JSON.parse(profileDataStorage).username);
-
-    const createUser = async () => {
-      // let newUserDataCreate = await dispatch(
-      //   sessionActions.signUp(
-      //     JSON.parse(profileDataStorage).username,
-      //     JSON.parse(profileDataStorage).email,
-      //     JSON.parse(profileDataStorage).password
-      //   )
-      // );
-      let newUserDataCreate = await dispatch(
-        sessionActions.signUp("test17", "test17@gmail.com", "password")
-      );
-      // const userId = await fetch(
-      //   `/api/users/email/${JSON.parse(profileDataStorage).email}`
-      // );
-      const userslist = await fetch("/api/users");
-
-      console.log("is there an id:", userslist);
-    };
-
-    createUser();
-
-    console.log("CREATE PROFILE");
-
-    const data = {
-      // user_id: currentUserId,
-      first_name: firstName,
-      last_name: lastName,
-      birthday: newProfile.birthday,
-      bio: newProfile.bio,
-      current_goals: newProfile.currentGoals,
-      languages: newProfile.languages,
-      kids: newProfile.kids,
-      pets: newProfile.pets,
-      hobbies: newProfile.hobbies,
-      location: newProfile.location,
-      identify_as: newProfile.identifyAs,
-      looking_for: newProfile.lookingFor,
-      img_url1: newProfile.imgUrl1,
-      img_url2: newProfile.imgUrl2,
-      img_url3: newProfile.imgUrl3,
-    };
 
     // let newCreatedProfile = await dispatch(createProfile(data));
     // const anotherNewCreatedProfile = await dispatch(fetchAllProfiles());
