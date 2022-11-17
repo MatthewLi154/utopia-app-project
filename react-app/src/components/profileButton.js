@@ -35,14 +35,19 @@ function ProfileButton(props) {
     dispatch(sessionActions.logout());
     history.push("/");
   };
+
+
   return (
     <>
       <button onClick={openMenu} className="profile-button">
+        {!props.props.profileImg ?
+          <img src="https://i.imgur.com/Zqfdy44.png" alt="default-pic" className="default-profile-pic"></img>
+          :
         <img
           src={props.props.profileImg}
           alt="default-profile-pic"
           className="default-profile-pic"
-        ></img>
+        ></img>}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

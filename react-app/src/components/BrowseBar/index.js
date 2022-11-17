@@ -13,15 +13,17 @@ function BrowseBar() {
   const allProfiles = useSelector((state) =>
     Object.values(state?.profiles.user_profiles)
   );
+  const currentUserId = useSelector((state) => state?.session.user.id);
+  console.log(currentUserId);
 
-  // const currentUserId = useSelector((state) => state?.session.user.id);
+  let profileExist = false;
+  for (const profile of allProfiles) {
+    if (profile.user_id === currentUserId) {
+      profileExist = true;
+    }
+  }
 
-  // let userProfile;
-  // for (const profile of allProfiles) {
-  //   if (profile.user_id === currentUserId) {
-  //     userProfile = profile;
-  //   }
-  // }
+  // Check if profile exists then conditionally render components
 
   return (
     <>
@@ -29,7 +31,7 @@ function BrowseBar() {
         <div
           className="bubble-container"
           onClick={(e) => {
-            history.push("/profiles");
+            history.push("/");
           }}
         >
           <div>
@@ -39,24 +41,23 @@ function BrowseBar() {
             <label>All</label>
           </div>
         </div>
-        <div
-          className="bubble-container"
-          onClick={(e) => {
-            setMatches(true);
-            // if (userProfile.score < 5) {
-            //   history.push(`/profile/${userProfile.id}/personality-questions`);
-            // } else {
-            history.push("/profiles/matches");
-            // }
-          }}
-        >
-          <div>
-            <img src="https://c4.wallpaperflare.com/wallpaper/145/523/587/cute-anime-girl-wallpaper-preview.jpg"></img>
+        {profileExist && (
+          <div
+            className="bubble-container"
+            onClick={(e) => {
+              setMatches(true);
+              history.push("/profiles/matches");
+            }}
+          >
+            <div>
+              <img src="https://c4.wallpaperflare.com/wallpaper/145/523/587/cute-anime-girl-wallpaper-preview.jpg"></img>
+            </div>
+            <div>
+              <label>Matches</label>
+            </div>
           </div>
-          <div>
-            <label>Matches</label>
-          </div>
-        </div>
+        )}
+
         <div
           className="bubble-container"
           onClick={(e) => history.push("/profiles/humans")}

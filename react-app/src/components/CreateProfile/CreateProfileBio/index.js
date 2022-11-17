@@ -9,7 +9,7 @@ function CreateProfileBio() {
   const uselocation = useLocation();
 
   const newProfile = uselocation.state?.newProfile;
-  const currentUserId = useSelector((state) => state?.session.user.id);
+  // const currentUserId = useSelector((state) => state?.session.user.id);
 
   const [bio, setBio] = useState(localStorage.getItem("bio") || "");
   const [currentGoals, setCurrentGoals] = useState(
@@ -18,9 +18,9 @@ function CreateProfileBio() {
   );
   const [validationErrors, setValidationErrors] = useState("");
 
-  useEffect(() => {
-    dispatch(fetchAllProfiles());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchAllProfiles());
+  // }, []);
 
   useEffect(() => {
     newProfile.bio = bio;
