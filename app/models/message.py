@@ -12,7 +12,7 @@ class Message(db.Model):
     user_sending_id = db.Column(db.Integer, nullable = False)
     matched_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('matches.id')), nullable=False)
 
-    matches = db.relationship("Match", back_populates='messages')
+    matches = db.relationship("Match", foreign_keys=[matched_id], back_populates='messages')
 
     def to_dict(self):
         return {
