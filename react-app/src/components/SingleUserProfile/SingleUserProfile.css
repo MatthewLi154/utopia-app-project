@@ -5,7 +5,7 @@
 .single-profile-main-container {
   display: flex;
   justify-content: center;
-  background-color: lightblue;
+  background-color: rgb(253, 253, 253);
   height: 100%;
   margin: 0px;
   width: 100%;
@@ -18,12 +18,12 @@
   width: 50rem;
   height: 21rem;
   align-items: center;
-  border: 1px solid lightgray;
+  border: 3px solid black;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: #f4dfbe;
 }
 
-.single-profile-container h1 {
+.single-profile-continer h1 {
   display: flex;
   justify-content: center;
 }
@@ -110,6 +110,7 @@
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   background-color: lightcoral;
+
 }
 
 .left-column-biography-container h4 {
@@ -120,7 +121,8 @@
 .biography-container-bio {
   padding: 1rem 1rem;
   font-size: 18px;
-  background-color: white;
+  background-color: #f4dfbe;
+  border: 3px solid black;
   /* border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem; */
 }
@@ -155,7 +157,7 @@
 }
 
 .identify-as-container {
-  background-color: white;
+  background-color: #f4dfbe;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;
@@ -172,7 +174,7 @@
 }
 
 .languages-container {
-  background-color: white;
+  background-color: #f4dfbe;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;
@@ -189,7 +191,7 @@
 }
 
 .hobbies-container {
-  background-color: white;
+  background-color: #f4dfbe;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;
@@ -205,7 +207,7 @@
 }
 
 .kids-container {
-  background-color: white;
+  background-color: #f4dfbe;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;
@@ -221,7 +223,7 @@
 }
 
 .pets-container {
-  background-color: white;
+  background-color: #f4dfbe;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;
