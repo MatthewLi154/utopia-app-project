@@ -13,13 +13,9 @@ def add_matches():
     # New profile with score will need to compare scores with existing profiles
 
     data = request.get_json()
-    print('THIS IS MATCHES DATA', data)
     # add each dictionary from data list to match table as new match instance
     # Match.query.delete()
-    print('data', data)
     existing_matches = Match.query.all()
-    print(existing_matches)
-
     # unique_pairs_set = set((),)
 
     ## query all matches
@@ -31,9 +27,7 @@ def add_matches():
     ## repeat
     for new_match in data:
         all_matches = Match.query.all()
-        print("all matches", all_matches)
         matches_obj = [match.to_dict_without_id() for match in all_matches]
-        print("matches to dict", matches_obj)
         flipped_match = {'profile_id': new_match['matched_profile_id'], 'matched_profile_id': new_match['profile_id']}
         if new_match not in matches_obj and flipped_match not in matches_obj:
             print("no profile in database")
@@ -48,40 +42,42 @@ def add_matches():
     for matched in matched_profiles:
         matched_profiles_dict[matched.to_dict()['id']] = matched.to_dict()
 
-    current_user_id = current_user.to_dict()['id']
-    current_profile = Profile.query.filter_by(user_id=current_user_id).first()
-    current_profile_id = current_profile.to_dict()['id']
-    print(current_profile_id)
+    if current_user_id:
+        current_user_id = current_user.to_dict()['id']
+        current_profile = Profile.query.filter_by(user_id=current_user_id).first()
+        current_profile_id = current_profile.to_dict()['id']
+        print(current_profile_id)
 
-    matches_state_set = set()
-    for match_set in matched_profiles_dict:
-        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
-            matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
-        if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
-            matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
-    print(matches_state_set)
+        matches_state_set = set()
+        for match_set in matched_profiles_dict:
+            if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
+                matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
+            if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
+                matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
+        print(matches_state_set)
 
-    # Get current profile score
-    current_profile_score = current_profile.to_dict()['score']
+        # Get current profile score
+        current_profile_score = current_profile.to_dict()['score']
 
-    # for each profile id, get score then calculate match percentage
-    # return match profile id and respective match percentage in dictionary where match profile id is key of dict
-    match_percent_dict = {}
-    for profile_id in matches_state_set:
-        print(profile_id)
-        match_profile = Profile.query.filter_by(id=profile_id).first()
-        if match_profile:
-            match_profile_score = match_profile.to_dict()['score']
-            if match_profile_score > current_profile_score:
-                matching_percentage = current_profile_score / match_profile_score
-            else:
-                matching_percentage = match_profile_score / current_profile_score
-        match_percent_dict[profile_id] = {
-            "matched_profile_id": profile_id,
-            "matching_percentage": matching_percentage
-        }
+        # for each profile id, get score then calculate match percentage
+        # return match profile id and respective match percentage in dictionary where match profile id is key of dict
+        match_percent_dict = {}
+        for profile_id in matches_state_set:
+            print(profile_id)
+            match_profile = Profile.query.filter_by(id=profile_id).first()
+            if match_profile:
+                match_profile_score = match_profile.to_dict()['score']
+                if match_profile_score > current_profile_score:
+                    matching_percentage = current_profile_score / match_profile_score
+                else:
+                    matching_percentage = match_profile_score / current_profile_score
+            match_percent_dict[profile_id] = {
+                "matched_profile_id": profile_id,
+                "matching_percentage": matching_percentage
+            }
 
-    return match_percent_dict
+        return match_percent_dict
+    return {}
 
 @matches_routes.route('/match-percent', methods=['GET'])
 @login_required

@@ -66,21 +66,22 @@ function App() {
           {sessionUser[0] === null ? (
             <Route>
               <NavBar loaded={loaded} />
+              {console.log(sessionUser)}
               <Home />
             </Route>
           ) : (
             <>
-              {loaded && (
+              {loaded && sessionUser[0] !== null && (
                 <>
                   <NavBar loaded={loaded} />
                   <BrowseBar />
                   <Switch>
-                    <Route path="/login" exact={true}>
+                    {/* <Route path="/login" exact={true}>
                       <LoginForm />
                     </Route>
                     <Route path="/sign-up" exact={true}>
                       <SignUpForm />
-                    </Route>
+                    </Route> */}
                     <Route path="/profiles/:category">
                       <ProfileCategory />
                     </Route>

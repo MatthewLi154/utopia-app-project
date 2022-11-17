@@ -106,7 +106,7 @@ export const deleteSingleProfile = (id) => async (dispatch) => {
   if (response) {
     const data = await response.json();
     dispatch(deleteProfile(id));
-    return data;
+    return { message: data };
   }
 };
 

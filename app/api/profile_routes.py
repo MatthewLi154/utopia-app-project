@@ -36,7 +36,7 @@ def delete_profile(id):
     profile = Profile.query.filter_by(id=id).first()
     db.session.delete(profile)
     db.session.commit()
-    return "Successfully deleted"
+    return {"message": "Successfully deleted"}
 
 
 
