@@ -1,5 +1,5 @@
 .entire-profiles-page {
-  background-color: lightblue;
+  background-color: white;
   width: 100%;
   height: 100%;
   display: flex;
@@ -55,15 +55,15 @@
   height: 200px;
   width: 200px;
   border-radius: 100px;
-  background: rgb(0,159,255);
-  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);
-  transition: all 500ms ease-in;
-  transition-delay: 0.2s;
+  /* background: rgb(0,159,255); */
+  background: linear-gradient(121deg, #6e51c8 13%, #6e51c8 100%);
+  transition: all 50ms ease-in;
+  transition-delay: 0.1s;
   margin: auto;
   margin-top: 100px;
   --margin-top: 100px;
   overflow: hidden;
-  color: #3c42c4
+  color: #dda2a3
   /* flex-direction: column; */
   /* border: solid 1px black;
   cursor: pointer;
@@ -80,9 +80,9 @@
 
 .profile-box:hover {
   /* /* box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08); */
-width: 400px;
+width: 580px;
 border-radius: 100px 10px 100px 100px;
-transition: all 1s ease-out;
+transition: all 0.5s ease-out;
 }
 
 /* .profile-box-content img {
@@ -124,9 +124,10 @@ transition: all 1s ease-out;
   display: flex;
   visibility: visible;
   transition: all 0.1s ease-out;
-  transition-delay: 50ms;
+  transition-delay: 5ms;
   width: 100%;
   height: auto;
+  /* position: absolute; */
 }
 /* .profile-box-content h3 {
   margin-top: 0.5rem;
@@ -151,6 +152,10 @@ transition: all 1s ease-out;
   border: 10px solid white;
   margin: 0 0 0 0; padding: 0 0 0 0;
 }
+
+.profile-box:hover #main img {
+  border: 10px solid #6e51c8;
+}
 /*
 .profile-box-sub-content {
   color: gray;
@@ -163,6 +168,7 @@ transition: all 1s ease-out;
   position: static;
   flex-direction: column;
   font-size: 15px;
+  padding: 0.4rem;
 }
 
 .inner-profiles-container {

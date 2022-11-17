@@ -17,6 +17,7 @@ function CreateProfileLocation() {
   useEffect(() => {
     newProfile.location = location;
     localStorage.setItem("location", location);
+    console.log(newProfile);
   }, [location]);
 
   const validate = () => {

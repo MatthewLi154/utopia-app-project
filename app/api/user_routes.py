@@ -5,14 +5,24 @@ from app.models import User
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
-@login_required
+@user_routes.route('')
+# @login_required
 def users():
     """
     Query for all users and returns them in a list of user dictionaries
     """
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
+
+
+@user_routes.route('/email/<email>')
+def get_user(email):
+    """
+    Query for user by email and returns that user id a dictionary
+    """
+    user = User.query.filter_by(email=email).first()
+    print(user)
+    return user.to_dict()
 
 
 @user_routes.route('/<int:id>')
