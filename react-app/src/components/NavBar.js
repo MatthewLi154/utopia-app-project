@@ -39,18 +39,18 @@ const NavBar = ({ loaded }) => {
         <ul className="nav-list">
           <div className="left-nav-items">
             <li className="left-nav">
-              <NavLink to="/profiles" exact={true}>
+              <NavLink to="/" exact={true}>
                 <img
                   src="https://i.imgur.com/G4xDlfp.jpg"
                   alt="logo"
                   className="home-logo"
                 ></img>
               </NavLink>
-              <NavLink className="discover" to="/profiles" exact={true}>
-              🔎Discover
+              <NavLink className="discover" to="/" exact={true}>
+                🔎Discover
               </NavLink>
               <NavLink className="discover" to="/conversations" exact={true}>
-              💬Messages
+                💬Messages
               </NavLink>
             </li>
           </div>
@@ -66,25 +66,29 @@ const NavBar = ({ loaded }) => {
       <div>
         <div className="nav-bar-splash">
           <div className="nav-list-splash">
-            <div >
+            <div>
               <div className="left-logo">
-              <NavLink to="/" exact={true}>
-                <img
-                  src="https://i.imgur.com/ipOVSr7.png"
-                  alt="logo"
-                  className="home-logo"
-                ></img>
-              </NavLink>
+                <NavLink to="/" exact={true}>
+                  <img
+                    src="https://i.imgur.com/ipOVSr7.png"
+                    alt="logo"
+                    className="home-logo"
+                  ></img>
+                </NavLink>
               </div>
             </div>
 
-            <div className='right-nav-items-splash'>
-              <div className='right-nav-items-splash-login'>
+            <div className="right-nav-items-splash">
+              <div className="right-nav-items-splash-login">
                 Have an account?
-                <button className="nav-sign-up-button" onClick={() => {
-                  setLogin(true)
-                }
-                }>Sign In</button>
+                <button
+                  className="nav-sign-up-button"
+                  onClick={() => {
+                    setLogin(true);
+                  }}
+                >
+                  Sign In
+                </button>
               </div>
             </div>
           </div>
