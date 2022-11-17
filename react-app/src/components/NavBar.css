@@ -13,7 +13,7 @@
   list-style: none;
   height: 80px;
   width: 100%;
-  margin: 0rem 3rem;
+  margin: 0rem 0rem;
   top: 0;
   align-items: center;
   box-sizing: border-box;
@@ -38,21 +38,21 @@
 
 .discover:hover {
   cursor: pointer;
-  background: lightcoral;
+  background: #6e51c8;
   border-radius: 20px;
 }
 
 .default-profile-pic {
   border-radius: 100%;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   object-fit: cover;
 }
 
 .Right-nav-user {
   display: flex;
   align-items: center;
-  margin: 0rem 11rem;
+  margin: 0rem 6.2rem;
 }
 
 .user-name {
@@ -127,7 +127,7 @@
 .nav-bar-splash {
   margin: 0px;
   width: 100%;
-  background-color:rgb(34, 118, 192);
+  background-color:#3c42c4
 }
 
 .nav-list-splash {
@@ -169,15 +169,15 @@
   letter-spacing: 1.3px;
   font-weight: 700;
   color: #313133;
-  background: #4fd1c5;
+  background: #d68fb8;
   background: linear-gradient(
     90deg,
-    rgba(129, 230, 217, 1) 0%,
-    rgba(79, 209, 197, 1) 100%
+    #d68fb8 0%,
+    #d68fb8 100%
   );
   border: none;
   border-radius: 1000px;
-  box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+  box-shadow: 3px 3px 5px #d68fb8;
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
@@ -353,4 +353,5 @@ sign-up-button:focus::after {
   width: 100px;
   height: 30px;
   cursor: pointer;
+  margin-left: 1rem;
 }
