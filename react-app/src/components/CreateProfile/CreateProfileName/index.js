@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import "./CreateProfileName.css";
+import { useProfile } from "../../../context/profileContext";
 
 function CreateProfileName() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const uselocation = useLocation();
 
   const [name, setName] = useState(localStorage.getItem("name") || "");
   const [validationErrors, setValidationErrors] = useState([]);
+  const newProfile = uselocation.state?.newProfile;
+  const { profileData, setProfileData } = useProfile();
 
-  let newProfile = {};
   useEffect(() => {
-    newProfile.name = name;
+    if (newProfile) {
+      newProfile.name = name;
+    }
     localStorage.setItem("name", name);
+    console.log(newProfile);
+
+    console.log(profileData);
   }, [name]);
 
   const validate = () => {
@@ -55,7 +63,7 @@ function CreateProfileName() {
               <div
                 className="create-name-icon"
                 onClick={() => {
-                  history.push("/profiles");
+                  history.push("/");
                 }}
               >
                 <i className="fa-solid fa-angle-left"></i>

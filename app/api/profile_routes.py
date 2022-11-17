@@ -36,12 +36,12 @@ def delete_profile(id):
     profile = Profile.query.filter_by(id=id).first()
     db.session.delete(profile)
     db.session.commit()
-    return "Successfully deleted"
+    return {"message": "Successfully deleted"}
 
 
 
 @profile_routes.route('', methods=['GET'])
-@login_required
+# @login_required
 def user_profile():
     user_profiles = Profile.query.all()
     parsed_user_dict = {}
@@ -58,7 +58,7 @@ def single_user_profile(id):
 
 
 @profile_routes.route('', methods=['POST'])
-@login_required
+# @login_required
 def create_profile():
     """
     This method will take in profile infomration that user inputs
