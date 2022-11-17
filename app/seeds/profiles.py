@@ -179,6 +179,8 @@ def seed_profiles():
     db.session.add(demo_profile_5)
     db.session.add(demo_profile_6)
     db.session.add(demo_profile_7)
+    db.session.add(demo_profile_8)
+    db.session.add(demo_profile_9)
 
     db.session.commit()
 
