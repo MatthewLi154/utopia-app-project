@@ -140,10 +140,12 @@ function CreateProfileOther() {
       let newUserDataCreate = await dispatch(
         sessionActions.signUp("test17", "test17@gmail.com", "password")
       );
-      const userId = await fetch(
-        `/api/auth/${JSON.parse(profileDataStorage).email}`
-      );
-      console.log("is there an id:", userId);
+      // const userId = await fetch(
+      //   `/api/users/email/${JSON.parse(profileDataStorage).email}`
+      // );
+      const userslist = await fetch("/api/users");
+
+      console.log("is there an id:", userslist);
     };
 
     createUser();

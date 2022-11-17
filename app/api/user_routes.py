@@ -15,6 +15,15 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
+@user_routes.route('/email/<email>')
+def get_user(email):
+    """
+    Query for user by email and returns that user id a dictionary
+    """
+    user = User.query.filter_by(email=email).first()
+    return user.to_dict()
+
+
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
@@ -22,12 +31,4 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
-    return user.to_dict()
-
-@user_routes.route('/<email>')
-def get_user(email):
-    """
-    Query for user by email and returns that user id a dictionary
-    """
-    user = User.query.filter_by(email=email)
     return user.to_dict()
