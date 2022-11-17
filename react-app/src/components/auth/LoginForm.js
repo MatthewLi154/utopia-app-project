@@ -55,7 +55,7 @@ const LoginForm = ({ setLogin }) => {
     <div class="container" id="container">
       <div class="form-container sign-up-container">
         <form className='form-modal' onClick={(e) => e.stopPropagation()} onSubmit={onSignUp}>
-          <h1>Create Account</h1>
+          <h1 className="modal-sign-in-header">Create Account</h1>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
@@ -94,7 +94,7 @@ const LoginForm = ({ setLogin }) => {
       </div>
       <div class="form-container sign-in-container">
         <form className='form-modal' onClick={e => e.stopPropagation()} onSubmit={onLogin}>
-          <h1>Sign in</h1>
+          <h1 className="modal-sign-in-header">Sign in</h1>
           <input
             type="text"
             placeholder="Email"
@@ -136,7 +136,7 @@ const LoginForm = ({ setLogin }) => {
               others on Utopia!
             </p>
             <button onClick={transition} class="ghost" id="signUp">
-              Sign Up
+              Create an Account
             </button>
           </div>
         </div>

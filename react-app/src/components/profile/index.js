@@ -58,6 +58,7 @@ function Profile() {
                         <NavLink to={`/profile/${profile.id}`}>
                         <img className="profile-img" src={profile.img_url1}></img>
                         </NavLink>
+                        </div>
 
                         <NavLink
                           // onClick={async (e) => {
@@ -82,7 +83,7 @@ function Profile() {
                             {calculateAge(profile.birthday)}
                           </div>
                         </div>
-                      </div>
+
                     </li>
                   )
               )}
