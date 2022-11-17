@@ -54,11 +54,10 @@ function Profile() {
                 (profile) =>
                   profile.user_id !== currentUserId && (
                     <li className="profile-box" key={profile.id}>
-                      <div className="profile-box-content">
-                        <div className="avatar">
+                      <div className="profile-box-content" id="main">
                         <NavLink to={`/profile/${profile.id}`}>
                         <img className="profile-img" src={profile.img_url1}></img>
-                        </NavLink></div>
+                        </NavLink>
 
                         <NavLink
                           // onClick={async (e) => {
@@ -75,10 +74,10 @@ function Profile() {
                         >
 
 
-                          <h3 className="card-title">{profile.first_name}</h3>
+                          <h3 className="card-title" id="texting">{profile.first_name}</h3>
                         </NavLink>
                         <div className="profile-box-sub-content">
-                          <div>
+                          <div id="texting">
                             {profile.location} •{" "}
                             {calculateAge(profile.birthday)}
                           </div>
