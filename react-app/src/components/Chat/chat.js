@@ -2,16 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {createMessage,deletingMessage} from "../../store/message"
 import UpdateMessage from "../UpdateMessageModal";
+import './chat.css'
 
 
-const Chat = ({profile, match,socket}) => {
+const Chat = ({socket}) => {
   const [body, setBody] = useState("");
   const [validateErrors, setValidateErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [style, setStyle] = useState({display: 'none'})
   const dispatch = useDispatch()
 
+  const matches = useSelector((state) => Object.values(state.messages.matches));
+  const profile = useSelector(state => state.profiles.singleProfile)
+
   const user = useSelector((state) => state.session.user);
+  const match = matches.find(
+    (match) =>
+      profile.id === match.profile_id || profile.id === match.matched_profile_id
+  );
 
   useEffect(() => {
     socket.emit("fetch", {'match': match.id})
@@ -28,6 +37,10 @@ const Chat = ({profile, match,socket}) => {
     })
     }
   , [])
+
+  useEffect(() => {
+    
+  })
 
   useEffect(() => {
     const errors = {}
@@ -71,32 +84,52 @@ const Chat = ({profile, match,socket}) => {
         })
     }
 
+
+
   return (
     user && (
-      <div
-      >
+      <div className="chat_box">
         <div>
           {messages.map((message, ind) => (
             <div key={ind}>
-                <div>
-              {`${message.body}`}
-                </div>
+              <div
+                className={
+                  message.user_sending_id === user.id
+                    ? "chat_message my_messages"
+                    : "chat_message other_messages"
+                }
+              >
+                <p
+                  onMouseEnter={(e) => 
+                    message.user_sending_id === user.id
+                    ? setStyle({ display: "block" }):
+                    null
+                  }
+                  onMouseLeave={(e) => {
+                    setStyle({ display: "none" });
+                  }}
+                >
+                  {message.body}
+                </p>
                 {user.id === message.user_sending_id && (
-                  <div>
-                    <UpdateMessage message={message} setMessages={setMessages} match={match} socket={socket}/>
-                    <button
-                    onClick={() => deleteMessage(message.id)}
-                    >Delete</button>
+                  <div className="message_buttons" style={style}>
+                    <UpdateMessage
+                      message={message}
+                      setMessages={setMessages}
+                      match={match}
+                      socket={socket}
+                    />
+                    <button onClick={() => deleteMessage(message.id)}>
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
                   </div>
                 )}
+              </div>
             </div>
           ))}
         </div>
         <form onSubmit={sendChat}>
-          <input 
-          value={body} 
-          onChange={updateChatInput} 
-          />
+          <input value={body} onChange={updateChatInput} />
           <div>{`${body.length}/100`}</div>
           {hasSubmitted && validateErrors.body && (
             <li>{validateErrors.body}</li>
