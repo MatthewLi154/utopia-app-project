@@ -25,8 +25,8 @@ def seed():
         undo_matches()
     seed_users()
     seed_profiles()
-    seed_messages()
     seed_matches()
+    seed_messages()
     # Add other seed functions here
 
 
@@ -34,7 +34,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_profiles()
     undo_messages()
     undo_matches()
+    undo_profiles()
     # Add other undo functions here
