@@ -14,7 +14,7 @@ function Home() {
       <div className="covertext">
         <div className="col-lg-10">
           <h1 className="title">DATING FOR EVERY SINGLE FANTASY</h1>
-          <h3 className="subtitle">A new dating app for all types of creatures, races, species and everything in between. Discover your soulmate through Utopia!</h3>
+          <h3 className="subtitle">A new dating app for all creatures, races, species, and everything in between. Discover your soulmate through Utopia!</h3>
           <div className="explore">
             <button className="sign-up-button" onClick={() => {
               setLogin(true)

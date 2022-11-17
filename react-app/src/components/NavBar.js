@@ -47,10 +47,10 @@ const NavBar = ({ loaded }) => {
                 ></img>
               </NavLink>
               <NavLink className="discover" to="/profiles" exact={true}>
-                Discover
+              🔎Discover
               </NavLink>
               <NavLink className="discover" to="/conversations" exact={true}>
-                Messages
+              💬Messages
               </NavLink>
             </li>
           </div>
@@ -80,10 +80,11 @@ const NavBar = ({ loaded }) => {
 
             <div className='right-nav-items-splash'>
               <div className='right-nav-items-splash-login'>
+                Have an account?
                 <button className="nav-sign-up-button" onClick={() => {
                   setLogin(true)
                 }
-                }>Join Utopia</button>
+                }>Sign In</button>
               </div>
             </div>
           </div>

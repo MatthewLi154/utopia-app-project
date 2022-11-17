@@ -1,6 +1,8 @@
 .nav-bar {
   margin: 0px;
   width: 100%;
+  background: white;
+
 }
 
 .nav-list {
@@ -16,6 +18,7 @@
   align-items: center;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
 }
 
 .left-nav {
@@ -30,12 +33,13 @@
   padding: 5px;
   text-decoration: none;
   letter-spacing: 0.5px;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .discover:hover {
   cursor: pointer;
-  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  background: lightcoral;
+  border-radius: 20px;
 }
 
 .default-profile-pic {
@@ -252,7 +256,7 @@ sign-up-button:focus::after {
 
 .profile-button img:hover {
     cursor: pointer;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 3px 3px rgba(65, 7, 92, 0.8);
   }
 
   .Right-nav-user {
