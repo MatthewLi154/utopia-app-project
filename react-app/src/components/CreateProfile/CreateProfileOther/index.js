@@ -44,25 +44,6 @@ function CreateProfileOther() {
   const [validationErrors, setValidationErrors] = useState([]);
 
   let profileDataStorage = localStorage.getItem("hashedProfileData");
-  useEffect(() => {
-    // dispatch(fetchAllProfiles());
-    console.log(profileDataStorage);
-    console.log(newProfile);
-  }, [
-    languages,
-    kids,
-    pets,
-    identifyAs,
-    lookingFor,
-    imgUrl1,
-    imgUrl2,
-    imgUrl3,
-    hobbies,
-  ]);
-
-  useEffect(async () => {
-    await dispatch();
-  }, [dispatch]);
 
   useEffect(() => {
     newProfile.languages = languages;
@@ -83,6 +64,8 @@ function CreateProfileOther() {
     localStorage.setItem("imgUrl1", imgUrl1);
     localStorage.setItem("imgUrl2", imgUrl2);
     localStorage.setItem("imgUrl3", imgUrl3);
+    console.log(profileDataStorage);
+    console.log(newProfile);
   }, [languages, pets, hobbies, kids, imgUrl1, imgUrl2, imgUrl3]);
 
   const validate = () => {
