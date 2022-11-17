@@ -26,7 +26,7 @@ function SingleUserProfile() {
     dispatch(fetchAllProfiles());
     dispatch(getProfileMatchPercentage());
     dispatch(getProfileMatches());
-  }, []);
+  }, [dispatch]);
 
   let percent = 0;
   for (const match in matchPercent) {
@@ -80,11 +80,13 @@ function SingleUserProfile() {
     e.preventDefault();
     const response = window.confirm("Are you sure you want to do that?");
     if (response) {
-      await deleteSingleProfile(profileId);
-      await fetchAllProfiles();
+      await dispatch(deleteSingleProfile(profileId));
+      await dispatch(fetchAllProfiles());
+      // await dispatch(getProfileMatchPercentage());
+      // await dispatch(getProfileMatches());
       history.push("/profiles");
     }
-    return;
+    // return;
   };
 
   return (

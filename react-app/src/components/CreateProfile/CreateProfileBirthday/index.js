@@ -22,6 +22,7 @@ function CreateProfileBirthday() {
     localStorage.setItem("month", month);
     localStorage.setItem("year", year);
     newProfile.birthday = `${month}-${day}-${year}`;
+    console.log(newProfile);
   }, [day, month, year]);
 
   const validate = () => {

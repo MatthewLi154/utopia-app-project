@@ -17,10 +17,10 @@ def seed_users():
         username='Shrek', email='Shrek@aa.io', password='password')
     Severus = User(
         username='Severus', email='Severus@aa.io', password='password')
-    PrincessPeach = User(
-        username='PrincessPeach', email='PrincessPeach@aa.io', password='password')
-    Tsunade = User(
-        username='Tsunade', email='Tsunade@aa.io', password='password')
+    # PrincessPeach = User(
+    #     username='PrincessPeach', email='PrincessPeach@aa.io', password='password')
+    # Tsunade = User(
+    #     username='Tsunade', email='Tsunade@aa.io', password='password')
     db.session.add(demo)
     db.session.add(Nandor)
     db.session.add(Dion)
@@ -28,8 +28,8 @@ def seed_users():
     db.session.add(TinkerBell)
     db.session.add(Shrek)
     db.session.add(Severus)
-    db.session.add(PrincessPeach)
-    db.session.add(Tsunade)
+    # db.session.add(PrincessPeach)
+    # db.session.add(Tsunade)
     db.session.commit()
 
 
