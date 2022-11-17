@@ -177,7 +177,7 @@ function EditProfile() {
                 <label>My self-summary</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
@@ -191,7 +191,7 @@ function EditProfile() {
                 <label>Current Goal</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={current_goals}
                     onChange={(e) => setCurrent_goals(e.target.value)}
@@ -205,7 +205,7 @@ function EditProfile() {
                 <label>My Domain</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
@@ -219,7 +219,7 @@ function EditProfile() {
                 <label>Communication skills</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={languages}
                     onChange={(e) => setLanguages(e.target.value)}
@@ -233,7 +233,7 @@ function EditProfile() {
                 <label>I am...</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={identify_as}
                     onChange={(e) => setIdentify_as(e.target.value)}
@@ -247,7 +247,7 @@ function EditProfile() {
                 <label>Compatible with...</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={looking_for}
                     onChange={(e) => setLooking_for(e.target.value)}
@@ -261,7 +261,7 @@ function EditProfile() {
                 <label>My take...</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={kids}
                     onChange={(e) => setKids(e.target.value)}
@@ -275,7 +275,7 @@ function EditProfile() {
                 <label>Have...</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={pets}
                     onChange={(e) => setPets(e.target.value)}
@@ -289,7 +289,7 @@ function EditProfile() {
                 <label>In my free time...</label>
               </div>
               <div className="edit-bio-lower">
-                <div>
+                <div className="bio-box">
                   <textarea
                     value={hobbies}
                     onChange={(e) => setHobbies(e.target.value)}
