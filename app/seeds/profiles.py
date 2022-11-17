@@ -130,7 +130,45 @@ def seed_profiles():
         img_url1='https://i.imgur.com/NIA5HAe.png',
         img_url2='https://i.imgur.com/aH914zk.png',
         img_url3='https://i.imgur.com/SrGifqX.png',
-        score=18,
+        score=20,
+        current_goals="My current goals!"
+    )
+    demo_profile_8 = Profile(
+        user_id=8,
+        first_name='Princess Peach',
+        last_name='Toadstool',
+        birthday='01-08-1965',
+        location='Mushroom Kingdom',
+        bio="Tired of dating jerks with hot tempers. Looking for someone who will stand up for me in a tough situation and likes being active (jumping and go-karting).",
+        kids="Don't have but want them",
+        pets="Toads",
+        hobbies="Playing Games",
+        languages="English",
+        identify_as='Princess',
+        looking_for='Anime',
+        img_url1='https://pm1.narvii.com/5728/1ebc08104b3f431f77b614c7297e054b0df93105_hq.jpg',
+        img_url3='https://pm1.narvii.com/5728/b1ad0f96ea205fe3d09b0757295e30e6da6c8eae_hq.jpg',
+        img_url2='https://static.zerochan.net/Princess.Peach.full.3366530.jpg',
+        score=22,
+        current_goals="My current goals!"
+    )
+    demo_profile_9 = Profile(
+        user_id=9,
+        first_name='Lady Tsunade',
+        last_name='Senju',
+        birthday='08-02-1940',
+        location='Konoha',
+        bio="One of the Legendary Sannin and was the Fifth Hokage of the Hidden Leaf Village. ",
+        kids="Don't want them",
+        pets="Tonton",
+        hobbies="Gambling ",
+        languages="Japanese",
+        identify_as='Anime',
+        looking_for='Human',
+        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
+        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
+        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        score=21,
         current_goals="My current goals!"
     )
 
@@ -141,6 +179,8 @@ def seed_profiles():
     db.session.add(demo_profile_5)
     db.session.add(demo_profile_6)
     db.session.add(demo_profile_7)
+    db.session.add(demo_profile_8)
+    db.session.add(demo_profile_9)
 
     db.session.commit()
 

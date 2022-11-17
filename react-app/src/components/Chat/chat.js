@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {createMessage, fetchAllMessages, deletingMessage} from "../../store/message"
+import {createMessage,deletingMessage} from "../../store/message"
 import UpdateMessage from "../UpdateMessageModal";
 
 
 const Chat = ({profile, match,socket}) => {
   const [body, setBody] = useState("");
+  const [validateErrors, setValidateErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
-  const history = useHistory()
   const dispatch = useDispatch()
 
   const user = useSelector((state) => state.session.user);
-
-//   useEffect(() => {
-//     dispatch(fetchAllMessages(match?.id))
-// }, [dispatch])
-
 
   useEffect(() => {
     socket.emit("fetch", {'match': match.id})
@@ -34,12 +29,22 @@ const Chat = ({profile, match,socket}) => {
     }
   , [])
 
+  useEffect(() => {
+    const errors = {}
+    if(body.length === 0) errors.body = 'Oops you need to send your match something'
+    if(body.length > 100) errors.body = 'Oh no this is too long, TLDR'
+    setValidateErrors(errors)
+  }, [body])
+
   const updateChatInput = (e) => {
     setBody(e.target.value);
   };
 
   const sendChat = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
+
+    if(Object.keys(validateErrors).length > 0) return
 
     const payload = {
       body,
@@ -47,8 +52,14 @@ const Chat = ({profile, match,socket}) => {
     }
 
     let newMessage = await dispatch(createMessage(match.id,payload))
-    socket.emit("chat", {message: {...newMessage}, room: match.id });
+    if (newMessage && Object.keys(validateErrors).length === 0) {
+      socket.emit("chat", { message: { ...newMessage }, room: match.id });
+      setHasSubmitted(false)
+    }
+
+
     setBody("");
+    setValidateErrors({})
   };
 
     const deleteMessage = async(id) => {
@@ -63,7 +74,6 @@ const Chat = ({profile, match,socket}) => {
   return (
     user && (
       <div
-      style={{ background: "red"}}
       >
         <div>
           {messages.map((message, ind) => (
@@ -83,12 +93,20 @@ const Chat = ({profile, match,socket}) => {
           ))}
         </div>
         <form onSubmit={sendChat}>
-          <input value={body} onChange={updateChatInput} />
+          <input 
+          value={body} 
+          onChange={updateChatInput} 
+          />
+          <div>{`${body.length}/100`}</div>
+          {hasSubmitted && validateErrors.body && (
+            <li>{validateErrors.body}</li>
+          )}
           <button type="submit">Send</button>
         </form>
       </div>
     )
   );
 };
+
 
 export default Chat;
