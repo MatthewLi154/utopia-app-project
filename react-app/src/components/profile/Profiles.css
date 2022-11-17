@@ -4,6 +4,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  /* flex-direction: row; */
 }
 
 /* .main-profiles-page-container {
@@ -57,10 +58,13 @@
   background: rgb(0,159,255);
   background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);
   transition: all 500ms ease-in;
-  transition-delay: 1s;
+  transition-delay: 0.2s;
   margin: auto;
   margin-top: 100px;
   --margin-top: 100px;
+  overflow: hidden;
+  color: #3c42c4
+  /* flex-direction: column; */
   /* border: solid 1px black;
   cursor: pointer;
   margin-left: 2rem;
@@ -76,7 +80,7 @@
 
 .profile-box:hover {
   /* /* box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08); */
-width: 500px;
+width: 400px;
 border-radius: 100px 10px 100px 100px;
 transition: all 1s ease-out;
 }
@@ -93,7 +97,7 @@ transition: all 1s ease-out;
   /* border-radius: 50%;
 } */ */
 
-.profile-box-content * {
+/* .profile-box-content * { */
   /* width: 140px;
   margin: auto; */
   /* padding-right: 10rem; */
@@ -101,25 +105,26 @@ transition: all 1s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center; */
-  display: flex;
+  /* display: flex;
   --flex: inherit;
   overflow: hidden;
   text-overflow: hidden;
   --background-color: yellow;
-  color: white;
+  color: rgb(31, 173, 31);
   white-space: nowrap;
   width: 0;
   height: auto;
   transition: all 450ms ease-in;
   transition-delay: 1s;
-}
+  flex-direction: column;
+} */
 
 .profile-box-content:hover {
-  --background-color: purple;
+  /* --background-color: purple; */
   display: flex;
   visibility: visible;
-  transition: all 1s ease-out;
-  transition-delay: 500ms;
+  transition: all 0.1s ease-out;
+  transition-delay: 50ms;
   width: 100%;
   height: auto;
 }
@@ -128,7 +133,7 @@ transition: all 1s ease-out;
 } */
 
 .profile-box #main, .profile-box #main img {
-  --background-color: red;
+  /* --background-color: red; */
   height: 200px;
   width: 200px;
   padding-right: 10px;
@@ -155,5 +160,15 @@ transition: all 1s ease-out;
 } */
 
 .profile-box #texting {
-  position: relative;
+  position: static;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+.inner-profiles-container {
+  display: grid;
+  grid-template-columns: 500px 500px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: auto;
 }
