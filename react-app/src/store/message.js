@@ -101,7 +101,7 @@ export const deletingMessage = (id) => async(dispatch) => {
     }
 }
 
-export const messageMatching = (data) => async(dispatch) => {
+export const messageMatching = () => async(dispatch) => {
     const response = await fetch('/api/messages/matches')
 
     if (response.ok) {
