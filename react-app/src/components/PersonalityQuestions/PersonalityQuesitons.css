@@ -1,4 +1,4 @@
-.question-label {
+/* .question-label {
   display: flex;
   justify-content: center;
 }
@@ -19,36 +19,474 @@
   border: 1px solid purple;
   height: 1.5rem;
   width: 9rem;
-}
+} */
 
-.question-choices-container input:after {
+/* .question-choices-container input:after { */
   /* position: fixed;
   opacity: 0;
   pointer-events: none; */
-  accent-color: red;
-}
-
+  /* accent-color: red;
+} */
+/*
 .question-choices-container div:active {
   background-color: aqua;
 }
 
-.question-choices {
+.question-choices { */
   /* background-color: purple; */
-}
-
+/* } */
+/*
 .question-choices-left {
   border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-bottom-left-radius: 1rem; */
   /* background-color: aqua; */
-}
+/* } */
 
-.question-choices-right {
+/* .question-choices-right {
   border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-bottom-right-radius: 1rem; */
   /* background-color: aqua; */
-}
+/* }
 
 .submit-personality-questions-container {
   display: flex;
   justify-content: center;
+} */
+
+.entire-container {
+  background: rgb(208, 187, 225);
+  font-family: 'Roboto';
+  font-weight:1000;
+  text-transform: uppercase;
+  /* color: #0f78d4; */
+  overflow: hidden;
+  height:auto;
+}
+
+.header-person {
+color: #405adf;
+padding-bottom: 15px;
+margin-left: 30px;
+font-size: 33px;
+}
+
+.labels {
+  font-weight:400;
+  text-align: center;
+  margin:auto;
+  padding-top: 30px;
+  margin-bottom: 50px;
+  /* margin-left: 10px; */
+  color: #405adf;
+  /* padding-left: 35px; */
+}
+
+.question-labels {
+  margin-left: 45px;
+}
+
+.personality-form {
+  position:relative;
+  top: 0rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 500px;
+  height: auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.question-choices-container {
+  list-style-type: none;
+  width: 200px;
+  color: blue;
+  /* margin: auto; */
+  align-items: flex-start;
+  align-self: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+
+
+
+}
+
+.question-choices-left,
+.question-choices,
+.question-choices-right {
+  position: relative;
+  justify-content: flex-start;
+  padding: 10px;
+  padding-left: 40px;
+  height:30px;
+}
+
+.answer-choices:before {
+  content: "";
+    width: 10px;
+    height: 10px;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    left: 10px;
+    top: calc(50% - 13px);
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+input[type="radio"] {
+  opacity: 0;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  top: calc(50% - 15px);
+  cursor: pointer;
+}
+
+.bullet {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  left: -0px;
+  top: 2px;
+  border: 5px solid #fff;
+  opacity: 0;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked ~ .bullet {
+  position:absolute;
+  opacity: 1;
+  animation-name: explode;
+  animation-duration: 0.350s;
+}
+
+.line {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  opacity:0;
+}
+
+.line.zero {
+  left: 11px;
+  top: -21px;
+  transform: translateY(20px);
+  width: 2px;
+  height: 10px;
+}
+
+.line.one {
+  right: -7px;
+  top: -11px;
+  transform: rotate(-55deg) translate(-9px);
+}
+
+.line.two {
+  right: -20px;
+  top: 11px;
+  transform: translate(-9px);
+}
+
+.line.three {
+  right: -8px;
+  top: 35px;
+  transform: rotate(55deg) translate(-9px);
+}
+
+.line.four {
+  left: -8px;
+  top: -11px;
+  transform: rotate(55deg) translate(9px);
+}
+
+.line.five {
+  left: -20px;
+  top: 11px;
+  transform: translate(9px);
+}
+
+.line.six {
+  left: -8px;
+  top: 35px;
+  transform: rotate(-55deg) translate(9px);
+}
+
+.line.seven {
+  left: 11px;
+  bottom: -21px;
+  transform: translateY(-20px);
+  width: 2px;
+  height: 10px;
+}
+
+input[type="radio"]:checked ~ .bullet .line.zero{
+  animation-name:drop-zero;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.one{
+  animation-name:drop-one;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.two{
+  animation-name:drop-two;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.three{
+  animation-name:drop-three;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.four{
+  animation-name:drop-four;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.five{
+  animation-name:drop-five;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.six{
+  animation-name:drop-six;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+input[type="radio"]:checked ~ .bullet .line.seven{
+  animation-name:drop-seven;
+  animation-delay: 0.100s;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes explode {
+  0%{
+    opacity: 0;
+    transform: scale(2);
+  }
+  60%{
+    opacity: 1;
+    transform: scale(0.5);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drop-zero {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    height: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: translateY(-2px);
+    height: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-one {
+  0% {
+    opacity: 0;
+    transform: rotate(-55deg) translate(-20px);
+    width: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: rotate(-55deg) translate(9px);
+    width: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-two {
+  0% {
+    opacity: 0;
+    transform: translate(-20px);
+    width: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: translate(9px);
+    width: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-three {
+  0% {
+    opacity: 0;
+    transform: rotate(55deg) translate(-20px);
+    width: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: rotate(55deg) translate(9px);
+    width: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-four {
+  0% {
+    opacity: 0;
+    transform: rotate(55deg) translate(20px);
+    width: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: rotate(55deg) translate(-9px);
+    width: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-five {
+  0% {
+    opacity: 0;
+    transform: translate(20px);
+    width: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: translate(-9px);
+    width: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-six {
+  0% {
+    opacity: 0;
+    transform: rotate(-55deg) translate(20px);
+    width: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: rotate(-55deg) translate(-9px);
+    width: 0px;
+    opacity:0;
+  }
+}
+
+@keyframes drop-seven {
+0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    height: 10px;
+  }
+  20% {
+    opacity:1;
+  }
+  100% {
+    transform: translateY(2px);
+    height: 0px;
+    opacity:0;
+  }
+}
+
+.personality-submit {
+  width: 80px;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.personality-submit:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.personality-submit:active {
+  color: #000;
+}
+
+.personality-submit:active:after {
+  background: transparent;
+}
+
+.personality-submit:hover:before {
+  opacity: 1;
+}
+
+.personality-submit:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }

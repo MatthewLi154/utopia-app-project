@@ -41,15 +41,24 @@ a {
 
 .sign-up {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border: 1px solid #3c42c4;
+  background-color: #3c42c4;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
-  padding: 12px 45px;
+  padding: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  margin: 0.5rem 0rem;
+
+}
+
+.modal-sign-in-header {
+  color: #3c42c4;
+}
+.sign-in-container button {
+  width: 171px;
 }
 
 .sign-up:active {
@@ -82,7 +91,7 @@ button.ghost {
   border-color: #ffffff;
 }
 
-form {
+.form-modal {
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -93,7 +102,7 @@ form {
   text-align: center;
 }
 
-input {
+.modal-inputs {
   background-color: #eee;
   border: none;
   padding: 12px 15px;
@@ -102,7 +111,7 @@ input {
 }
 
 .container {
-  background-color: rgb(228, 159, 22);
+  background: #dda2a3;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
@@ -174,8 +183,7 @@ input {
 
 .overlay {
   background: #960628;
-  background: -webkit-linear-gradient(to right, #9fc9eb, #5fcedf);
-  background: linear-gradient(to right, #97c0e6, #88aee6);
+  background: linear-gradient(to right, #a065cd, #6e51c8);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -247,4 +255,3 @@ input {
     align-items: center;
     text-decoration: none;
  } */
-

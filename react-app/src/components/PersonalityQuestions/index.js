@@ -105,57 +105,95 @@ function PersonalityQuestions() {
 
   return (
     <>
-      <h1>Personality Questions</h1>
-      <div>
-        <form>
-          <div>
-            <div className="question-label">
-              <label>
-                Would you rather go to the bar or stay home and watch movies on
-                a Friday night?
-              </label>
+
+      <div className="entire-container">
+
+        <form className="personality-form">
+          <h1 className="header-person">Personality Questions</h1>
+
+          <div className="question-label">
+            <div className="question-labels">
+            <label className="labels">
+              Would you rather go to the bar or stay home and watch movies on
+              a Friday night?
+            </label>
             </div>
-            <div className="question-choices-container">
-              <div className="question-choices-left">
+            <ul className="question-choices-container">
+              <li className="question-choices-left">
                 <input
                   type="radio"
                   id="choice1"
                   name="question1"
                   value={1}
+                  className="choice"
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
-                <label for="choice1">Stay home</label>
-              </div>
+                <label className="answer-choices" for="choice1">Stay home</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices">
+              <li className="question-choices">
                 <input
                   type="radio"
                   id="choice2"
                   name="question1"
                   value={2}
+                  className="choice"
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
-                <label for="choice2">Not sure</label>
-              </div>
+                <label className="answer-choices" for="choice2">Not sure</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices-right">
+              <li className="question-choices-right">
                 <input
                   type="radio"
                   id="choice3"
                   name="question1"
                   value={3}
+                  className="choice"
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
-                <label for="choice3">To the bar</label>
-              </div>
-            </div>
+                <label className="answer-choices" for="choice3">To the bar</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
+            </ul>
           </div>
           <div>
             <div className="question-label">
-              <label>How would your best friend describe you?</label>
+            <div className="question-labels">
+              <label className="labels">How would your best friend describe you?</label>
+              </div>
             </div>
-            <div className="question-choices-container">
-              <div className="question-choices-left">
+            <ul className="question-choices-container">
+              <li className="question-choices-left">
                 <input
                   type="radio"
                   id="choice4"
@@ -163,10 +201,20 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
-                <label for="choice4">Dependable</label>
-              </div>
+                <label className="answer-choices" for="choice4">Dependable</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices">
+              <li className="question-choices">
                 <input
                   type="radio"
                   id="choice5"
@@ -174,10 +222,20 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
-                <label for="choice5">A normie</label>
-              </div>
+                <label className="answer-choices" for="choice5">A normie</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices-right">
+              <li className="question-choices-right">
                 <input
                   type="radio"
                   id="choice6"
@@ -185,16 +243,27 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
-                <label for="choice6">Jokester</label>
-              </div>
-            </div>
+                <label className="answer-choices" for="choice6">Jokester</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
+            </ul>
           </div>
           <div>
             <div className="question-label">
-              <label>Choice of drink?</label>
+            <div className="question-labels">
+              <label className="labels">Choice of drink?</label></div>
             </div>
-            <div className="question-choices-container">
-              <div className="question-choices-left">
+            <ul className="question-choices-container">
+              <li className="question-choices-left">
                 <input
                   type="radio"
                   id="choice7"
@@ -202,10 +271,20 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
-                <label for="choice7">Orange Juice</label>
-              </div>
+                <label className="answer-choices" for="choice7">Orange Juice</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices">
+              <li className="question-choices">
                 <input
                   type="radio"
                   id="choice8"
@@ -213,10 +292,20 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
-                <label for="choice8">Water</label>
-              </div>
+                <label className="answer-choices" for="choice8">Water</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices-right">
+              <li className="question-choices-right">
                 <input
                   type="radio"
                   id="choice9"
@@ -224,16 +313,27 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
-                <label for="choice9">Coke and rum</label>
-              </div>
-            </div>
+                <label className="answer-choices" for="choice9">Coke and rum</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
+            </ul>
           </div>
           <div>
             <div className="question-label">
-              <label>How would you spend a million dollars?</label>
+            <div className="question-labels">
+              <label className="labels">How would you spend a million dollars?</label></div>
             </div>
-            <div className="question-choices-container">
-              <div className="question-choices-left">
+            <ul className="question-choices-container">
+              <li className="question-choices-left">
                 <input
                   type="radio"
                   id="choice10"
@@ -241,10 +341,20 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
-                <label for="choice10">Donate to charity</label>
-              </div>
+                <label className="answer-choices" for="choice10">Donate to charity</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices">
+              <li className="question-choices">
                 <input
                   type="radio"
                   id="choice11"
@@ -252,10 +362,20 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
-                <label for="choice11">Friends and family</label>
-              </div>
+                <label className="answer-choices" for="choice11">Friends and family</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices-right">
+              <li className="question-choices-right">
                 <input
                   type="radio"
                   id="choice12"
@@ -263,16 +383,27 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
-                <label for="choice12">Yacht party</label>
-              </div>
-            </div>
+                <label className="answer-choices" for="choice12">Yacht party</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
+            </ul>
           </div>
           <div>
             <div className="question-label">
-              <label>Rom-coms or horror films?</label>
+            <div className="question-labels">
+              <label className="labels">Rom-coms or horror films?</label></div>
             </div>
-            <div className="question-choices-container">
-              <div className="question-choices-left">
+            <ul className="question-choices-container">
+              <li className="question-choices-left">
                 <input
                   type="radio"
                   id="choice13"
@@ -280,10 +411,20 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
-                <label for="choice13">Romance for sure</label>
-              </div>
+                <label className="answer-choices" for="choice13">Romance for sure</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices">
+              <li className="question-choices">
                 <input
                   type="radio"
                   id="choice14"
@@ -291,10 +432,20 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
-                <label for="choice14">Why not both</label>
-              </div>
+                <label className="answer-choices" for="choice14">Why not both</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
 
-              <div className="question-choices-right">
+              <li className="question-choices-right">
                 <input
                   type="radio"
                   id="choice15"
@@ -302,20 +453,33 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
-                <label for="choice15">Horror only</label>
-              </div>
-            </div>
+                <label className="answer-choices" for="choice15">Horror only</label>
+                <div class="bullet">
+                  <div class="line zero"></div>
+                  <div class="line one"></div>
+                  <div class="line two"></div>
+                  <div class="line three"></div>
+                  <div class="line four"></div>
+                  <div class="line five"></div>
+                  <div class="line six"></div>
+                  <div class="line seven"></div>
+                </div>
+              </li>
+            </ul>
           </div>
-        </form>
-        <div className="submit-personality-questions-container">
-          {/* <NavLink
+          <div className="question-labels">
+          <div className="submit-personality-questions-container">
+            {/* <NavLink
             to={{
               pathname: "/profiles",
             }}
           > */}
-          <button onClick={(e) => onSubmit(e)}>Submit</button>
-          {/* </NavLink> */}
-        </div>
+            <button className="personality-submit" onClick={(e) => onSubmit(e)}>Submit</button>
+            </div>
+            {/* </NavLink> */}
+          </div>
+        </form>
+
       </div>
     </>
   );
