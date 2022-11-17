@@ -108,4 +108,5 @@ const Chat = ({profile, match,socket}) => {
   );
 };
 
+
 export default Chat;
