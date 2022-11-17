@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import * as sessionActions from "../../store/session";
 import "./LoginForm.css";
@@ -34,7 +34,7 @@ const SignUpForm = ({ setLogin }) => {
     }
   };
   const onSignUp = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(
         sessionActions.signUp(username, email, password)
@@ -43,8 +43,13 @@ const SignUpForm = ({ setLogin }) => {
         setErrors(data);
         console.log(errors);
       }
-      history.push("/profiles");
     }
+    history.push("/yes");
+  };
+
+  const consoleSignUp = (e) => {
+    e.preventDefault();
+    console.log("sign up button");
   };
 
   return (
@@ -54,6 +59,7 @@ const SignUpForm = ({ setLogin }) => {
           action="#"
           onClick={(e) => e.stopPropagation()}
           onSubmit={onLogin}
+          // onSubmit={consoleSignUp}
         >
           <h1>Sign in</h1>
           <input
@@ -87,8 +93,9 @@ const SignUpForm = ({ setLogin }) => {
       <div class="form-container sign-up-container">
         <form
           action="#"
-          onClick={(e) => e.stopPropagation()}
-          onSubmit={onSignUp}
+          // onClick={(e) => e.stopPropagation()}
+          // onSubmit={onSignUp}
+          onSubmit={consoleSignUp}
         >
           <h1>Create Account</h1>
           <div>
@@ -121,7 +128,9 @@ const SignUpForm = ({ setLogin }) => {
             placeholder="Confirm Password"
             required={true}
           />
-          <button className="sign-up">Sign Up</button>
+          {/* <NavLink to="/profile/create/name">
+            <button></button>
+          </NavLink> */}
         </form>
       </div>
 

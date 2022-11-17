@@ -134,18 +134,20 @@ def get_matches():
 
     current_user_id = current_user.to_dict()['id']
     current_profile = Profile.query.filter_by(user_id=current_user_id).first()
-    current_profile_id = current_profile.to_dict()['id']
+    if current_profile:
+        current_profile_id = current_profile.to_dict()['id']
 
-    matches_state_set = set()
-    for match_set in matched_profiles_dict:
-        if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
-            matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
-        if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
-            matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
+        matches_state_set = set()
+        for match_set in matched_profiles_dict:
+            if matched_profiles_dict[match_set]['matched_profile_id'] not in matches_state_set and matched_profiles_dict[match_set]['profile_id'] == current_profile_id:
+                matches_state_set.add(matched_profiles_dict[match_set]['matched_profile_id'])
+            if matched_profiles_dict[match_set]['matched_profile_id'] == current_profile_id:
+                matches_state_set.add(matched_profiles_dict[match_set]['profile_id'])
 
-    matched_profiles_state = {}
-    for profile_id in matches_state_set:
-        profile_match = Profile.query.filter_by(id=profile_id).first()
-        matched_profiles_state[profile_id] = profile_match.to_dict()
+        matched_profiles_state = {}
+        for profile_id in matches_state_set:
+            profile_match = Profile.query.filter_by(id=profile_id).first()
+            matched_profiles_state[profile_id] = profile_match.to_dict()
 
-    return matched_profiles_state
+        return matched_profiles_state
+    return {}

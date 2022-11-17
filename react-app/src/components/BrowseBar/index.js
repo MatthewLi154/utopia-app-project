@@ -31,7 +31,7 @@ function BrowseBar() {
         <div
           className="bubble-container"
           onClick={(e) => {
-            history.push("/profiles");
+            history.push("/");
           }}
         >
           <div>

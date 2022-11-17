@@ -32,12 +32,10 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      dispatch(fetchAllProfiles());
+      // dispatch(fetchAllProfiles());
       setLoaded(true);
     })();
   }, [dispatch]);
-
-  useEffect(() => {}, []);
 
   if (!loaded) {
     return null;
@@ -45,74 +43,81 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/profile/create/name">
-          <CreateProfileName />
-        </Route>
-        <Route exact path="/profile/create/birthday">
-          <CreateProfileBirthday />
-        </Route>
-        <Route exact path="/profile/create/location">
-          <CreateProfileLocation />
-        </Route>
-        <Route exact path="/profile/create/other">
-          <CreateProfileOther />
-        </Route>
-        <Route exact path="/profile/create/about">
-          <CreateProfileBio />
-        </Route>
-        <Route exact path="/profile/create/other"></Route>
-        <Route path="">
-          {sessionUser[0] === null ? (
-            <Route>
-              <NavBar loaded={loaded} />
-              {console.log(sessionUser)}
+      {/* <Switch> */}
+      {/* <Route path=""> */}
+      {sessionUser[0] === null ? (
+        <Route>
+          <Switch>
+            <Route exact path="/profile/create/name">
+              <CreateProfileName />
+            </Route>
+            <Route exact path="/profile/create/birthday">
+              <CreateProfileBirthday />
+            </Route>
+            <Route exact path="/profile/create/location">
+              <CreateProfileLocation />
+            </Route>
+            <Route exact path="/profile/create/other">
+              <CreateProfileOther />
+            </Route>
+            <Route exact path="/profile/create/about">
+              <CreateProfileBio />
+            </Route>
+            <Route exact path="/profile/create/other">
+              <CreateProfileOther />
+            </Route>
+            <Route exact path="/">
+              <NavBar loaded={loaded}>
+                <LoginForm />
+              </NavBar>
               <Home />
             </Route>
-          ) : (
+          </Switch>
+        </Route>
+      ) : (
+        <>
+          {loaded && sessionUser[0] !== null && (
             <>
-              {loaded && sessionUser[0] !== null && (
-                <>
-                  <NavBar loaded={loaded} />
-                  <BrowseBar />
-                  <Switch>
-                    {/* <Route path="/login" exact={true}>
+              <NavBar loaded={loaded} />
+              <BrowseBar />
+              <Switch>
+                {/* <Route path="/login" exact={true}>
                       <LoginForm />
                     </Route>
                     <Route path="/sign-up" exact={true}>
                       <SignUpForm />
                     </Route> */}
-                    <Route path="/profiles/:category">
-                      <ProfileCategory />
-                    </Route>
-                    <Route path="/profile/:profileId/personality-questions">
-                      <PersonalityQuestions />
-                    </Route>
-                    <Route exact path="/profile/:profileId/edit">
-                      <EditProfile />
-                    </Route>
-                    <Route exact path="/profile/:profileId">
-                      <SingleUserProfile />
-                    </Route>
-                    <Route exact path="/profiles">
-                      <Profile />
-                    </Route>
-                    <Route path="/conversations">
-                      <CreateConversation />
-                    </Route>
-                    <ProtectedRoute path="/users" exact={true}>
-                      <UsersList />
-                    </ProtectedRoute>
-                    <ProtectedRoute path="/users/:userId" exact={true}>
-                      <User />
-                    </ProtectedRoute>
-                  </Switch>
-                </>
-              )}
+                <Route path="/profiles/:category">
+                  <ProfileCategory />
+                </Route>
+                <Route path="/profile/:profileId/personality-questions">
+                  <PersonalityQuestions />
+                </Route>
+                <Route exact path="/profile/:profileId/edit">
+                  <EditProfile />
+                </Route>
+                <Route exact path="/profile/:profileId">
+                  <SingleUserProfile />
+                </Route>
+                <Route exact path="/">
+                  <Profile />
+                </Route>
+                <Route path="/conversations">
+                  <CreateConversation />
+                </Route>
+                <ProtectedRoute path="/users" exact={true}>
+                  <UsersList />
+                </ProtectedRoute>
+                <ProtectedRoute path="/users/:userId" exact={true}>
+                  <User />
+                </ProtectedRoute>
+              </Switch>
             </>
           )}
-        </Route>
-      </Switch>
+        </>
+      )}
+      {/* </Route> */}
+      {/* </Switch> */}
     </BrowserRouter>
   );
 }
