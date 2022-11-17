@@ -47,10 +47,10 @@ const NavBar = ({ loaded }) => {
                 ></img>
               </NavLink>
               <NavLink className="discover" to="/profiles" exact={true}>
-                Discover
+              🔎Discover
               </NavLink>
               <NavLink className="discover" to="/conversations" exact={true}>
-                Messages
+              💬Messages
               </NavLink>
             </li>
           </div>
@@ -70,7 +70,7 @@ const NavBar = ({ loaded }) => {
               <div className="left-logo">
               <NavLink to="/" exact={true}>
                 <img
-                  src="https://i.imgur.com/2T9mtso.png"
+                  src="https://i.imgur.com/ipOVSr7.png"
                   alt="logo"
                   className="home-logo"
                 ></img>
@@ -80,10 +80,11 @@ const NavBar = ({ loaded }) => {
 
             <div className='right-nav-items-splash'>
               <div className='right-nav-items-splash-login'>
-                <button className="sign-up-button" onClick={() => {
+                Have an account?
+                <button className="nav-sign-up-button" onClick={() => {
                   setLogin(true)
                 }
-                }>Join Utopia</button>
+                }>Sign In</button>
               </div>
             </div>
           </div>

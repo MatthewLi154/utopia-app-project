@@ -11,13 +11,12 @@ const SignUpForm = ({ setLogin }) => {
   const [password, setPassword] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [username, setUsername] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const history = useHistory();
 
   const transition = () => {
     const container = document.getElementById("container");
-    // console.log("CONTAINER", container);
     container.classList.add("right-panel-active");
   };
   const transition2 = () => {
@@ -44,12 +43,9 @@ const SignUpForm = ({ setLogin }) => {
         setErrors(data);
         console.log(errors);
       }
+      history.push("/profiles");
     }
   };
-
-  if (sessionUser) {
-    return <Redirect to="/profiles" />;
-  }
 
   return (
     <div class="container" id="container">

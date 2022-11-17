@@ -8,6 +8,7 @@ import {
   getProfileMatchPercentage,
 } from "../../store/match";
 
+
 function Profile() {
   const userProfiles = useSelector((state) => state.profiles.user_profiles);
   const currentUserId = useSelector((state) => state.session.user.id);
@@ -47,18 +48,23 @@ function Profile() {
     <>
       <div className="entire-profiles-page">
         <div className="main-profiles-page-container">
-          <div className="inner-profiles-container">
+          <ul className="inner-profiles-container">
             {userProfiles &&
               userProfilesArray.map(
                 (profile) =>
                   profile.user_id !== currentUserId && (
-                    <div className="profile-box" key={profile.id}>
-                      <div className="profile-box-content">
-                        <img src={profile.img_url1}></img>
+                    <li className="profile-box" key={profile.id}>
+                      <div className="profile-box-content" id="main">
+                        <NavLink to={`/profile/${profile.id}`}>
+                        <img className="profile-img" src={profile.img_url1}></img>
+                        </NavLink>
+                        </div>
+
                         <NavLink
                           // onClick={async (e) => {
                           //   await dispatch(fetchSingleProfile(profile.id));
                           // }}
+
                           to={{
                             pathname: `/profile/${profile.id}`,
                           }}
@@ -67,19 +73,21 @@ function Profile() {
                             color: "rgb(00, 82, 94)",
                           }}
                         >
-                          <h3>{profile.first_name}</h3>
+
+
+                          <h3 className="card-title" id="texting">{profile.first_name}</h3>
                         </NavLink>
                         <div className="profile-box-sub-content">
-                          <div>
+                          <div id="texting">
                             {profile.location} •{" "}
                             {calculateAge(profile.birthday)}
                           </div>
                         </div>
-                      </div>
-                    </div>
+
+                    </li>
                   )
               )}
-          </div>
+          </ul>
         </div>
       </div>
     </>
