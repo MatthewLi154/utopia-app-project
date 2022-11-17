@@ -1,19 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { useSelector,  useDispatch } from "react-redux";
-import { editMessage } from "../../store/message";
+import { useHistory } from "react-router-dom";
+import { editMessage, fetchAllMessages } from "../../store/message";
 
-function UpdateMessageForm({message, setShowModal}){
+function UpdateMessageForm({message, setMessages, showModal, setShowModal, match, socket}){
     const dispatch = useDispatch()
+    const history = useHistory()
     const [body, setBody] = useState(message.body || '')
+
+    // const fetchFunction = async() => {
+    //     // socket.emit("fetch", {'match': match.id})
+    //     socket.on("last_25_messages", (message_list) => {
+    //         console.log("Last 25 messages:", (message_list))
+    //         setMessages((message) => [...message_list, ...message])
+    //     })
+    // }
+
+    // useEffect(() => {
+    //     socket.emit("fetch", {'match': match.id})
+    //     socket.on("last_25_messages", (message_list) => {
+    //     console.log("Last 25 messages:", (message_list))
+    //     setMessages((message) => [...message_list, ...message])
+    //     })
+    //     }
+    // , [])
+
+    // useEffect(() => {
+    //     dispatch(fetchAllMessages(message.matched_id))
+    // }, [message])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
-            body
+            body,
+            user_sending_id: message.user_sending_id
         }
         let updatedMessage = await dispatch(editMessage(message.id, payload))
+
         if (updatedMessage) {
             setShowModal(false)
+            dispatch(fetchAllMessages(message.matched_id))
         }
         setBody('')
     }

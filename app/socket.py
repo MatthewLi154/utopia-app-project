@@ -43,8 +43,6 @@ def on_join(data):
     print('joined successfully!!')
     print(rooms(sid=None, namespace=None))
 
-    # build a route in message to get all matches based on something.send all those matched_id's. create redux state, matched_ids, key into matched_ids for a specific user
-
 
 # leave room function that will be called on the backend off-focus
 @socketio.on('leave_room')

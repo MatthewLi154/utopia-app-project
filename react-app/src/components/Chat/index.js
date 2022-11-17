@@ -23,16 +23,17 @@ function CreateConversation() {
         };
     }, []);
 
+    let messages = useSelector(state => state?.messages?.matched_messages)
+
   useEffect(() => {
     dispatch(fetchAllProfiles());
     dispatch(getProfileMatches())
     dispatch(messageMatching())
 
-  }, [dispatch]);
+  }, [dispatch, messages]);
 
   let profileMatches = useSelector((state) => Object.values(state.matches.matchedProfiles));
   let matches = useSelector((state) => Object.values(state.messages.matches))
-  console.log('matches', matches)
 
   return (
     <div>

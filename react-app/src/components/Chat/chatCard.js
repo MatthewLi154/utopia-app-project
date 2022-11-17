@@ -1,12 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllMessages,currentConv } from "../../store/message";
-import { getProfileMatches } from "../../store/match";
-import { messageMatching } from "../../store/message";
-import { fetchAllProfiles } from "../../store/profile";
 import Chat from "../Chat/chat";
-import { io } from "socket.io-client";
-let socket;
 
 
 function ChatCard({profile, matches,socket }) {
@@ -15,16 +10,11 @@ function ChatCard({profile, matches,socket }) {
     const dispatch = useDispatch();
 
     const match = matches.find(match => profile.id === match.profile_id || profile.id === match.matched_profile_id)
+    // console.log('match', match)
 
     // useEffect(() => {
-    //     // open socket connection
-    //     // create websocket
-    //     socket = io();
-    // // when component unmounts, disconnect
-    //     return () => {
-    //     socket.disconnect();
-    //     };
-    // }, []);
+    //     dispatch(fetchAllMessages(match?.id))
+    // }, [dispatch])
 
     const joinRoom = () => {
         if (match.id !== '') {
@@ -44,9 +34,6 @@ function ChatCard({profile, matches,socket }) {
         <div>
         <p
             onClick={() => {
-                // dispatch(fetchAllProfiles());
-                // dispatch(getProfileMatches())
-                // dispatch(messageMatching())
                 dispatch(fetchAllMessages(profile.id))
                 dispatch(currentConv(profile.id))
                 joinRoom()
@@ -61,6 +48,7 @@ function ChatCard({profile, matches,socket }) {
                 setSelected(!selected)
                 leaveRoom()
             }}
+            // need to figure out how to leave a room once done
             >
                 Leave Conversation
         </button>

@@ -9,6 +9,7 @@ class Message(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String, nullable=False)
+    user_sending_id = db.Column(db.Integer, nullable = False)
     matched_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('matches.id')), nullable=False)
 
     matches = db.relationship("Match", back_populates='messages')
@@ -17,5 +18,6 @@ class Message(db.Model):
         return {
             'id': self.id,
             'body': self.body,
+            'user_sending_id': self.user_sending_id,
             'matched_id': self.matched_id
         }
