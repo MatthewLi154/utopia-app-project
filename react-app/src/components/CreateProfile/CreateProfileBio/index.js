@@ -27,7 +27,6 @@ function CreateProfileBio() {
     newProfile.currentGoals = currentGoals;
     localStorage.setItem("bio", bio);
     localStorage.setItem("currentGoals", currentGoals);
-    console.log(newProfile);
   }, [bio, currentGoals]);
 
   const validate = () => {
