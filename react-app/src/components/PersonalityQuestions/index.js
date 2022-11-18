@@ -77,7 +77,7 @@ function PersonalityQuestions() {
         }
 
         let newMatch = {};
-        if (matchingPercentage >= 0.6) {
+        if (matchingPercentage >= 0.75) {
           newMatch = {
             profile_id: profileId,
             matched_profile_id: profile.id,
