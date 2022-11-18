@@ -109,7 +109,8 @@
   margin: 0;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
-  background-color: lightcoral;
+  background-color: #6e51c8
+  ;
 
 }
 
@@ -123,6 +124,11 @@
   font-size: 18px;
   background-color: #f4dfbe;
   border: 3px solid black;
+  /* flex-wrap: wrap; */
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
+  /* margin: auto; */
   /* border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem; */
 }
@@ -148,7 +154,7 @@
   margin: 0;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
-  background-color: lightcoral;
+  background-color: #6e51c8;
 }
 
 .details-label-container h4 {
@@ -171,6 +177,9 @@
 .identify-as-detials {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .languages-container {
@@ -188,6 +197,9 @@
 .languages-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .hobbies-container {
@@ -204,6 +216,9 @@
 .hobbies-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .kids-container {
@@ -220,6 +235,9 @@
 .kids-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .pets-container {
@@ -236,4 +254,7 @@
 .pets-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }

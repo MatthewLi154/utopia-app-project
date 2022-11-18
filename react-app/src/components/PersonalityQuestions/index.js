@@ -502,7 +502,7 @@ function PersonalityQuestions() {
             }}
           > */}
               <button
-                className="personality-submit"
+                className="sign-up-button"
                 onClick={(e) => onSubmit(e)}
               >
                 Submit
