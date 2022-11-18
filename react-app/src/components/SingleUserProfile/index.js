@@ -9,6 +9,7 @@ import {
   fetchAllProfiles,
   fetchSingleProfile,
   deleteSingleProfile,
+  deleteProfile,
 } from "../../store/profile";
 import { deleteUser } from "../../store/session";
 import "./SingleUserProfile.css";
@@ -77,13 +78,15 @@ function SingleUserProfile() {
   };
   // }
 
-  const deleteProfile = async (e) => {
+  const onDeleteProfile = async (e) => {
     e.preventDefault();
     const response = window.confirm("Are you sure you want to do that?");
     if (response) {
       await dispatch(deleteUser(currentUserId));
-      // await dispatch(deleteSingleProfile(profileId));
+      await dispatch(deleteProfile(currentUserId));
       await dispatch(fetchAllProfiles());
+
+      await fetch("/api/auth/logout");
       // await dispatch(getProfileMatchPercentage());
       // await dispatch(getProfileMatches());
       history.push("/");
@@ -179,7 +182,7 @@ function SingleUserProfile() {
                     <div>
                       <h4
                         onClick={(e) => {
-                          deleteProfile(e);
+                          onDeleteProfile(e);
                         }}
                       >
                         Delete
