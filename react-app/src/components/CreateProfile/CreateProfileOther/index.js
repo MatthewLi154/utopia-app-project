@@ -70,7 +70,6 @@ function CreateProfileOther() {
 
       console.log(newUserSignUp);
       // console.log(JSON.parse(profileDataStorage).email);
-
       await fetch(`/api/users/email/${JSON.parse(profileDataStorage).email}`)
         .then((response) => {
           if (response.ok) {
@@ -126,6 +125,7 @@ function CreateProfileOther() {
               JSON.parse(profileDataStorage).password
             )
           );
+
           localStorage.clear();
           return history.push(`/profile/${profileId}`);
         }
