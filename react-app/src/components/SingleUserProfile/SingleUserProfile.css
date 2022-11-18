@@ -177,6 +177,9 @@
 .identify-as-detials {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .languages-container {
@@ -194,6 +197,9 @@
 .languages-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .hobbies-container {
@@ -210,6 +216,9 @@
 .hobbies-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .kids-container {
@@ -226,6 +235,9 @@
 .kids-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
 
 .pets-container {
@@ -242,4 +254,7 @@
 .pets-details {
   font-size: 16px;
   padding: 0rem 1rem;
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
 }
