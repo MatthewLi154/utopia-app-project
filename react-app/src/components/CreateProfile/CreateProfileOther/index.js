@@ -126,7 +126,7 @@ function CreateProfileOther() {
               JSON.parse(profileDataStorage).password
             )
           );
-
+          localStorage.clear();
           return history.push(`/profile/${profileId}`);
         }
       }
