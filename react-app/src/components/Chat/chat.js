@@ -87,7 +87,7 @@ const Chat = ({socket}) => {
       })
   }
 
-  
+
 
   return (
     user && (
@@ -105,7 +105,7 @@ const Chat = ({socket}) => {
                 }
                 onMouseEnter={(e) =>
                   message.user_sending_id === user.id
-                    ? setStyle({ display: "block" })
+                    ? setStyle({ display: "flex" })
                     : null
                 }
                 onMouseLeave={(e) => {
@@ -132,7 +132,7 @@ const Chat = ({socket}) => {
           <div ref={scrollRef}/>
         </div>
         <form className="chat_form" onSubmit={sendChat}>
-          <div 
+          <div
           className={hasSubmitted && validateErrors.body ?
             "input_container error" :
             "input_container"}
@@ -143,14 +143,14 @@ const Chat = ({socket}) => {
                 ? validateErrors.body
                 : "Your Honey is Waiting"}
             </span>
-            <div 
+            <div
             className="chat_counter">
               {hasSubmitted && validateErrors.body ?
               <i class="fa-regular fa-face-frown"></i> :
               `${body.length}/100`}
               </div>
           </div>
-          <button 
+          <button
           className="chat_submit"
           type="submit">
             {hasSubmitted && validateErrors.body ?

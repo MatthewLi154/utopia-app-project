@@ -5,10 +5,11 @@ import os
 
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
-    origins = [
-        'https://aa-utopia.onrender.com/',
-        'http://aa-utopia.onrender.com/'
-    ]
+    # origins = [
+    #     'https://aa-utopia.onrender.com/',
+    #     'http://aa-utopia.onrender.com/'
+    # ]
+    origins = "*"
 else:
     origins = "*"
 
