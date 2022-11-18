@@ -325,6 +325,7 @@ sign-up-button:focus::after {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    z-index: 4;
   }
   .profile-dropdown li {
     padding-left: 15px;

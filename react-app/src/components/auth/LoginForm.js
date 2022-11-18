@@ -24,7 +24,6 @@ const LoginForm = ({ setLogin }) => {
     newProfile.email = email;
     newProfile.username = username;
     newProfile.password = password;
-    console.log(newProfile);
     localStorage.setItem("hashedProfileData", JSON.stringify(newProfile));
     setProfileData(newProfile);
   }, [email, password, username]);
@@ -107,7 +106,6 @@ const LoginForm = ({ setLogin }) => {
             }}
           />
         );
-        console.log("hello");
       }
     } else {
       e.preventDefault();

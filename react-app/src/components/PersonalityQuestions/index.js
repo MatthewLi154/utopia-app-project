@@ -64,7 +64,6 @@ function PersonalityQuestions() {
 
     // Get all profiles, compare total to other profiles scores
     let matches = [];
-    // console.log(allProfiles);
     for (const key in allProfiles) {
       const profile = allProfiles[key];
       // Do not compare to self
@@ -88,7 +87,6 @@ function PersonalityQuestions() {
       }
     }
 
-    console.log(matches);
     // Store matches into database
     await dispatch(addNewMatches(matches));
     await dispatch(getProfileMatches());

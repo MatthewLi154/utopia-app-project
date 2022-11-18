@@ -34,7 +34,6 @@ function UpdateMessageForm({message, setMessages, showModal, setShowModal, match
           setHasSubmitted(false);
           socket.emit("fetch", { match: match.id });
           socket.on("last_25_messages", (message_list) => {
-            console.log("Last 25 messages:", message_list);
             setMessages([...message_list]);
           });
         }
