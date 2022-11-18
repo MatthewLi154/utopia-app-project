@@ -124,6 +124,11 @@
   font-size: 18px;
   background-color: #f4dfbe;
   border: 3px solid black;
+  /* flex-wrap: wrap; */
+  position: static;
+  text-overflow:ellipsis;
+  overflow-wrap: break-word;
+  /* margin: auto; */
   /* border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem; */
 }
