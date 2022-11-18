@@ -55,6 +55,7 @@
     background: var(--main-color-light-brown);
     box-shadow: 2rem 2rem 20rem var(--main-color-dark-pink);
     z-index: 5 ;
+    outline: none;
 }
 
 .update-modal-form button {
