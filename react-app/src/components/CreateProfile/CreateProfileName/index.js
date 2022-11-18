@@ -19,9 +19,7 @@ function CreateProfileName() {
       newProfile.name = name;
     }
     localStorage.setItem("name", name);
-    console.log(newProfile);
 
-    console.log(profileData);
   }, [name]);
 
   const validate = () => {

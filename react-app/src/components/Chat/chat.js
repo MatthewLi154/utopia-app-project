@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {createMessage,deletingMessage} from "../../store/message"
 import UpdateMessage from "../UpdateMessageModal";
@@ -11,6 +11,9 @@ const Chat = ({socket}) => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
   const [style, setStyle] = useState({display: 'none'})
+
+  const scrollRef = useRef(null)
+
   const dispatch = useDispatch()
 
   const matches = useSelector((state) => Object.values(state.messages.matches));
@@ -39,8 +42,8 @@ const Chat = ({socket}) => {
   , [])
 
   useEffect(() => {
-    
-  })
+   scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages])
 
   useEffect(() => {
     const errors = {}
@@ -75,21 +78,23 @@ const Chat = ({socket}) => {
     setValidateErrors({})
   };
 
-    const deleteMessage = async(id) => {
-        await dispatch(deletingMessage(id))
-        socket.emit("fetch", {'match': match.id})
-        socket.on("last_25_messages", (message_list) => {
-            console.log("deleting recent message", (message_list))
-            setMessages([...message_list])
-        })
-    }
+  const deleteMessage = async(id) => {
+      await dispatch(deletingMessage(id))
+      socket.emit("fetch", {'match': match.id})
+      socket.on("last_25_messages", (message_list) => {
+          console.log("deleting recent message", (message_list))
+          setMessages([...message_list])
+      })
+  }
 
-
+  
 
   return (
     user && (
       <div className="chat_box">
-        <div>
+        <div
+        className="message_box"
+        >
           {messages.map((message, ind) => (
             <div key={ind}>
               <div
@@ -98,19 +103,16 @@ const Chat = ({socket}) => {
                     ? "chat_message my_messages"
                     : "chat_message other_messages"
                 }
+                onMouseEnter={(e) =>
+                  message.user_sending_id === user.id
+                    ? setStyle({ display: "block" })
+                    : null
+                }
+                onMouseLeave={(e) => {
+                  setStyle({ display: "none" });
+                }}
               >
-                <p
-                  onMouseEnter={(e) => 
-                    message.user_sending_id === user.id
-                    ? setStyle({ display: "block" }):
-                    null
-                  }
-                  onMouseLeave={(e) => {
-                    setStyle({ display: "none" });
-                  }}
-                >
-                  {message.body}
-                </p>
+                <p>{message.body}</p>
                 {user.id === message.user_sending_id && (
                   <div className="message_buttons" style={style}>
                     <UpdateMessage
@@ -127,14 +129,35 @@ const Chat = ({socket}) => {
               </div>
             </div>
           ))}
+          <div ref={scrollRef}/>
         </div>
-        <form onSubmit={sendChat}>
-          <input value={body} onChange={updateChatInput} />
-          <div>{`${body.length}/100`}</div>
-          {hasSubmitted && validateErrors.body && (
-            <li>{validateErrors.body}</li>
-          )}
-          <button type="submit">Send</button>
+        <form className="chat_form" onSubmit={sendChat}>
+          <div 
+          className={hasSubmitted && validateErrors.body ?
+            "input_container error" :
+            "input_container"}
+          >
+            <input type="text" value={body} onChange={updateChatInput} />
+            <span>
+              {hasSubmitted && validateErrors.body
+                ? validateErrors.body
+                : "Your Honey is Waiting"}
+            </span>
+            <div 
+            className="chat_counter">
+              {hasSubmitted && validateErrors.body ?
+              <i class="fa-regular fa-face-frown"></i> :
+              `${body.length}/100`}
+              </div>
+          </div>
+          <button 
+          className="chat_submit"
+          type="submit">
+            {hasSubmitted && validateErrors.body ?
+            <i class="fa-solid fa-x"></i> :
+            <i class="fa-solid fa-arrow-up"></i>
+            }
+          </button>
         </form>
       </div>
     )

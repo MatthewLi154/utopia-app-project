@@ -5,7 +5,7 @@ import { fetchSingleProfile } from "../../store/profile";
 import './chat.css'
 
 
-function ChatCard({profile, matches,socket }) {
+function ChatCard({profile, matches, socket }) {
 
     const [selected, setSelected] = useState(false)
     const dispatch = useDispatch();
@@ -19,7 +19,6 @@ function ChatCard({profile, matches,socket }) {
         return
     }
 
-
     const onClick = () => {
         dispatch(fetchAllMessages(profile.id));
         dispatch(currentConv(match.id));
@@ -29,14 +28,18 @@ function ChatCard({profile, matches,socket }) {
     }
 
     return (
-            <div
-            className="chatList_item"
-              onClick={() => {
-                onClick();
-              }}
-            >
-              {profile?.first_name.toUpperCase()}
-            </div>
+      <div
+        className={
+          selected
+            ? "chatList_item "
+            : "chatList_item"
+        }
+        onClick={() => {
+          onClick();
+        }}
+      >
+        <h2>{profile?.first_name.toUpperCase()}</h2>
+      </div>
     );
 }
 

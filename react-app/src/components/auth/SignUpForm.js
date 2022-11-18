@@ -34,22 +34,15 @@ const SignUpForm = ({ setLogin }) => {
     }
   };
   const onSignUp = async (e) => {
-    // e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(
         sessionActions.signUp(username, email, password)
       );
       if (data) {
         setErrors(data);
-        console.log(errors);
       }
     }
     history.push("/yes");
-  };
-
-  const consoleSignUp = (e) => {
-    e.preventDefault();
-    console.log("sign up button");
   };
 
   return (
@@ -59,7 +52,6 @@ const SignUpForm = ({ setLogin }) => {
           action="#"
           onClick={(e) => e.stopPropagation()}
           onSubmit={onLogin}
-          // onSubmit={consoleSignUp}
         >
           <h1>Sign in</h1>
           <input
@@ -93,9 +85,6 @@ const SignUpForm = ({ setLogin }) => {
       <div class="form-container sign-up-container">
         <form
           action="#"
-          // onClick={(e) => e.stopPropagation()}
-          // onSubmit={onSignUp}
-          onSubmit={consoleSignUp}
         >
           <h1>Create Account</h1>
           <div>

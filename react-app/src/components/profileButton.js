@@ -59,8 +59,6 @@ function ProfileButton(props) {
                 className="account-button"
                 onClick={(e) => {
                   dispatch(fetchSingleProfile(props.props.profileId));
-                  console.log(props);
-                  // e.preventDefault();
                 }}
                 to={`/profile/${props.props.profileId}`}
               >
