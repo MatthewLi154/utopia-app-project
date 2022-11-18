@@ -60,11 +60,7 @@ function CreateProfileOther() {
         password: JSON.parse(profileDataStorage).password,
       };
       console.log(signUpData);
-<<<<<<< HEAD
       await fetch(`/api/auth/signup`, {
-=======
-      const newUserSignUp = await fetch(`/api/auth/signup`, {
->>>>>>> c20bc4e981a3b9ad3cea5864736178214cf735db
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,13 +71,7 @@ function CreateProfileOther() {
       console.log(newUserSignUp);
       // console.log(JSON.parse(profileDataStorage).email);
 
-<<<<<<< HEAD
       await fetch(`/api/users/email/${JSON.parse(profileDataStorage).email}`)
-=======
-      const newUserFromEmail = await fetch(
-        `/api/users/email/${JSON.parse(profileDataStorage).email}`
-      )
->>>>>>> c20bc4e981a3b9ad3cea5864736178214cf735db
         .then((response) => {
           if (response.ok) {
             return response.json();
