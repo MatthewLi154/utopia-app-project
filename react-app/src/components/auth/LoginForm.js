@@ -40,6 +40,10 @@ const LoginForm = ({ setLogin }) => {
 
   // if (sessionUser) return <Redirect to="/profiles" />;
 
+  // const loginValidate = () => {
+  //   const errors = []
+  //   const allusers =
+  // }
   const validate = () => {
     const errors = [];
 
@@ -74,15 +78,24 @@ const LoginForm = ({ setLogin }) => {
     }
 
     if (errors.length > 0) setErrors(errors);
-
+    setErrors(errors)
     return errors;
   };
 
+  const resetErrors = () => {
+    setErrors([])
+  }
   const onLogin = async (e) => {
+
     e.preventDefault();
     const data = await dispatch(sessionActions.login(email, password));
     if (data) {
-      setErrors(data);
+      const errors = []
+      data.forEach(error => {
+        const [key, value] = error.split(":")
+        errors.push(value)
+      })
+      return setErrors(errors);
     }
     history.push("/");
   };
@@ -138,11 +151,11 @@ const LoginForm = ({ setLogin }) => {
       <div class="form-container sign-up-container">
         <form
           className="form-modal"
-          // onClick={(e) => e.stopPropagation()}
-          // onSubmit={onSignUp}
+        // onClick={(e) => e.stopPropagation()}
+        // onSubmit={onSignUp}
         >
           <h1 className="modal-sign-in-header">Create Account</h1>
-          <div>
+          <div className="errors-login-modal">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
@@ -186,7 +199,9 @@ const LoginForm = ({ setLogin }) => {
             <button
               type="submit"
               className="sign-up"
-              onClick={(e) => onSignUp(e)}
+              onClick={(e) => {
+                resetErrors()
+                onSignUp(e)}}
             >
               Sign Up
             </button>
@@ -214,12 +229,17 @@ const LoginForm = ({ setLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             className="modal-inputs"
           />
+          <div className="errors-login-modal">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}</div>
           <button className="sign-up" type="submit">
             Sign In
           </button>
           <button
             className="sign-up"
             onClick={() => {
+              resetErrors()
               dispatch(sessionActions.login("demo@aa.io", "password")).then(
                 () => setLogin(false)
               );
@@ -227,6 +247,7 @@ const LoginForm = ({ setLogin }) => {
           >
             Demo User
           </button>
+
         </form>
       </div>
       <div class="overlay-container">
@@ -234,7 +255,9 @@ const LoginForm = ({ setLogin }) => {
           <div class="overlay-panel overlay-left">
             <h1>Welcome Back!</h1>
             <p>To keep connected with your matches, please log in!</p>
-            <button onClick={transition2} class="ghost" id="signIn">
+            <button onClick={() => {
+              resetErrors()
+              transition2()}} class="ghost" id="signIn">
               Sign In
             </button>
           </div>
@@ -244,7 +267,9 @@ const LoginForm = ({ setLogin }) => {
               Enter your personal details and start your journey of meeting
               others on Utopia!
             </p>
-            <button onClick={transition} class="ghost" id="signUp">
+            <button onClick={() => {
+              resetErrors()
+              transition()}} class="ghost" id="signUp">
               Create an Account
             </button>
           </div>
