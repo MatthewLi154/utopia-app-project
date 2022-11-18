@@ -76,7 +76,7 @@ function PersonalityQuestions() {
         } else {
           matchingPercentage = total / profile.score;
         }
-        // console.log(matchingPercentage);
+        console.log(matchingPercentage);
         // if (matchingPercentage >= 0.6) {
         //   matches[profile.id] = {
         //     profileId: profile.id,
@@ -94,7 +94,7 @@ function PersonalityQuestions() {
       }
     }
 
-    console.log(matches);
+    console.log(matches, );
     // Store matches into database
     await dispatch(addNewMatches(matches));
     await dispatch(getProfileMatches());
