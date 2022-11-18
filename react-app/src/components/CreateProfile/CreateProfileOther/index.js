@@ -40,7 +40,9 @@ function CreateProfileOther() {
   const [lookingFor, setLookingFor] = useState(
     localStorage.getItem("lookingFor") || ""
   );
-  const [kids, setKids] = useState(localStorage.getItem("kids") || "");
+  const [kids, setKids] = useState(
+    localStorage.getItem("kids") || "Don't have kids"
+  );
   const [imgUrl1, setImgUrl1] = useState(
     localStorage.getItem("imageUrl1") || ""
   );
@@ -59,7 +61,6 @@ function CreateProfileOther() {
         email: JSON.parse(profileDataStorage).email,
         password: JSON.parse(profileDataStorage).password,
       };
-      console.log(signUpData);
       await fetch(`/api/auth/signup`, {
         method: "POST",
         headers: {
@@ -68,7 +69,6 @@ function CreateProfileOther() {
         body: JSON.stringify(signUpData),
       });
 
-      // console.log(JSON.parse(profileDataStorage).email);
       await fetch(`/api/users/email/${JSON.parse(profileDataStorage).email}`)
         .then((response) => {
           if (response.ok) {
@@ -79,7 +79,6 @@ function CreateProfileOther() {
         .then((data) => {
           setUserIdData(data);
         });
-      console.log(userIdData);
       if (userIdData) {
         // MAKE THE PROFILE
         let firstName, lastName;
@@ -108,7 +107,6 @@ function CreateProfileOther() {
 
         let newCreatedProfile = await dispatch(createProfile(data));
         const anotherNewCreatedProfile = await dispatch(fetchAllProfiles());
-        console.log(anotherNewCreatedProfile);
 
         let profileId;
         for (const profile in anotherNewCreatedProfile) {
@@ -160,7 +158,7 @@ function CreateProfileOther() {
     const validationErrors = [];
     const languagesArr = languages.split(" ");
     // validations for langauges
-    if (languages.length === 0) {
+    if (languages.length === 0 || languagesArr.length === 0) {
       validationErrors.push("Please enter at least one language");
     } else if (languages.length > 255) {
       validationErrors.push(
@@ -197,6 +195,42 @@ function CreateProfileOther() {
           validationErrors.push("Image 3 does not end with jpg or png.");
         }
       }
+    }
+
+    if (identifyAs.length === 0) {
+      validationErrors.push(
+        "Please enter in what you identify as i.e.: species, race, ethnicity, orientation..."
+      );
+    } else if (identifyAs.length > 55) {
+      validationErrors.push(
+        "Please use less than 55 characters for identify as"
+      );
+    }
+
+    if (lookingFor.length === 0) {
+      validationErrors.push(
+        "Please enter in what you are looking for i.e.: species, race, ethnicity, orientation..."
+      );
+    } else if (lookingFor.length > 55) {
+      validationErrors.push(
+        "Please use less than 55 characters for identify as"
+      );
+    }
+
+    if (pets.length === 0) {
+      validationErrors.push(
+        "Please enter in any pets that you may have, if not, enter no pets"
+      );
+    } else if (pets.length > 255) {
+      validationErrors.push("Please use less than 255 characters for pets");
+    }
+
+    if (hobbies.length === 0) {
+      validationErrors.push(
+        "Please enter in any hobbies that you may have or state that you have no hobbies"
+      );
+    } else if (hobbies.length > 255) {
+      validationErrors.push("Please use less than 255 characters for hobbies");
     }
 
     return validationErrors;
@@ -310,10 +344,10 @@ function CreateProfileOther() {
                       value={kids}
                       onChange={(e) => setKids(e.target.value)}
                     >
+                      <option value="Don't have kids">Don't have kids</option>
                       <option value="Have kids and I love them">
                         Have kids and I love them
                       </option>
-                      <option value="Don't have kids">Don't have kids</option>
                       <option value="Don't have kids but want them">
                         Don't have kids but want them
                       </option>
