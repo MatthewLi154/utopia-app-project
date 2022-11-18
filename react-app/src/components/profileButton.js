@@ -40,7 +40,7 @@ function ProfileButton(props) {
   return (
     <>
       <button onClick={openMenu} className="profile-button">
-        {!props.props.profileImg ?
+        {props.props.profileImg == "image.png" ?
           <img src="https://i.imgur.com/Zqfdy44.png" alt="default-pic" className="default-profile-pic"></img>
           :
         <img
