@@ -68,8 +68,6 @@ function CreateProfileOther() {
         body: JSON.stringify(signUpData),
       });
 
-      console.log(newUserSignUp);
-      // console.log(JSON.parse(profileDataStorage).email);
       await fetch(`/api/users/email/${JSON.parse(profileDataStorage).email}`)
         .then((response) => {
           if (response.ok) {

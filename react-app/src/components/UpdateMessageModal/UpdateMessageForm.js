@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector,  useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { editMessage, fetchAllMessages } from "../../store/message";
+import './UpdateMessageModal.css'
 
 function UpdateMessageForm({message, setMessages, showModal, setShowModal, match, socket}){
     const dispatch = useDispatch()
@@ -11,17 +12,19 @@ function UpdateMessageForm({message, setMessages, showModal, setShowModal, match
 
 
 
-     useEffect(() => {
-       const errors = {};
-       if (body.length === 0)
-         errors.body = "Oops you need to send your match something";
-       if (body.length > 100) errors.body = "Oh no this is too long, TLDR";
-       setValidateErrors(errors);
-     }, [body]);
+    useEffect(() => {
+      const errors = {};
+      if (body.length === 0)
+        errors.body = "There's nothing here!";
+      if (body.length > 100) errors.body = "Oh no this is too long, TLDR";
+      setValidateErrors(errors);
+      console.log(validateErrors, 'this is errors')
+    }, [body]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setHasSubmitted(true)
         if (Object.keys(validateErrors).length > 0) return;
         const payload = {
             body,
@@ -47,15 +50,26 @@ function UpdateMessageForm({message, setMessages, showModal, setShowModal, match
     }, []);
 
     return (
+      <div
+      className = 'update-modal-form'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-        {hasSubmitted && validateErrors.body && <li>{validateErrors.body}</li>}
-        <button type="submit">Submit</button>
+        <div>
+        </div>
+        <button type="submit">
+        <i class="fa-solid fa-arrow-up"></i>
+        </button>
       </form>
+      <div
+      className="modal-form-errors"
+      >
+        {hasSubmitted && validateErrors.body ? <h4>{validateErrors.body}</h4> : <h4>"Let's try this again..."</h4>}
+      </div>
+      </div>
     );
 }
 
