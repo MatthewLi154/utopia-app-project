@@ -63,7 +63,7 @@
   margin-top: 100px;
   --margin-top: 100px;
   overflow: hidden;
-  color: #dda2a3
+  color: white
   /* flex-direction: column; */
   /* border: solid 1px black;
   cursor: pointer;
@@ -149,7 +149,7 @@ transition: all 0.5s ease-out;
   transition: none;
   display: float;
   position: relative;
-  border: 10px solid white;
+  border: 10px solid #6e51c8;
   margin: 0 0 0 0; padding: 0 0 0 0;
 }
 
