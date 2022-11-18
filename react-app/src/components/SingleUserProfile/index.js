@@ -10,6 +10,7 @@ import {
   fetchSingleProfile,
   deleteSingleProfile,
 } from "../../store/profile";
+import { deleteUser } from "../../store/session";
 import "./SingleUserProfile.css";
 
 function SingleUserProfile() {
@@ -80,11 +81,12 @@ function SingleUserProfile() {
     e.preventDefault();
     const response = window.confirm("Are you sure you want to do that?");
     if (response) {
-      await dispatch(deleteSingleProfile(profileId));
+      await dispatch(deleteUser(currentUserId));
+      // await dispatch(deleteSingleProfile(profileId));
       await dispatch(fetchAllProfiles());
       // await dispatch(getProfileMatchPercentage());
       // await dispatch(getProfileMatches());
-      history.push("/profiles");
+      history.push("/");
     }
     // return;
   };

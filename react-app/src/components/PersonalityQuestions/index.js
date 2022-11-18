@@ -76,13 +76,7 @@ function PersonalityQuestions() {
         } else {
           matchingPercentage = total / profile.score;
         }
-        // console.log(matchingPercentage);
-        // if (matchingPercentage >= 0.6) {
-        //   matches[profile.id] = {
-        //     profileId: profile.id,
-        //     matchPercentage: matchingPercentage,
-        //   };
-        // }
+
         let newMatch = {};
         if (matchingPercentage >= 0.6) {
           newMatch = {
