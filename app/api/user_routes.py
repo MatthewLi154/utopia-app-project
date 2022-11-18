@@ -20,6 +20,7 @@ def get_user(email):
     """
     Query for user by email and returns that user id a dictionary
     """
+    print('@@@@@@@@@@@@@@@@@@@', email)
     user = User.query.filter_by(email=email).first()
     print(user)
     return user.to_dict()
