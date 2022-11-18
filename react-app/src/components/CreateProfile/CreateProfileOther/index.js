@@ -60,7 +60,7 @@ function CreateProfileOther() {
         password: JSON.parse(profileDataStorage).password,
       };
       console.log(signUpData);
-      const newUserSignUp = await fetch(`/api/auth/signup`, {
+      await fetch(`/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,10 +70,7 @@ function CreateProfileOther() {
 
       console.log(newUserSignUp);
       // console.log(JSON.parse(profileDataStorage).email);
-
-      const newUserFromEmail = await fetch(
-        `/api/users/email/${JSON.parse(profileDataStorage).email}`
-      )
+      await fetch(`/api/users/email/${JSON.parse(profileDataStorage).email}`)
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -129,6 +126,7 @@ function CreateProfileOther() {
             )
           );
 
+          localStorage.clear();
           return history.push(`/profile/${profileId}`);
         }
       }

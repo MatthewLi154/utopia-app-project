@@ -42,7 +42,6 @@ function CreateConversation() {
   let profileMatches = useSelector((state) => Object.values(state.matches.matchedProfiles));
   let matches = useSelector((state) => Object.values(state.messages.matches))
   const current = useSelector((state) => state.messages.current);
-  console.log(current, 'CURRENT!!!!!!!!!!!')
   const profile = useSelector((state) => state.profiles.singleProfile);
   const match = matches.find(
     (match) =>

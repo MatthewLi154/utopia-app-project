@@ -14,7 +14,6 @@ function BrowseBar() {
     Object.values(state?.profiles.user_profiles)
   );
   const currentUserId = useSelector((state) => state?.session.user.id);
-  console.log(currentUserId);
 
   let profileExist = false;
   for (const profile of allProfiles) {

@@ -22,7 +22,6 @@ function CreateProfileBirthday() {
     localStorage.setItem("month", month);
     localStorage.setItem("year", year);
     newProfile.birthday = `${month}-${day}-${year}`;
-    console.log(newProfile);
   }, [day, month, year]);
 
   const validate = () => {
@@ -49,12 +48,6 @@ function CreateProfileBirthday() {
         "Please input a valid number month e.g. 01, 06, 12"
       );
     }
-
-    // if (isNaN(month)) {
-    //   validationErrors.push(
-    //     "Please input a valid number month e.g. 01, 06, 12"
-    //   );
-    // }
 
     if (year.length !== 4) {
       validationErrors.push(

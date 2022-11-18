@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -20,6 +20,7 @@ def get_user(email):
     """
     Query for user by email and returns that user id a dictionary
     """
+    print('@@@@@@@@@@@@@@@@@@@', email)
     user = User.query.filter_by(email=email).first()
     print(user)
     return user.to_dict()
@@ -33,3 +34,14 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>', methods=['DELETE'])
+# @login_required
+def user_delete(id):
+    """
+    Delete user by id
+    """
+    user = User.query.get(id)
+    db.session.delete(user)
+    db.session.commit()
+    return {"message": "Successfully deleted"}

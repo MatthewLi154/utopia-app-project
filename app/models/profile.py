@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 # from .user import User
+from .match import Match
 
 class Profile(db.Model):
     __tablename__ = 'profiles'
@@ -27,6 +28,9 @@ class Profile(db.Model):
     score = db.Column(db.Integer)
 
     user = db.relationship("User", back_populates='profile')
+
+    match = db.relationship("Match", foreign_keys=[Match.profile_id], back_populates="user_match", cascade="all, delete")
+    matchee = db.relationship("Match", foreign_keys=[Match.matched_profile_id], back_populates="matched_user", cascade="all, delete")
 
     def to_dict(self):
         return {

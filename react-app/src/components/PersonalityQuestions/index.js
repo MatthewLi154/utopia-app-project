@@ -64,7 +64,6 @@ function PersonalityQuestions() {
 
     // Get all profiles, compare total to other profiles scores
     let matches = [];
-    // console.log(allProfiles);
     for (const key in allProfiles) {
       const profile = allProfiles[key];
       // Do not compare to self
@@ -76,13 +75,7 @@ function PersonalityQuestions() {
         } else {
           matchingPercentage = total / profile.score;
         }
-        console.log(matchingPercentage);
-        // if (matchingPercentage >= 0.6) {
-        //   matches[profile.id] = {
-        //     profileId: profile.id,
-        //     matchPercentage: matchingPercentage,
-        //   };
-        // }
+
         let newMatch = {};
         if (matchingPercentage >= 0.6) {
           newMatch = {
@@ -94,7 +87,6 @@ function PersonalityQuestions() {
       }
     }
 
-    console.log(matches, );
     // Store matches into database
     await dispatch(addNewMatches(matches));
     await dispatch(getProfileMatches());
