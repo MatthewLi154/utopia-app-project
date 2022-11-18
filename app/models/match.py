@@ -11,9 +11,10 @@ class Match(db.Model):
     profile_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('profiles.id')), nullable=False )
     matched_profile_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('profiles.id')), nullable=False )
 
-    user = db.relationship("Profile", foreign_keys=[profile_id])
-    matched_user = db.relationship("Profile",foreign_keys=[matched_profile_id])
-    messages = db.relationship("Message", back_populates='matches')
+    user_match = db.relationship("Profile", foreign_keys=[profile_id], back_populates="match")
+    matched_user = db.relationship("Profile", foreign_keys=[matched_profile_id], back_populates="matchee")
+
+    messages = db.relationship("Message", back_populates='matches', cascade="all, delete")
 
     def to_dict(self):
         return {

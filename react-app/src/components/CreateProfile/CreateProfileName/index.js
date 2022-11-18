@@ -28,7 +28,9 @@ function CreateProfileName() {
     const validationErrors = [];
 
     if (!name.includes(" ")) {
-      validationErrors.push("Please enter a first and last name.");
+      validationErrors.push(
+        "Please enter a first and last name only. e.g John Smith"
+      );
     }
 
     if (name.length < 3) {
