@@ -19,7 +19,13 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
 
+  /* edittable */
   #modal-content {
     position: absolute;
-    background-color:white;
+    background-color: white;
+  }
+
+.modal-content .update {
+  /* width: 25rem;
+  border-radius:  25px; */
   }
