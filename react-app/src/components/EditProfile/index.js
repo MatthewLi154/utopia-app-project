@@ -89,17 +89,17 @@ function EditProfile() {
     const validationErrors = [];
     if (bio.length === 0) {
       validationErrors.push("Please enter a bio");
-    } else if (bio.length < 30) {
-      validationErrors.push("Please enter at least 30 characters for bio");
+    } else if (bio.length < 10) {
+      validationErrors.push("Please enter at least 10 characters for bio");
     } else if (bio.length > 255) {
-      validationErrors.push("Must use less tha 255 characters for bio");
+      validationErrors.push("Must use less than 255 characters for bio");
     }
 
     if (current_goals.length === 0) {
       validationErrors.push("Please enter some goals");
-    } else if (current_goals.length < 30) {
+    } else if (current_goals.length < 10) {
       validationErrors.push(
-        "Please enter at least 30 characters for current goals"
+        "Please enter at least 10 characters for current goals"
       );
     } else if (current_goals.length > 255) {
       validationErrors.push(
@@ -107,27 +107,65 @@ function EditProfile() {
       );
     }
 
-    if (pets.length > 30) {
-      validationErrors.push("Muist use less than 30 characters for pets");
-    }
-
     if (location.length > 55) {
       validationErrors.push("Location must be 55 characters or less");
-    } else if (location.length < 3) {
-      validationErrors.push("Location must be 2 or more characters");
+    } else if (location.length === 0) {
+      validationErrors.push("Please enter a location");
     }
 
     if (languages.length === 0) {
       validationErrors.push("Please enter at least one language");
-    } else if (languages.length > 30) {
-      validationErrors.push("Please use less than 30 characters for languages");
+    } else if (languages.length > 255) {
+      validationErrors.push(
+        "Please use less than 255 characters for languages"
+      );
+    }
+
+    if (identify_as.length === 0) {
+      validationErrors.push(
+        "Please enter in what you identify as i.e.: species, race, ethnicity, orientation..."
+      );
+    } else if (identify_as.length > 55) {
+      validationErrors.push(
+        "Please use less than 55 characters for identify as"
+      );
+    }
+
+    if (looking_for.length === 0) {
+      validationErrors.push(
+        "Please enter in what you are looking for i.e.: species, race, ethnicity, orientation..."
+      );
+    } else if (looking_for.length > 55) {
+      validationErrors.push(
+        "Please use less than 55 characters for identify as"
+      );
+    }
+
+    if (kids.length === 0) {
+      validationErrors.push(
+        "Please enter if you want kids or have kids or don't want kids"
+      );
+    } else if (kids.length > 55) {
+      validationErrors.push(
+        "Please use less than 55 characters for kids input"
+      );
+    }
+
+    if (pets.length > 55) {
+      validationErrors.push("Must use less than 55 characters for pets");
+    } else if (pets.length === 0) {
+      validationErrors.push(
+        "Please enter in any pets you have or no pets if you don't have any"
+      );
     }
 
     // validations for hobbies
     if (hobbies.length === 0) {
-      validationErrors.push("Please enter at least one hobby");
-    } else if (hobbies.length > 30) {
-      validationErrors.push("Please use less than 30 characters for hobbies");
+      validationErrors.push(
+        "Please enter in any hobbies that you may have or state that you have no hobbies"
+      );
+    } else if (hobbies.length > 255) {
+      validationErrors.push("Please use less than 255 characters for hobbies");
     }
 
     return validationErrors;

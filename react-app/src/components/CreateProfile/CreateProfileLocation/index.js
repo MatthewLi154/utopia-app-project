@@ -15,7 +15,10 @@ function CreateProfileLocation() {
   const [validationErrors, setValidationErrors] = useState([]);
 
   useEffect(() => {
-    newProfile.location = location;
+    if (newProfile) {
+      newProfile.location = location;
+    }
+
     localStorage.setItem("location", location);
   }, [location]);
 
@@ -24,8 +27,8 @@ function CreateProfileLocation() {
 
     if (location.length > 55) {
       validationErrors.push("Location must be 55 characters or less");
-    } else if (location.length < 3) {
-      validationErrors.push("Location must be 2 or more characters");
+    } else if (location.length < 1) {
+      validationErrors.push("Please enter a location");
     }
 
     return validationErrors;
