@@ -13,7 +13,7 @@ def seed_profiles():
         img_url3='https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg',
         img_url2='https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg',
         img_url1="https://i.pinimg.com/originals/10/91/94/1091948c6b80b65b9eef8c163f0ae42a.jpg",
-        score=12,
+        score=10,
         current_goals="My current goals!"
 
     )
@@ -33,7 +33,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/OgLOtu1.png',
         img_url2="https://i.imgur.com/Ghnpp1R.png",
         img_url3="https://i.imgur.com/ZOVmzgp.png",
-        score=13,
+        score=9,
         current_goals="My current goals!"
     )
 
@@ -73,7 +73,7 @@ def seed_profiles():
         img_url1='https://cdn.myanimelist.net/images/characters/3/492407.jpg',
         img_url2="https://wegotthiscovered.com/wp-content/uploads/2022/10/denji-chainsaw-man2-1200x900.jpg",
         img_url3="https://c4.wallpaperflare.com/wallpaper/807/852/840/anime-chainsaw-man-denji-chainsaw-man-anime-boys-null-hd-wallpaper-preview.jpg",
-        score=14,
+        score=7,
         current_goals="My current goals!"
     )
     demo_profile_5 = Profile(
@@ -92,7 +92,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/nPBdWgq.png',
         img_url2='https://i.imgur.com/iLhUns5.png',
         img_url3='https://i.imgur.com/XkQnh6O.png',
-        score=16,
+        score=13,
         current_goals="My current goals!"
     )
     demo_profile_6 = Profile(
@@ -111,7 +111,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/pjhg35J.png',
         img_url2='https://i.imgur.com/jQCN2Mp.png',
         img_url3='https://i.imgur.com/Yi6hAlT.png',
-        score=17,
+        score=12,
         current_goals="My current goals!"
     )
     demo_profile_7 = Profile(
@@ -130,7 +130,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/NIA5HAe.png',
         img_url2='https://i.imgur.com/aH914zk.png',
         img_url3='https://i.imgur.com/SrGifqX.png',
-        score=20,
+        score=8,
         current_goals="My current goals!"
     )
     demo_profile_8 = Profile(
@@ -149,7 +149,7 @@ def seed_profiles():
         img_url1='https://pm1.narvii.com/5728/1ebc08104b3f431f77b614c7297e054b0df93105_hq.jpg',
         img_url3='https://pm1.narvii.com/5728/b1ad0f96ea205fe3d09b0757295e30e6da6c8eae_hq.jpg',
         img_url2='https://static.zerochan.net/Princess.Peach.full.3366530.jpg',
-        score=22,
+        score=6,
         current_goals="My current goals!"
     )
     demo_profile_9 = Profile(
@@ -168,7 +168,121 @@ def seed_profiles():
         img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
         img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
         img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
-        score=21,
+        score=12,
+        current_goals="My current goals!"
+    )
+    demo_profile_10 = Profile(
+        user_id=10,
+        first_name='Kaname',
+        last_name='Kuran',
+        birthday='08-02-1900',
+        location='The Kuran Mansion',
+        bio="Pureblood vampire and Head of the Kuran family, ",
+        kids="Have a kid",
+        pets="None",
+        hobbies="Erasing memories ",
+        languages="Japanese",
+        identify_as='Vampire',
+        looking_for='Human',
+        img_url1='https://i.imgur.com/0OXGxgu.png',
+        img_url2='https://i.imgur.com/IksMKwN.jpg',
+        img_url3='https://i.imgur.com/AoQvmsG.jpg',
+        score=13,
+        current_goals="Keeping Yuki Safe"
+    )
+    demo_profile_11 = Profile(
+        user_id=11,
+        first_name='Lady Tsunade',
+        last_name='Senju',
+        birthday='08-02-1940',
+        location='Konoha',
+        bio="One of the Legendary Sannin and was the Fifth Hokage of the Hidden Leaf Village. ",
+        kids="Don't want them",
+        pets="Tonton",
+        hobbies="Gambling ",
+        languages="Japanese",
+        identify_as='Anime',
+        looking_for='Human',
+        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
+        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
+        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        score=12,
+        current_goals="My current goals!"
+    )
+    demo_profile_12 = Profile(
+        user_id=12,
+        first_name='Lady Tsunade',
+        last_name='Senju',
+        birthday='08-02-1940',
+        location='Konoha',
+        bio="One of the Legendary Sannin and was the Fifth Hokage of the Hidden Leaf Village. ",
+        kids="Don't want them",
+        pets="Tonton",
+        hobbies="Gambling ",
+        languages="Japanese",
+        identify_as='Anime',
+        looking_for='Human',
+        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
+        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
+        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        score=12,
+        current_goals="My current goals!"
+    )
+    demo_profile_13 = Profile(
+        user_id=13,
+        first_name='Lady Tsunade',
+        last_name='Senju',
+        birthday='08-02-1940',
+        location='Konoha',
+        bio="One of the Legendary Sannin and was the Fifth Hokage of the Hidden Leaf Village. ",
+        kids="Don't want them",
+        pets="Tonton",
+        hobbies="Gambling ",
+        languages="Japanese",
+        identify_as='Anime',
+        looking_for='Human',
+        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
+        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
+        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        score=12,
+        current_goals="My current goals!"
+    )
+    demo_profile_14 = Profile(
+        user_id=14,
+        first_name='Lady Tsunade',
+        last_name='Senju',
+        birthday='08-02-1940',
+        location='Konoha',
+        bio="One of the Legendary Sannin and was the Fifth Hokage of the Hidden Leaf Village. ",
+        kids="Don't want them",
+        pets="Tonton",
+        hobbies="Gambling ",
+        languages="Japanese",
+        identify_as='Anime',
+        looking_for='Human',
+        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
+        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
+        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        score=12,
+        current_goals="My current goals!"
+    )
+    demo_profile_15 = Profile(
+        user_id=15,
+        first_name='Lady Tsunade',
+        last_name='Senju',
+        birthday='08-02-1940',
+        location='Konoha',
+        bio="One of the Legendary Sannin and was the Fifth Hokage of the Hidden Leaf Village. ",
+        kids="Don't want them",
+        pets="Tonton",
+        hobbies="Gambling ",
+        languages="Japanese",
+        identify_as='Anime',
+        looking_for='Human',
+        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
+        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
+        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        score=12,
         current_goals="My current goals!"
     )
 

@@ -13,14 +13,9 @@ function CreateProfileBio() {
 
   const [bio, setBio] = useState(localStorage.getItem("bio") || "");
   const [currentGoals, setCurrentGoals] = useState(
-    localStorage.getItem("currentGoals"),
-    ""
+    localStorage.getItem("currentGoals") || ""
   );
   const [validationErrors, setValidationErrors] = useState("");
-
-  // useEffect(() => {
-  //   dispatch(fetchAllProfiles());
-  // }, []);
 
   useEffect(() => {
     newProfile.bio = bio;
@@ -34,17 +29,17 @@ function CreateProfileBio() {
 
     if (bio.length === 0) {
       validationErrors.push("Please enter a bio");
-    } else if (bio.length < 30) {
-      validationErrors.push("Please enter at least 30 characters for bio");
+    } else if (bio.length < 10) {
+      validationErrors.push("Please enter at least 10 characters for bio");
     } else if (bio.length > 255) {
       validationErrors.push("Must use less tha 255 characters for bio");
     }
 
     if (currentGoals.length === 0) {
       validationErrors.push("Please enter some goals");
-    } else if (currentGoals.length < 30) {
+    } else if (currentGoals.length < 10) {
       validationErrors.push(
-        "Please enter at least 30 characters for current goals"
+        "Please enter at least 10 characters for current goals"
       );
     } else if (currentGoals.length > 255) {
       validationErrors.push(
@@ -56,46 +51,14 @@ function CreateProfileBio() {
   };
 
   const onSubmit = async (e) => {
-    // e.preventDefault();
     // check for validations
     const validationErrors = validate();
 
     if (validationErrors.length > 0) {
       e.preventDefault();
-      setValidationErrors(validationErrors);
+      return setValidationErrors(validationErrors);
     }
-    // if no errors
-
-    // use newProfile data and send the post request to create new profile
-    // new profile needs
-    // user_id, first_name, last_name, birthday, location, bio, identify_as, looking_for, languages, kids, hobbies, pets
-    // img_url, score (later)
-    let firstName, lastName;
-    [firstName, lastName] = newProfile.name.split(" ");
-
-    // const data = {
-    //   user_id: currentUserId,
-    //   first_name: firstName,
-    //   last_name: lastName,
-    //   birthday: newProfile.birthday,
-    //   bio: newProfile.bio,
-    //   languages: newProfile.languages,
-    //   kids: newProfile.kids,
-    //   pets: newProfile.pets,
-    //   hobbies: newProfile.hobbies,
-    //   location: newProfile.location,
-    //   identify_as: newProfile.identifyAs,
-    //   looking_for: newProfile.lookingFor,
-    //   img_url: newProfile.imgUrl,
-    // };
-
-    // dispatch(addProfile(data));
-    // dispatch(createProfile(data));
-
-    // use thunk to fetch request to add data to profile db
-    // use thunk to update profile state with new profile and set single profile to new profile
-
-    // redirect to new profile page
+    // history.push("/profile/create/other");
   };
 
   return (
@@ -135,7 +98,7 @@ function CreateProfileBio() {
                   </div>
                   <div>
                     <textarea
-                      placeholder="Please use at least 30 characters"
+                      placeholder="Please use at least 10 characters"
                       value={bio}
                       onChange={(e) => setBio(e.target.value)}
                     ></textarea>
@@ -147,7 +110,7 @@ function CreateProfileBio() {
                   </div>
                   <div>
                     <textarea
-                      placeholder="Now tell us about your current goals..."
+                      placeholder="Now tell us about your current goals...using at least 10 characters"
                       value={currentGoals}
                       onChange={(e) => setCurrentGoals(e.target.value)}
                     ></textarea>

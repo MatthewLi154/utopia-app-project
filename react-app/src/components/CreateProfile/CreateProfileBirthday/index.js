@@ -49,12 +49,6 @@ function CreateProfileBirthday() {
       );
     }
 
-    // if (isNaN(month)) {
-    //   validationErrors.push(
-    //     "Please input a valid number month e.g. 01, 06, 12"
-    //   );
-    // }
-
     if (year.length !== 4) {
       validationErrors.push(
         "Please input a valid number year e.g. 1920, 1988, 2004"

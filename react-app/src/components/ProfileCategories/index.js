@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import { NavLink, useParams } from "react-router-dom";
 import { getProfileMatches } from "../../store/match";
+import PersonalityQuestions from "../PersonalityQuestions";
 
 function ProfileCategory() {
   const { category } = useParams();
@@ -107,15 +108,17 @@ function ProfileCategory() {
                   (profile) =>
                     profile.user_id !== currentUserId && (
                       <li className="profile-box" key={profile.id}>
-                      <div className="profile-box-content" id="main">
-                        <NavLink to={`/profile/${profile.id}`}>
-                          <img className="profile-img" src={profile.img_url1}></img>
-                        </NavLink>
-                      </div>
+                        <div className="profile-box-content" id="main">
+                          <NavLink to={`/profile/${profile.id}`}>
+                            <img
+                              className="profile-img"
+                              src={profile.img_url1}
+                            ></img>
+                          </NavLink>
+                        </div>
 
-
-                      <div className="profile-box-sub-content">
-                        {/* <NavLink
+                        <div className="profile-box-sub-content">
+                          {/* <NavLink
                           // onClick={async (e) => {
                           //   await dispatch(fetchSingleProfile(profile.id));
                           // }}
@@ -129,32 +132,21 @@ function ProfileCategory() {
                           }}
                         > */}
 
-
-                          <h3 className="card-title" id="texting">{profile.first_name}</h3>
-                        {/* </NavLink> */}
-                        <div id="texting">
-                          <ul>
-                            <li>
-                              Location:{profile.location}
-                            </li>
-                            <li>
-                            Age: {calculateAge(profile.birthday)}
-                            </li>
-                            <li>
-                            Looking for: {profile.looking_for}
-                            </li>
-                            <li>
-                             Biography: {profile.bio}
-                            </li>
-                            <li>
-                             Current Goals: {profile.current_goals}
-                            </li>
-                          </ul>
-
+                          <h3 className="card-title" id="texting">
+                            {profile.first_name}
+                          </h3>
+                          {/* </NavLink> */}
+                          <div id="texting">
+                            <ul>
+                              <li>Location:{profile.location}</li>
+                              <li>Age: {calculateAge(profile.birthday)}</li>
+                              <li>Looking for: {profile.looking_for}</li>
+                              <li>Biography: {profile.bio}</li>
+                              <li>Current Goals: {profile.current_goals}</li>
+                            </ul>
+                          </div>
                         </div>
-                      </div>
-
-                    </li>
+                      </li>
                       // <div className="profile-box" key={profile.id}>
                       //   <div className="profile-box-content">
                       //     <img src={profile.img_url1}></img>
@@ -185,7 +177,9 @@ function ProfileCategory() {
       )}
       {categoryProfileData.profiles.length === 0 && (
         <div className="entire-profiles-page">
-          <h1>No Matches Available</h1>
+          <h1>You were not matched with anyone. Please repeat the Questionaiire! </h1>
+          <NavLink to={`/profile/${currentUserId}/personality-questions`}>personality link</NavLink>
+
         </div>
       )}
     </>

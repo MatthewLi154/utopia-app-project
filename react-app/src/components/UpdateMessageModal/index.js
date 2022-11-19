@@ -5,7 +5,9 @@ import UpdateMessageForm from "./UpdateMessageForm";
 function UpdateMessage({message, setMessages, match, socket}) {
     const [showModal, setShowModal] = useState(false)
     return (
-      <>
+      <div
+      // className="update-modal-form-container"
+      >
         <button onClick={() => setShowModal(true)}>
           <i class="fa-solid fa-pen"></i>
         </button>
@@ -21,7 +23,7 @@ function UpdateMessage({message, setMessages, match, socket}) {
             />
           </Modal>
         )}
-      </>
+      </div>
     );
 }
 

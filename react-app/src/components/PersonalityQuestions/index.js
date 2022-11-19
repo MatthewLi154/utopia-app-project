@@ -75,8 +75,9 @@ function PersonalityQuestions() {
         } else {
           matchingPercentage = total / profile.score;
         }
+
         let newMatch = {};
-        if (matchingPercentage >= 0.6) {
+        if (matchingPercentage >= 0.75) {
           newMatch = {
             profile_id: profileId,
             matched_profile_id: profile.id,
@@ -91,23 +92,21 @@ function PersonalityQuestions() {
     await dispatch(getProfileMatches());
     await dispatch(getProfileMatchPercentage());
 
-    history.push("/profiles");
+    history.push("/profiles/matches");
   };
 
   return (
     <>
-
       <div className="entire-container">
-
         <form className="personality-form">
           <h1 className="header-person">Personality Questions</h1>
 
           <div className="question-label">
             <div className="question-labels">
-            <label className="labels">
-              Would you rather go to the bar or stay home and watch movies on
-              a Friday night?
-            </label>
+              <label className="labels">
+                Would you rather go to the bar or stay home and watch movies on
+                a Friday night?
+              </label>
             </div>
             <ul className="question-choices-container">
               <li className="question-choices-left">
@@ -119,7 +118,9 @@ function PersonalityQuestions() {
                   className="choice"
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
-                <label className="answer-choices" for="choice1">Stay home</label>
+                <label className="answer-choices" for="choice1">
+                  Stay home
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -141,7 +142,9 @@ function PersonalityQuestions() {
                   className="choice"
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
-                <label className="answer-choices" for="choice2">Not sure</label>
+                <label className="answer-choices" for="choice2">
+                  Not sure
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -163,7 +166,9 @@ function PersonalityQuestions() {
                   className="choice"
                   onChange={(e) => setQuestion1(e.target.value)}
                 />
-                <label className="answer-choices" for="choice3">To the bar</label>
+                <label className="answer-choices" for="choice3">
+                  To the bar
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -179,8 +184,10 @@ function PersonalityQuestions() {
           </div>
           <div>
             <div className="question-label">
-            <div className="question-labels">
-              <label className="labels">How would your best friend describe you?</label>
+              <div className="question-labels">
+                <label className="labels">
+                  How would your best friend describe you?
+                </label>
               </div>
             </div>
             <ul className="question-choices-container">
@@ -192,7 +199,9 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
-                <label className="answer-choices" for="choice4">Dependable</label>
+                <label className="answer-choices" for="choice4">
+                  Dependable
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -213,7 +222,9 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
-                <label className="answer-choices" for="choice5">A normie</label>
+                <label className="answer-choices" for="choice5">
+                  A normie
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -234,7 +245,9 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion2(e.target.value)}
                 />
-                <label className="answer-choices" for="choice6">Jokester</label>
+                <label className="answer-choices" for="choice6">
+                  Jokester
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -250,8 +263,9 @@ function PersonalityQuestions() {
           </div>
           <div>
             <div className="question-label">
-            <div className="question-labels">
-              <label className="labels">Choice of drink?</label></div>
+              <div className="question-labels">
+                <label className="labels">Choice of drink?</label>
+              </div>
             </div>
             <ul className="question-choices-container">
               <li className="question-choices-left">
@@ -262,7 +276,9 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
-                <label className="answer-choices" for="choice7">Orange Juice</label>
+                <label className="answer-choices" for="choice7">
+                  Orange Juice
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -283,7 +299,9 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
-                <label className="answer-choices" for="choice8">Water</label>
+                <label className="answer-choices" for="choice8">
+                  Water
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -304,7 +322,9 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion3(e.target.value)}
                 />
-                <label className="answer-choices" for="choice9">Coke and rum</label>
+                <label className="answer-choices" for="choice9">
+                  Coke and rum
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -320,8 +340,11 @@ function PersonalityQuestions() {
           </div>
           <div>
             <div className="question-label">
-            <div className="question-labels">
-              <label className="labels">How would you spend a million dollars?</label></div>
+              <div className="question-labels">
+                <label className="labels">
+                  How would you spend a million dollars?
+                </label>
+              </div>
             </div>
             <ul className="question-choices-container">
               <li className="question-choices-left">
@@ -332,7 +355,9 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
-                <label className="answer-choices" for="choice10">Donate to charity</label>
+                <label className="answer-choices" for="choice10">
+                  Donate to charity
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -353,7 +378,9 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
-                <label className="answer-choices" for="choice11">Friends and family</label>
+                <label className="answer-choices" for="choice11">
+                  Friends and family
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -374,7 +401,9 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion4(e.target.value)}
                 />
-                <label className="answer-choices" for="choice12">Yacht party</label>
+                <label className="answer-choices" for="choice12">
+                  Yacht party
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -390,8 +419,9 @@ function PersonalityQuestions() {
           </div>
           <div>
             <div className="question-label">
-            <div className="question-labels">
-              <label className="labels">Rom-coms or horror films?</label></div>
+              <div className="question-labels">
+                <label className="labels">Rom-coms or horror films?</label>
+              </div>
             </div>
             <ul className="question-choices-container">
               <li className="question-choices-left">
@@ -402,7 +432,9 @@ function PersonalityQuestions() {
                   value={1}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
-                <label className="answer-choices" for="choice13">Romance for sure</label>
+                <label className="answer-choices" for="choice13">
+                  Romance for sure
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -423,7 +455,9 @@ function PersonalityQuestions() {
                   value={2}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
-                <label className="answer-choices" for="choice14">Why not both</label>
+                <label className="answer-choices" for="choice14">
+                  Why not both
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -444,7 +478,9 @@ function PersonalityQuestions() {
                   value={3}
                   onChange={(e) => setQuestion5(e.target.value)}
                 />
-                <label className="answer-choices" for="choice15">Horror only</label>
+                <label className="answer-choices" for="choice15">
+                  Horror only
+                </label>
                 <div class="bullet">
                   <div class="line zero"></div>
                   <div class="line one"></div>
@@ -459,18 +495,22 @@ function PersonalityQuestions() {
             </ul>
           </div>
           <div className="question-labels">
-          <div className="submit-personality-questions-container">
-            {/* <NavLink
+            <div className="submit-personality-questions-container">
+              {/* <NavLink
             to={{
               pathname: "/profiles",
             }}
           > */}
-            <button className="personality-submit" onClick={(e) => onSubmit(e)}>Submit</button>
+              <button
+                className="sign-up-button"
+                onClick={(e) => onSubmit(e)}
+              >
+                Submit
+              </button>
             </div>
             {/* </NavLink> */}
           </div>
         </form>
-
       </div>
     </>
   );

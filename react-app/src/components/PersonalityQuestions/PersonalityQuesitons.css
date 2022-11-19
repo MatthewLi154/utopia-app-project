@@ -55,29 +55,29 @@
 
 .entire-container {
   background: rgb(208, 187, 225);
-  font-family: 'Roboto';
   font-weight:1000;
   text-transform: uppercase;
   /* color: #0f78d4; */
   overflow: hidden;
-  height:auto;
+  height:100%;
 }
 
 .header-person {
-color: #405adf;
+color: #3c42c4;
 padding-bottom: 15px;
 margin-left: 30px;
 font-size: 33px;
 }
 
 .labels {
-  font-weight:400;
+  font-weight:bold;
   text-align: center;
   margin:auto;
-  padding-top: 30px;
-  margin-bottom: 50px;
+  /* padding-top: 40px; */
+  /* margin-bottom: 70px; */
   /* margin-left: 10px; */
-  color: #405adf;
+  color: #3c42c4;
+  font-size: 18px;
   /* padding-left: 35px; */
 }
 
@@ -101,12 +101,14 @@ font-size: 33px;
 .question-choices-container {
   list-style-type: none;
   width: 200px;
-  color: blue;
+  color: black;
   /* margin: auto; */
   align-items: flex-start;
   align-self: flex-start;
   align-content: flex-start;
   justify-content: flex-start;
+  font-weight: normal;
+  font-size: 16px;
 
 
 
