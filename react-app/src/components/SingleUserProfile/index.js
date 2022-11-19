@@ -13,6 +13,7 @@ import {
 } from "../../store/profile";
 import { deleteUser } from "../../store/session";
 import "./SingleUserProfile.css";
+import "./newSingleUserProfile.css"
 
 function SingleUserProfile() {
   const { profileId } = useParams();
@@ -97,53 +98,63 @@ function SingleUserProfile() {
   return (
     <>
       <div className="single-profile-main-container">
-        <div className="single-profile-container">
-          <div className="upper-name-location-age-images-container">
+        <div className="Left-side-profile-container">
+          <div className="match-with-others-button-container">BLAH
+            {profile.id === currentUserId && profile.score < 5 && (
+              <div>
+                <button
+                  onClick={() => {
+                    history.push(
+                      `/profile/${profile.id}/personality-questions`
+                    );
+                  }}
+                >
+                  Match with Others
+                </button>
+              </div>
+            )}
+          </div>
+          <div className="left-profile">
+          <div className="profile-images-container">
+            <div className="big-image-left">
+            <div className="profile-image-big">
+              <img src={profile.img_url1}></img>
+            </div>
+            </div>
+            <div className="small-image-right">
+            <div className="profile-image-small">
+              <img src={profile.img_url2}></img>
+            </div>
+            <div className="profile-image-small">
+              <img src={profile.img_url3}></img>
+            </div>
+            </div>
+            </div>
             <div className="name-age-location-match">
               <div className="name-age-location">
                 <div className="name-container">
                   <h3>{profile.first_name}</h3>
-                </div>
-                <div className="age-location-container">
-                  <span>
-                    {profile.location} • {age}
-                  </span>
-                </div>
-              </div>
-              {percent !== 0 && (
+                  {percent !== 0 && (
                 <div className="match-percent-container">
                   <h4>{percent}%</h4>
                 </div>
               )}
-              <div className="match-with-others-button-container">
-                {profile.id === currentUserId && profile.score < 5 && (
-                  <div>
-                    <button
-                      onClick={() => {
-                        history.push(
-                          `/profile/${profile.id}/personality-questions`
-                        );
-                      }}
-                    >
-                      Match with Others
-                    </button>
-                  </div>
-                )}
+                </div>
+                <div className="age-location-container">
+                  <span>
+                  {age} • {profile.location}
+                  </span>
+                </div>
               </div>
+
+
             </div>
-            <div className="profile-images-container">
-              <div className="profile-image">
-                <img src={profile.img_url1}></img>
-              </div>
-              <div className="profile-image">
-                <img src={profile.img_url2}></img>
-              </div>
-              <div className="profile-image">
-                <img src={profile.img_url3}></img>
-              </div>
-            </div>
+
           </div>
-          <div className="bottom-details-container">
+        </div>
+
+        <div className="Right-side-profile-container">
+        <div className="bottom-details-container">
             <div className="bottom-left-column-container">
               <div className="left-column-biography-container">
                 <div className="biography-container-label">
