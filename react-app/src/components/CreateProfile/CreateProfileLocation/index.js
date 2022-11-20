@@ -71,7 +71,9 @@ function CreateProfileLocation() {
             <form className="birthday-input">
               <div>
                 {validationErrors &&
-                  validationErrors.map((error) => <div>{error}</div>)}
+                  validationErrors.map((error) => (
+                    <div className="create-name-error-div">{error}</div>
+                  ))}
               </div>
               <div>
                 <label>Location</label>

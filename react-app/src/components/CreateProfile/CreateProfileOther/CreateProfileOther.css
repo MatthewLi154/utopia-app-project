@@ -32,3 +32,14 @@
   height: 2.5rem;
   border-radius: 2rem;
 }
+
+.outer-main-other-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.other-error-container {
+  padding: 2rem;
+  color: red;
+}
