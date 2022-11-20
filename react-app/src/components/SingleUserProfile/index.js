@@ -197,10 +197,12 @@ function SingleUserProfile() {
 
 
               <div className="button-container">
-                 <div className="match-with-others-button-container">
+
+                <div className="details-label-container">
+                <div className="match-with-others-button-container">
               {profile.id === currentUserId && profile.score < 5 && (
                 <div>
-                  <button className="delete-button"
+                  <button className="edit-button other-match"
                     onClick={() => {
                       history.push(
                         `/profile/${profile.id}/personality-questions`
@@ -212,7 +214,6 @@ function SingleUserProfile() {
                 </div>
               )}
             </div>
-                <div className="details-label-container">
                   {currentUserId === profile.user_id && (
                     <>
                       <div>
