@@ -247,6 +247,18 @@ const LoginForm = ({ setLogin }) => {
           >
             Demo User
           </button>
+          <button
+            className="sign-up"
+            onClick={() => {
+              resetErrors()
+              dispatch(sessionActions.login("Dion@aa.io", "password")).then(
+                () => setLogin(false)
+              );
+            }}
+          >
+            Demo User 2
+          </button>
+
 
         </form>
       </div>

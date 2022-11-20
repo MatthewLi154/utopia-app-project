@@ -96,10 +96,10 @@
     width: 100%;
 }
 .big-image-left img {
-    width: 300px;
+    width: 380px;
     height: 430px;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: fit;
     /* object-fit: fill; */
 }
 

@@ -136,7 +136,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/NIA5HAe.png',
         img_url2='https://i.imgur.com/aH914zk.png',
         img_url3='https://i.imgur.com/SrGifqX.png',
-        score=8,
+        score=10,
         current_goals="To Protect Lily's legacy"
     )
     demo_profile_8 = Profile(
@@ -266,9 +266,9 @@ def seed_profiles():
         languages="English",
         identify_as='Fairy',
         looking_for='Human',
-        img_url1='https://i.pinimg.com/564x/18/88/54/188854f7e8601d76161c4dbf8986f5f0.jpg',
-        img_url2='https://i.pinimg.com/564x/66/af/67/66af67f1fa2f162be8bf49025845aba6.jpg',
-        img_url3='https://cdn.discordapp.com/attachments/1039301998673145946/1042853210999762944/image.png',
+        img_url2='https://i.imgur.com/YC659Kj.jpg',
+        img_url1='https://i.imgur.com/NXk6LOh.jpg',
+        img_url3='https://i.imgur.com/rl74n8Z.jpg',
         score=12,
         current_goals="Helping my friends, Bring light to Pixie Hollow and the rest of the world"
     )
