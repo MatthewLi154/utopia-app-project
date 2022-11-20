@@ -272,12 +272,14 @@ function CreateProfileOther() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="outer-main-other-container">
+          <div className="other-error-container">
+            {validationErrors &&
+              validationErrors.map((error) => (
+                <div className="other-error-list">{error}</div>
+              ))}
+          </div>
           <form>
-            <div>
-              {validationErrors &&
-                validationErrors.map((error) => <div>{error}</div>)}
-            </div>
             <div className="create-final-details-content-container">
               <div>
                 <div className="final-details-input-container">
