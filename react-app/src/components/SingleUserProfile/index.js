@@ -12,7 +12,7 @@ import {
   deleteProfile,
 } from "../../store/profile";
 import { deleteUser } from "../../store/session";
-import "./newSingleUserProfile.css"
+import "./newSingleUserProfile.css";
 
 function SingleUserProfile() {
   const { profileId } = useParams();
@@ -99,7 +99,6 @@ function SingleUserProfile() {
       <div className="entire-profile-container">
         <div className="single-profile-main-container">
           <div className="Left-side-profile-container">
-
             <div className="left-profile">
               <div className="profile-images-container">
                 <div className="big-image-left">
@@ -132,22 +131,19 @@ function SingleUserProfile() {
                     </span>
                   </div>
                 </div>
-
-
               </div>
-
             </div>
           </div>
 
           <div className="Entire-Right-side-profile-container">
             <div className="middle-details-container">
-                    <div className="top-middle">
-              <div className="middle-column-biography-container">
-                <div className="biography-container-label">
-                  <h4>About Me</h4>
+              <div className="top-middle">
+                <div className="middle-column-biography-container">
+                  <div className="biography-container-label">
+                    <h4>About Me</h4>
+                  </div>
+                  <div className="biography-container-bio">{profile.bio}</div>
                 </div>
-                <div className="biography-container-bio">{profile.bio}</div>
-              </div>
               </div>
               <div className="middle-column-goals-container">
                 <div className="biography-container-label">
@@ -162,58 +158,74 @@ function SingleUserProfile() {
               <div className="catergory-div">
                 <div className="identify-as-container subcatergory">
                   <div className="identify-as-icon">
-                    <i className="fa-sharp fa-solid fa-dna"><div className="label-fonts"> Identify As:</div></i>
+                    <i className="fa-sharp fa-solid fa-dna">
+                      <div className="label-fonts"> Identify As:</div>
+                    </i>
                   </div>
-                  <div className="identify-as-detials catborder">{profile.identify_as}</div>
+                  <div className="identify-as-detials catborder">
+                    {profile.identify_as}
+                  </div>
                 </div>
                 <div className="languages-container subcatergory">
                   <div className="languages-icon">
-                    <i class="fa-solid fa-hands-asl-interpreting"><div className="label-fonts"> Languages:</div></i>
+                    <i class="fa-solid fa-hands-asl-interpreting">
+                      <div className="label-fonts"> Languages:</div>
+                    </i>
                   </div>
-                  <div className="languages-details catborder">{profile.languages}</div>
+                  <div className="languages-details catborder">
+                    {profile.languages}
+                  </div>
                 </div>
                 <div className="hobbies-container subcatergory">
                   <div className="hobbies-icon">
-                    <i className="fa-regular fa-face-smile fa"><div className="label-fonts"> Hobbies:</div></i>
+                    <i className="fa-regular fa-face-smile fa">
+                      <div className="label-fonts"> Hobbies:</div>
+                    </i>
                   </div>
-                  <div className="hobbies-details catborder">{profile.hobbies}</div>
+                  <div className="hobbies-details catborder">
+                    {profile.hobbies}
+                  </div>
                 </div>
                 <div className="kids-container subcatergory">
                   <div className="kids-icon">
-                    <i className="fa-solid fa-child"><div className="label-fonts"> Kids:</div></i>
+                    <i className="fa-solid fa-child">
+                      <div className="label-fonts"> Kids:</div>
+                    </i>
                   </div>
                   <div className="kids-details catborder">{profile.kids}</div>
                 </div>
                 <div className="pets-container subcatergory">
                   <div className="pets-icon">
-                    <i className="fa-solid fa-cat"><div className="label-fonts"> Pets:</div></i>
+                    <i className="fa-solid fa-cat">
+                      <div className="label-fonts"> Pets:</div>
+                    </i>
                   </div>
-                  <div className="pets-details catborder">Has {profile.pets}</div>
+                  <div className="pets-details catborder">
+                    Has {profile.pets}
+                  </div>
                 </div>
-                <div>
-
-                </div>
+                <div></div>
               </div>
 
-
               <div className="button-container">
-
                 <div className="details-label-container">
-                <div className="match-with-others-button-container">
-              {profile.id === currentUserId && profile.score < 5 && (
-                <div>
-                  <button className="edit-button other-match"
-                    onClick={() => {
-                      history.push(
-                        `/profile/${profile.id}/personality-questions`
-                      );
-                    }}
-                  >
-                    Match with Others
-                  </button>
-                </div>
-              )}
-            </div>
+                  <div className="match-with-others-button-container">
+                    {profile.id === currentUserId &&
+                      (profile.score < 5 || profile.score !== null) && (
+                        <div>
+                          <button
+                            className="edit-button other-match"
+                            onClick={() => {
+                              history.push(
+                                `/profile/${profile.id}/personality-questions`
+                              );
+                            }}
+                          >
+                            Match with Others
+                          </button>
+                        </div>
+                      )}
+                  </div>
                   {currentUserId === profile.user_id && (
                     <>
                       <div>
@@ -229,7 +241,8 @@ function SingleUserProfile() {
                         </div>
                       </div>
                       <div className="edit-container">
-                        <h4 className="delete-button"
+                        <h4
+                          className="delete-button"
                           onClick={(e) => {
                             onDeleteProfile(e);
                           }}
@@ -240,9 +253,7 @@ function SingleUserProfile() {
                     </>
                   )}
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
