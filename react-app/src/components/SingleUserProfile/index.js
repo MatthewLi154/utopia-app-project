@@ -203,6 +203,13 @@ function SingleUserProfile() {
                   <div className="pets-details catborder">
                     Has {profile.pets}
                   </div>
+<<<<<<< HEAD
+=======
+                  <div className="pets-details catborder">{profile.pets}</div>
+                </div>
+                <div>
+
+>>>>>>> 1a40807f3e6c1a9799e1b1d2774c07dff3955dd0
                 </div>
                 <div></div>
               </div>

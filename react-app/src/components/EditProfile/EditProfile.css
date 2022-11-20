@@ -83,7 +83,7 @@
 }
 
 .save-button-container {
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
   width: 5rem;
   height: 2.5rem;
   border: none;
@@ -160,4 +160,8 @@ save-button-container:hover::after,
 save-button-container:focus::after {
   animation: none;
   display: none;
+}
+
+.main-edit-profile-container {
+  height: fit-content;
 }
