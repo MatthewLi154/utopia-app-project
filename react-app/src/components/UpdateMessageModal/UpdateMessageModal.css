@@ -14,7 +14,7 @@
 }
 
 .update-modal-form {
-    height: 5rem ;
+    height: 6.5rem ;
     width: 100%;
     background-color: var(--main-color-peach);
     border-radius: 25px;
@@ -22,7 +22,6 @@
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 
 .update-modal-form::before {
@@ -69,4 +68,6 @@
 
 .modal-form-errors {
     padding-left: 0.5rem;
+    margin-bottom: 2rem;
+    display: flex;
 }
