@@ -12,11 +12,13 @@
 
 .chat_main_container {
     width: 100%;
-    height: calc(100vh - 17%);
+    height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
     max-height: fit-content;
+    margin-bottom: 8%;
+    margin-top: 30px;
 
 }
 

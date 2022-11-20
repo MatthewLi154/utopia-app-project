@@ -1,9 +1,12 @@
 .entire-profiles-page {
-  background-color: white;
+  background-color: #d68fb8;
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  padding-bottom: 140px;
+  box-sizing: border-box;
   /* flex-direction: row; */
 }
 
@@ -188,5 +191,8 @@ transition: all 0.5s ease-out;
   /* flex-wrap: wrap; */
   width: 100%;
   margin: auto;
+  height: 100%;
+  background-color: white;
+  padding-bottom: 140px;
 
 }
