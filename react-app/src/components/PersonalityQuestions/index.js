@@ -75,9 +75,9 @@ function PersonalityQuestions() {
         } else {
           matchingPercentage = total / profile.score;
         }
-
+        console.log(matchingPercentage, "MATCH!!")
         let newMatch = {};
-        if (matchingPercentage >= 0.75) {
+        if (matchingPercentage >= 0.65) {
           newMatch = {
             profile_id: profileId,
             matched_profile_id: profile.id,

@@ -12,7 +12,6 @@ import {
   deleteProfile,
 } from "../../store/profile";
 import { deleteUser } from "../../store/session";
-import "./SingleUserProfile.css";
 import "./newSingleUserProfile.css"
 
 function SingleUserProfile() {

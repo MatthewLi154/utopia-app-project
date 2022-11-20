@@ -19,7 +19,7 @@ def seed_profiles():
         img_url1='https://i.pinimg.com/originals/10/91/94/1091948c6b80b65b9eef8c163f0ae42a.jpg',
         img_url2="https://i.pinimg.com/564x/85/f9/d0/85f9d0ec736ebc87d2dc14649d294665.jpg",
         img_url3="https://i.pinimg.com/564x/e9/5d/e1/e95de1818f55ba373c2d829f25d35ba7.jpg",
-        score=10,
+        score=9,
         current_goals="Become an inspiration to others, Learn how to become a millionaire, Go on a trip around the world"
 
     )
@@ -59,7 +59,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/ZXkaH6l.png',
         img_url2="https://i.imgur.com/asBOtIn.png",
         img_url3="https://i.imgur.com/2CpTXDd.png",
-        score=14,
+        score=11,
         current_goals="Graduate AppAcademy and become a successful Software Engineer to support his family"
     )
     demo_profile_4 = Profile(
@@ -364,7 +364,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/yY3BmI3.jpg',
         img_url2='https://i.imgur.com/qxT3j31.jpg',
         img_url3='https://i.imgur.com/NpgOlZ6.jpg',
-        score = 15,
+        score=15,
         current_goals="Become a FULLSTACK developer!"
     )
     demo_profile_20 = Profile(
@@ -383,7 +383,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/GoBGpHj.png',
         img_url2='https://i.imgur.com/tVNub0p.jpg',
         img_url3='https://i.imgur.com/vG4LyxG.jpg',
-        score = 13,
+        score=13,
         current_goals="Become a FULLSTACK developer!"
     )
     demo_profile_21 = Profile(
@@ -402,7 +402,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/1kdeJ9j.png',
         img_url2='https://i.imgur.com/UXgFYn9.png',
         img_url3='https://i.imgur.com/i1487cB.png',
-        score = 11,
+        score=11,
         current_goals="Become a FULLSTACK developer!"
     )
     demo_profile_22 = Profile(
@@ -421,7 +421,7 @@ def seed_profiles():
         img_url1='https://i.imgur.com/qBruWax.jpg',
         img_url2='https://i.imgur.com/oLV88tD.png',
         img_url3='https://i.imgur.com/PjCcJEm.jpg',
-        score = 9,
+        score=9,
         current_goals="Become a FULLSTACK developer!"
     )
 
