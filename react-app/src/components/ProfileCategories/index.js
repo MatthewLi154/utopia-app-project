@@ -177,9 +177,10 @@ function ProfileCategory() {
       )}
       {categoryProfileData.profiles.length === 0 && (
         <div className="entire-profiles-page">
-          <h1>You have not matched with anyone!  </h1>
-          <NavLink to={`/profile/${currentUserId}/personality-questions`}><h1>Please Complete the Questionnaire</h1></NavLink>
-
+          <h1>You have not matched with anyone! </h1>
+          <NavLink to={`/profile/${currentUserId}/personality-questions`}>
+            <h1>Please Complete the Questionaire</h1>
+          </NavLink>
         </div>
       )}
     </>
