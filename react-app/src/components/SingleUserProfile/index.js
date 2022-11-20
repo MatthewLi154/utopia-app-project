@@ -188,7 +188,7 @@ function SingleUserProfile() {
                   <div className="pets-icon">
                     <i className="fa-solid fa-cat"><div className="label-fonts"> Pets:</div></i>
                   </div>
-                  <div className="pets-details catborder">Has {profile.pets}</div>
+                  <div className="pets-details catborder">{profile.pets}</div>
                 </div>
                 <div>
 
