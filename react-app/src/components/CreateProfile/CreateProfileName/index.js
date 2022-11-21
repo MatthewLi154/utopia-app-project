@@ -19,7 +19,6 @@ function CreateProfileName() {
       newProfile.name = name;
     }
     localStorage.setItem("name", name);
-
   }, [name]);
 
   const validate = () => {
@@ -87,7 +86,9 @@ function CreateProfileName() {
                 onChange={(e) => setName(e.target.value)}
               />
               {validationErrors &&
-                validationErrors.map((error) => <div>{error}</div>)}
+                validationErrors.map((error) => (
+                  <div className="create-name-error-div">{error}</div>
+                ))}
             </form>
           </div>
           <div className="create-name-button-container">

@@ -22,10 +22,10 @@
 } */
 
 /* .question-choices-container input:after { */
-  /* position: fixed;
+/* position: fixed;
   opacity: 0;
   pointer-events: none; */
-  /* accent-color: red;
+/* accent-color: red;
 } */
 /*
 .question-choices-container div:active {
@@ -33,19 +33,19 @@
 }
 
 .question-choices { */
-  /* background-color: purple; */
+/* background-color: purple; */
 /* } */
 /*
 .question-choices-left {
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem; */
-  /* background-color: aqua; */
+/* background-color: aqua; */
 /* } */
 
 /* .question-choices-right {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem; */
-  /* background-color: aqua; */
+/* background-color: aqua; */
 /* }
 
 .submit-personality-questions-container {
@@ -53,26 +53,39 @@
   justify-content: center;
 } */
 
-.entire-container {
+/* .entire-container {
+  padding-top: 2rem;
   background: rgb(208, 187, 225);
-  font-weight:1000;
+  font-weight: 1000;
   text-transform: uppercase;
   /* color: #0f78d4; */
-  overflow: hidden;
-  height:100%;
+/* overflow: hidden;
+  height: 100%;
+  padding-bottom: 25rem; */
+/* } */
+.entire-container {
+  background: #dda2a3;
+  font-weight: 1000;
+  text-transform: uppercase;
+  /* color: #0f78d4; */
+  height: fit-content;
+  display: flex;
+  box-sizing: border-box;
+  padding-bottom: 80px;
+  /* min-height: 100vh; */
 }
 
 .header-person {
-color: #3c42c4;
-padding-bottom: 15px;
-margin-left: 30px;
-font-size: 33px;
+  color: #3c42c4;
+  padding-bottom: 15px;
+  margin-left: 30px;
+  font-size: 33px;
 }
 
 .labels {
-  font-weight:bold;
+  font-weight: bold;
   text-align: center;
-  margin:auto;
+  margin: auto;
   /* padding-top: 40px; */
   /* margin-bottom: 70px; */
   /* margin-left: 10px; */
@@ -86,14 +99,13 @@ font-size: 33px;
 }
 
 .personality-form {
-  position:relative;
+  position: relative;
   top: 0rem;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
   width: 500px;
-  height: auto;
   padding: 16px;
   box-sizing: border-box;
 }
@@ -109,9 +121,6 @@ font-size: 33px;
   justify-content: flex-start;
   font-weight: normal;
   font-size: 16px;
-
-
-
 }
 
 .question-choices-left,
@@ -121,19 +130,19 @@ font-size: 33px;
   justify-content: flex-start;
   padding: 10px;
   padding-left: 40px;
-  height:30px;
+  height: 30px;
 }
 
 .answer-choices:before {
   content: "";
-    width: 10px;
-    height: 10px;
-    background: rgb(255, 255, 255);
-    position: absolute;
-    left: 10px;
-    top: calc(50% - 13px);
-    box-sizing: border-box;
-    border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 13px);
+  box-sizing: border-box;
+  border-radius: 50%;
 }
 
 input[type="radio"] {
@@ -163,10 +172,10 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked ~ .bullet {
-  position:absolute;
+  position: absolute;
   opacity: 1;
   animation-name: explode;
-  animation-duration: 0.350s;
+  animation-duration: 0.35s;
 }
 
 .line {
@@ -174,7 +183,7 @@ input[type="radio"]:checked ~ .bullet {
   width: 10px;
   height: 2px;
   background-color: rgb(255, 255, 255);
-  opacity:0;
+  opacity: 0;
 }
 
 .line.zero {
@@ -229,72 +238,72 @@ input[type="radio"]:checked ~ .bullet {
   height: 10px;
 }
 
-input[type="radio"]:checked ~ .bullet .line.zero{
-  animation-name:drop-zero;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.zero {
+  animation-name: drop-zero;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.one{
-  animation-name:drop-one;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.one {
+  animation-name: drop-one;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.two{
-  animation-name:drop-two;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.two {
+  animation-name: drop-two;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.three{
-  animation-name:drop-three;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.three {
+  animation-name: drop-three;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.four{
-  animation-name:drop-four;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.four {
+  animation-name: drop-four;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.five{
-  animation-name:drop-five;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.five {
+  animation-name: drop-five;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.six{
-  animation-name:drop-six;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.six {
+  animation-name: drop-six;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
-input[type="radio"]:checked ~ .bullet .line.seven{
-  animation-name:drop-seven;
-  animation-delay: 0.100s;
+input[type="radio"]:checked ~ .bullet .line.seven {
+  animation-name: drop-seven;
+  animation-delay: 0.1s;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
 @keyframes explode {
-  0%{
+  0% {
     opacity: 0;
     transform: scale(2);
   }
-  60%{
+  60% {
     opacity: 1;
     transform: scale(0.5);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -307,12 +316,12 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     height: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: translateY(-2px);
     height: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
@@ -323,12 +332,12 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     width: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: rotate(-55deg) translate(9px);
     width: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
@@ -339,12 +348,12 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     width: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: translate(9px);
     width: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
@@ -355,12 +364,12 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     width: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: rotate(55deg) translate(9px);
     width: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
@@ -371,12 +380,12 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     width: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: rotate(55deg) translate(-9px);
     width: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
@@ -387,12 +396,12 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     width: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: translate(-9px);
     width: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
@@ -403,92 +412,27 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     width: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: rotate(-55deg) translate(-9px);
     width: 0px;
-    opacity:0;
+    opacity: 0;
   }
 }
 
 @keyframes drop-seven {
-0% {
+  0% {
     opacity: 0;
     transform: translateY(-20px);
     height: 10px;
   }
   20% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
     transform: translateY(2px);
     height: 0px;
-    opacity:0;
+    opacity: 0;
   }
-}
-
-.personality-submit {
-  width: 80px;
-  height: 30px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-}
-
-.personality-submit:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-.personality-submit:active {
-  color: #000;
-}
-
-.personality-submit:active:after {
-  background: transparent;
-}
-
-.personality-submit:hover:before {
-  opacity: 1;
-}
-
-.personality-submit:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
 }

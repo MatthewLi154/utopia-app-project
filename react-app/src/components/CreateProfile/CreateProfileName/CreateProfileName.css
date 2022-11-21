@@ -53,6 +53,7 @@
   width: 4.5rem;
   height: 2.5rem;
   border-radius: 2rem;
+  cursor: pointer;
 }
 
 .create-name-button-container {
@@ -60,4 +61,8 @@
   width: 100%;
   justify-content: flex-end;
   margin-right: 20rem;
+}
+
+.create-name-error-div {
+  color: red;
 }

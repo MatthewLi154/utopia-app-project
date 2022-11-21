@@ -1,9 +1,12 @@
 .entire-profiles-page {
-  background-color: white;
+  background-color: #d68fb8;
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  padding-bottom: 140px;
+  box-sizing: border-box;
   /* flex-direction: row; */
 }
 
@@ -63,7 +66,8 @@
   margin-top: 100px;
   --margin-top: 100px;
   overflow: hidden;
-  color: white
+  color: white;
+
 
   /* flex-direction: column; */
   /* border: solid 1px black;
@@ -81,44 +85,17 @@
 
 .profile-box:hover {
   /* /* box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08); */
-width: 580px;
-border-radius: 100px 10px 100px 100px;
+width: 540px;
+height: 290px;
+/* border-radius: 100px 10px 100px 100px; */
 transition: all 0.5s ease-out;
+
+
 }
 
-/* .profile-box-content img {
-  width: 10rem;
-  height: 10rem;
-  ;
-
-
-
-  object-fit: cover;
-  /* border: solid 6px transparent; */
-  /* border-radius: 50%;
-} */ */
-
-/* .profile-box-content * { */
-  /* width: 140px;
-  margin: auto; */
-  /* padding-right: 10rem; */
-  /* padding: 0rem 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* display: flex;
-  --flex: inherit;
-  overflow: hidden;
-  text-overflow: hidden;
-  --background-color: yellow;
-  color: rgb(31, 173, 31);
-  white-space: nowrap;
-  width: 0;
-  height: auto;
-  transition: all 450ms ease-in;
-  transition-delay: 1s;
-  flex-direction: column;
-} */
+#name-title {
+  font-size: 20px
+}
 
 .profile-box-content:hover {
   /* --background-color: purple; */
@@ -169,16 +146,21 @@ transition: all 0.5s ease-out;
   position: static;
   flex-direction: column;
   font-size: 15px;
-  padding: 0.4rem;
+  /* padding: 0.1rem; */
+  /* padding-right: 8rem; */
   text-overflow:ellipsis;
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .inner-profiles-container {
   display: grid;
-  grid-template-columns: 500px 500px;
-  flex-wrap: wrap;
-  max-width: 100%;
+  grid-template-columns: 500px 500px 500px;
+  /* flex-wrap: wrap; */
+  width: 100%;
   margin: auto;
+  height: 100%;
+  background-color: white;
+  padding-bottom: 140px;
 
 }

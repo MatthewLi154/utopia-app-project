@@ -77,7 +77,7 @@ function Profile() {
                         > */}
 
 
-                          <h3 className="card-title" id="texting">{profile.first_name}</h3>
+                          <h3 className="card-title" id="name-title">{profile.first_name}</h3>
                         {/* </NavLink> */}
                         <div id="texting">
                           <ul>

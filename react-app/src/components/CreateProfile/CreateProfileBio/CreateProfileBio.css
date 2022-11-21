@@ -10,4 +10,13 @@
 .text-area-container textarea {
   width: 15rem;
   height: 8rem;
+  resize: none;
 }
+
+/* .error-bio-container {
+  margin-left: 50rem;
+} */
+
+/* .errors-bio-container {
+  margin-left: 50rem;
+} */

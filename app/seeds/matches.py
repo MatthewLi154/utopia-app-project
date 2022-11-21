@@ -10,7 +10,19 @@ def seed_matches():
         {
         'profile_id': 1,
         'matched_profile_id': 3
-        }
+        },
+        {
+        'profile_id': 1,
+        'matched_profile_id': 10
+        },
+        {
+        'profile_id': 1,
+        'matched_profile_id': 15
+        },
+        {
+        'profile_id': 1,
+        'matched_profile_id': 13
+        },
     ]
 
     db.session.bulk_insert_mappings(Match, matches)

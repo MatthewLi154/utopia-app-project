@@ -21,6 +21,33 @@ def seed_users():
         username='PrincessPeach', email='PrincessPeach@aa.io', password='password')
     Tsunade = User(
         username='Tsunade', email='Tsunade@aa.io', password='password')
+    Kaname = User(
+        username='Kaname', email='Kaname@aa.io', password='password')
+    Vidia = User(
+        username='Vidia', email='Vidia@aa.io', password='password')
+    Stefan = User(
+        username='Stefan', email='Stefan@aa.io', password='password')
+    Edward = User(
+        username='Edward', email='Edward@aa.io', password='password')
+    Iridessa = User(
+        username='Iridessa', email='Iridessa@aa.io', password='password')
+    Loid = User(
+        username='Loid', email='Loid@aa.io', password='password')
+    Brin = User(
+        username='Brin', email='Brin@aa.io', password='password')
+    Ben = User(
+        username='Ben', email='Ben@aa.io', password='password')
+    Matt = User(
+        username='Matt', email='Matt@aa.io', password='password')
+    Sebastian = User(
+        username='Sebastian', email='Sebastian@aa.io', password='password')
+    Allen = User(
+        username='Allen', email='Allen@aa.io', password='password')
+    Kyle = User(
+        username='Kyle', email='Kyle@aa.io', password='password')
+    William = User(
+        username='William', email='William@aa.io', password='password'
+    )
     db.session.add(demo)
     db.session.add(Nandor)
     db.session.add(Dion)
@@ -30,6 +57,19 @@ def seed_users():
     db.session.add(Severus)
     db.session.add(PrincessPeach)
     db.session.add(Tsunade)
+    db.session.add(Kaname)
+    db.session.add(Vidia)
+    db.session.add(Stefan)
+    db.session.add(Edward)
+    db.session.add(Iridessa)
+    db.session.add(Loid)
+    db.session.add(Brin)
+    db.session.add(Ben)
+    db.session.add(Matt)
+    db.session.add(Sebastian)
+    db.session.add(Allen)
+    db.session.add(Kyle)
+    db.session.add(William)
     db.session.commit()
 
 

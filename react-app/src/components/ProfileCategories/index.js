@@ -4,6 +4,7 @@ import { fetchAllProfiles, fetchSingleProfile } from "../../store/profile";
 import { NavLink, useParams } from "react-router-dom";
 import { getProfileMatches } from "../../store/match";
 import PersonalityQuestions from "../PersonalityQuestions";
+import "./ProfileCategories.css";
 
 function ProfileCategory() {
   const { category } = useParams();
@@ -176,10 +177,14 @@ function ProfileCategory() {
         </div>
       )}
       {categoryProfileData.profiles.length === 0 && (
-        <div className="entire-profiles-page">
-          <h1>You were not matched with anyone. Please repeat the Questionaiire! </h1>
-          <NavLink to={`/profile/${currentUserId}/personality-questions`}>personality link</NavLink>
-
+        <div className="not-matched-profiles">
+          <h1>You have not matched with anyone!</h1>
+          <h2>Please complete the questionnaire to start your journey!</h2>
+          <NavLink to={`/profile/${currentUserId}/personality-questions`}>
+            <div className="button-question">
+              <button className="question-button">Questionnaire</button>
+            </div>
+          </NavLink>
         </div>
       )}
     </>

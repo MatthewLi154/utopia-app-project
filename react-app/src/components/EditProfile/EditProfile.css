@@ -37,9 +37,9 @@
 }
 
 .edit-bio-container:hover {
-  box-shadow: inset 2px 2px 2px #6e51c8 , 2px 2px 2px #6e51c8;
+  box-shadow: inset 2px 2px 2px #6e51c8, 2px 2px 2px #6e51c8;
 }
-.bio-box textarea{
+.bio-box textarea {
   margin-left: 2px;
   border-radius: 1rem;
 }
@@ -50,7 +50,6 @@
 
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 } */
-
 
 .edit-bio-upper {
   display: flex;
@@ -70,6 +69,7 @@
   flex-direction: column;
   align-items: center;
   margin: 1rem 0rem;
+  padding-bottom: 6em;
 }
 
 .edit-bio-lower textarea {
@@ -83,7 +83,7 @@
 }
 
 .save-button-container {
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
   width: 5rem;
   height: 2.5rem;
   border: none;
@@ -112,6 +112,7 @@
   cursor: pointer;
   outline: none;
   position: relative;
+  top: 1rem;
   padding: 10px;
 }
 
@@ -159,4 +160,12 @@ save-button-container:hover::after,
 save-button-container:focus::after {
   animation: none;
   display: none;
+}
+
+.main-edit-profile-container {
+  height: fit-content;
+}
+
+.edit-errors {
+  color: red;
 }

@@ -22,6 +22,7 @@ import BrowseBar from "./components/BrowseBar";
 import ProfileCategory from "./components/ProfileCategories";
 import Home from "./components/Home";
 import { fetchAllProfiles } from "./store/profile";
+import CreaterLinks from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -111,6 +112,7 @@ function App() {
                   <User />
                 </ProtectedRoute>
               </Switch>
+              <CreaterLinks />
             </>
           )}
         </>

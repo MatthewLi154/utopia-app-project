@@ -95,7 +95,7 @@ const LoginForm = ({ setLogin }) => {
         const [key, value] = error.split(":")
         errors.push(value)
       })
-      return setErrors(errors);
+      setErrors(errors);
     }
     history.push("/");
   };
@@ -229,24 +229,41 @@ const LoginForm = ({ setLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             className="modal-inputs"
           />
-          <div className="errors-login-modal">
+          {errors.length > 0 && <div className="errors-login-modal">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
-            ))}</div>
+            ))}</div>}
           <button className="sign-up" type="submit">
             Sign In
+          </button>
+          <div>
+          <button
+            className="sign-up"
+            onClick={() => {
+              resetErrors()
+              setEmail("demo@aa.io")
+              setPassword("password")
+              // dispatch(sessionActions.login("demo@aa.io", "password")).then(
+              //   () => setLogin(false)
+              // );
+            }}
+          >
+            Demo User
           </button>
           <button
             className="sign-up"
             onClick={() => {
               resetErrors()
-              dispatch(sessionActions.login("demo@aa.io", "password")).then(
-                () => setLogin(false)
-              );
+              setEmail("Dion@aa.io")
+              setPassword("password")
+              // dispatch(sessionActions.login("Dion@aa.io", "password")).then(
+              //   () => setLogin(false)
+              // );
             }}
           >
-            Demo User
+            Demo User 2
           </button>
+          </div>
 
         </form>
       </div>

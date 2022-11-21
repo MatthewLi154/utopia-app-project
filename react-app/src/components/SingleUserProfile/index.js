@@ -12,7 +12,7 @@ import {
   deleteProfile,
 } from "../../store/profile";
 import { deleteUser } from "../../store/session";
-import "./SingleUserProfile.css";
+import "./newSingleUserProfile.css";
 
 function SingleUserProfile() {
   const { profileId } = useParams();
@@ -96,130 +96,164 @@ function SingleUserProfile() {
 
   return (
     <>
-      <div className="single-profile-main-container">
-        <div className="single-profile-container">
-          <div className="upper-name-location-age-images-container">
-            <div className="name-age-location-match">
-              <div className="name-age-location">
-                <div className="name-container">
-                  <h3>{profile.first_name}</h3>
-                </div>
-                <div className="age-location-container">
-                  <span>
-                    {profile.location} • {age}
-                  </span>
-                </div>
-              </div>
-              {percent !== 0 && (
-                <div className="match-percent-container">
-                  <h4>{percent}%</h4>
-                </div>
-              )}
-              <div className="match-with-others-button-container">
-                {profile.id === currentUserId && profile.score < 5 && (
-                  <div>
-                    <button
-                      onClick={() => {
-                        history.push(
-                          `/profile/${profile.id}/personality-questions`
-                        );
-                      }}
-                    >
-                      Match with Others
-                    </button>
+      <div className="entire-profile-container">
+        <div className="single-profile-main-container">
+          <div className="Left-side-profile-container">
+            <div className="left-profile">
+              <div className="profile-images-container">
+                <div className="big-image-left">
+                  <div className="profile-image-big">
+                    <img src={profile.img_url1}></img>
                   </div>
-                )}
+                </div>
+                <div className="small-image-right">
+                  <div className="profile-image-small">
+                    <img src={profile.img_url2}></img>
+                  </div>
+                  <div className="profile-image-small">
+                    <img src={profile.img_url3}></img>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="profile-images-container">
-              <div className="profile-image">
-                <img src={profile.img_url1}></img>
-              </div>
-              <div className="profile-image">
-                <img src={profile.img_url2}></img>
-              </div>
-              <div className="profile-image">
-                <img src={profile.img_url3}></img>
+              <div className="name-age-location-match">
+                <div className="name-age-location">
+                  <div className="name-container">
+                    <h3>{profile.first_name}</h3>
+                    {percent !== 0 && (
+                      <div className="match-percent-container">
+                        <h4>{percent}%</h4>
+                      </div>
+                    )}
+                  </div>
+                  <div className="age-location-container">
+                    <span>
+                      {age} • {profile.location}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="bottom-details-container">
-            <div className="bottom-left-column-container">
-              <div className="left-column-biography-container">
-                <div className="biography-container-label">
-                  <h4>About Me</h4>
+
+          <div className="Entire-Right-side-profile-container">
+            <div className="middle-details-container">
+              <div className="top-middle">
+                <div className="middle-column-biography-container">
+                  <div className="biography-container-label">
+                    <h4>About Me</h4>
+                  </div>
+                  <div className="biography-container-bio">{profile.bio}</div>
                 </div>
-                <div className="biography-container-bio">{profile.bio}</div>
               </div>
-              <div className="left-column-biography-container">
+              <div className="middle-column-goals-container">
                 <div className="biography-container-label">
-                  <h4>Current goals</h4>
+                  <h4>Current Goals</h4>
                 </div>
                 <div className="biography-container-bio">
                   {profile.current_goals}
                 </div>
               </div>
             </div>
-            <div className="bottom-right-column-container">
-              <div className="details-label-container">
-                <div>
-                  <h4>Details</h4>
+            <div className="right-side-container">
+              <div className="catergory-div">
+                <div className="identify-as-container subcatergory">
+                  <div className="identify-as-icon">
+                    <i className="fa-sharp fa-solid fa-dna">
+                      <div className="label-fonts"> Identify As:</div>
+                    </i>
+                  </div>
+                  <div className="identify-as-detials catborder">
+                    {profile.identify_as}
+                  </div>
                 </div>
-                {currentUserId === profile.user_id && (
-                  <>
-                    <div>
+                <div className="languages-container subcatergory">
+                  <div className="languages-icon">
+                    <i class="fa-solid fa-hands-asl-interpreting">
+                      <div className="label-fonts"> Languages:</div>
+                    </i>
+                  </div>
+                  <div className="languages-details catborder">
+                    {profile.languages}
+                  </div>
+                </div>
+                <div className="hobbies-container subcatergory">
+                  <div className="hobbies-icon">
+                    <i className="fa-regular fa-face-smile fa">
+                      <div className="label-fonts"> Hobbies:</div>
+                    </i>
+                  </div>
+                  <div className="hobbies-details catborder">
+                    {profile.hobbies}
+                  </div>
+                </div>
+                <div className="kids-container subcatergory">
+                  <div className="kids-icon">
+                    <i className="fa-solid fa-child">
+                      <div className="label-fonts"> Kids:</div>
+                    </i>
+                  </div>
+                  <div className="kids-details catborder">{profile.kids}</div>
+                </div>
+                <div className="pets-container subcatergory">
+                  <div className="pets-icon">
+                    <i className="fa-solid fa-cat">
+                      <div className="label-fonts"> Pets:</div>
+                    </i>
+                  </div>
+                  <div className="pets-details catborder">
+                    {profile.pets}
+                  </div>
+                </div>
+                <div></div>
+                <div></div>
+              </div>
+
+              <div className="button-container">
+                <div className="details-label-container">
+                  <div className="match-with-others-button-container">
+                    {profile.id === currentUserId &&
+                      (profile.score < 5 || profile.score !== null) && (
+                        <div>
+                          <button
+                            className="edit-button other-match"
+                            onClick={() => {
+                              history.push(
+                                `/profile/${profile.id}/personality-questions`
+                              );
+                            }}
+                          >
+                            Match with Others
+                          </button>
+                        </div>
+                      )}
+                  </div>
+                  {currentUserId === profile.user_id && (
+                    <>
                       <div>
-                        <NavLink
-                          to={{
-                            pathname: `/profile/${profileId}/edit`,
-                            state: { editProfileData: editProfileData },
+                        <div className="edit-container">
+                          <NavLink
+                            to={{
+                              pathname: `/profile/${profileId}/edit`,
+                              state: { editProfileData: editProfileData },
+                            }}
+                          >
+                            <h4 className="edit-button">Edit Profile</h4>
+                          </NavLink>
+                        </div>
+                      </div>
+                      <div className="edit-container">
+                        <h4
+                          className="delete-button"
+                          onClick={(e) => {
+                            onDeleteProfile(e);
                           }}
                         >
-                          <h4>Edit</h4>
-                        </NavLink>
+                          Delete Profile
+                        </h4>
                       </div>
-                    </div>
-                    <div>
-                      <h4
-                        onClick={(e) => {
-                          onDeleteProfile(e);
-                        }}
-                      >
-                        Delete
-                      </h4>
-                    </div>
-                  </>
-                )}
-              </div>
-              <div className="identify-as-container">
-                <div className="identify-as-icon">
-                  <i className="fa-sharp fa-solid fa-dna"></i>
+                    </>
+                  )}
                 </div>
-                <div className="identify-as-detials">{profile.identify_as}</div>
-              </div>
-              <div className="languages-container">
-                <div className="languages-icon">
-                  <i class="fa-solid fa-hands-asl-interpreting"></i>
-                </div>
-                <div className="languages-details">{profile.languages}</div>
-              </div>
-              <div className="hobbies-container">
-                <div className="hobbies-icon">
-                  <i className="fa-regular fa-face-smile"></i>
-                </div>
-                <div className="hobbies-details">{profile.hobbies}</div>
-              </div>
-              <div className="kids-container">
-                <div className="kids-icon">
-                  <i className="fa-solid fa-child"></i>
-                </div>
-                <div className="kids-details">{profile.kids}</div>
-              </div>
-              <div className="pets-container">
-                <div className="pets-icon">
-                  <i className="fa-solid fa-cat"></i>
-                </div>
-                <div className="pets-details">Has {profile.pets}</div>
               </div>
             </div>
           </div>

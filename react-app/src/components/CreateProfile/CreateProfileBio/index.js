@@ -28,7 +28,7 @@ function CreateProfileBio() {
     const validationErrors = [];
 
     if (bio.length === 0) {
-      validationErrors.push("Please enter a bio");
+      validationErrors.push("Please enter at least 10 characters for bio");
     } else if (bio.length < 10) {
       validationErrors.push("Please enter at least 10 characters for bio");
     } else if (bio.length > 255) {
@@ -36,7 +36,7 @@ function CreateProfileBio() {
     }
 
     if (currentGoals.length === 0) {
-      validationErrors.push("Please enter some goals");
+      validationErrors.push("Please enter some goals that you have");
     } else if (currentGoals.length < 10) {
       validationErrors.push(
         "Please enter at least 10 characters for current goals"
@@ -86,11 +86,15 @@ function CreateProfileBio() {
         </div>
         <div className="create-name-bottom-section-details-container">
           <div className="input-name-container birthday-input">
-            <div>
-              {validationErrors &&
-                validationErrors.map((error) => <div>{error}</div>)}
-            </div>
             <form className="birthday-input">
+              <div className="errors-bio-container">
+                {validationErrors &&
+                  validationErrors.map((error) => (
+                    <div className="create-name-error-div error-bio-container">
+                      {error}
+                    </div>
+                  ))}
+              </div>
               <div className="input-content-container">
                 <div className="text-area-container">
                   <div>

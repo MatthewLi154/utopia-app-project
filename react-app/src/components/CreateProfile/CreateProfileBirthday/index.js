@@ -21,7 +21,10 @@ function CreateProfileBirthday() {
     localStorage.setItem("day", day);
     localStorage.setItem("month", month);
     localStorage.setItem("year", year);
-    newProfile.birthday = `${month}-${day}-${year}`;
+    if (newProfile) {
+      newProfile.birthday = `${month}-${day}-${year}`;
+    }
+    console.log(newProfile);
   }, [day, month, year]);
 
   const validate = () => {
@@ -104,7 +107,9 @@ function CreateProfileBirthday() {
             <form className="birthday-input">
               <div>
                 {validationErrors &&
-                  validationErrors.map((error) => <div>{error}</div>)}
+                  validationErrors.map((error) => (
+                    <div className="create-name-error-div">{error}</div>
+                  ))}
               </div>
               <div className="birthday-input-container">
                 <label>Month</label>
