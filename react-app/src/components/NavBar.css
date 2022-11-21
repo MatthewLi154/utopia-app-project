@@ -356,8 +356,8 @@ sign-up-button:focus::after {
   .logout-button {
     background: none;
     border: none;
-    font-family: "Helvetica";
-    font-size: 14px;
+    /* font-family: "Helvetica"; */
+    font-size: 17px;
     padding: 0px;
     width: 160px;
     height: 20px;
@@ -385,4 +385,12 @@ sign-up-button:focus::after {
   height: 30px;
   cursor: pointer;
   margin-left: 1rem;
+}
+
+.logout-button {
+  height: 35px;
+  font-size: 14px;
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
 }
