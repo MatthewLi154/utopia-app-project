@@ -85,49 +85,17 @@
 
 .profile-box:hover {
   /* /* box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.08); */
-width: 580px;
-height: 270px;
+width: 540px;
+height: 290px;
 /* border-radius: 100px 10px 100px 100px; */
 transition: all 0.5s ease-out;
+
 
 }
 
 #name-title {
   font-size: 20px
 }
-/* .profile-box-content img {
-  width: 10rem;
-  height: 10rem;
-  ;
-
-
-
-  object-fit: cover;
-  /* border: solid 6px transparent; */
-  /* border-radius: 50%;
-} */ */
-
-/* .profile-box-content * { */
-  /* width: 140px;
-  margin: auto; */
-  /* padding-right: 10rem; */
-  /* padding: 0rem 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* display: flex;
-  --flex: inherit;
-  overflow: hidden;
-  text-overflow: hidden;
-  --background-color: yellow;
-  color: rgb(31, 173, 31);
-  white-space: nowrap;
-  width: 0;
-  height: auto;
-  transition: all 450ms ease-in;
-  transition-delay: 1s;
-  flex-direction: column;
-} */
 
 .profile-box-content:hover {
   /* --background-color: purple; */
