@@ -110,4 +110,3 @@ When clicking on the messaging tab in the nav-bar, you will be directed to the m
 
 ![image](https://i.imgur.com/K35j4Ol.png)
 
-## Developer's GitHub!
