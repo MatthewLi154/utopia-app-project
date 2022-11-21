@@ -165,3 +165,7 @@ save-button-container:focus::after {
 .main-edit-profile-container {
   height: fit-content;
 }
+
+.edit-errors {
+  color: red;
+}

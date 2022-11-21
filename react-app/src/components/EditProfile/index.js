@@ -336,7 +336,7 @@ function EditProfile() {
               </div>
             </div>
             {validationErrors &&
-              validationErrors.map((error) => <div>{error}</div>)}
+              validationErrors.map((error) => <div className="edit-errors">{error}</div>)}
 
             <div>
               <button
