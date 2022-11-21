@@ -328,7 +328,7 @@ function CreateProfileOther() {
                 </div>
                 <div className="final-details-input-container">
                   <div>
-                    <label>Looking For As</label>
+                    <label>Looking For</label>
                   </div>
                   <div>
                     <input
