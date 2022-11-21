@@ -12,14 +12,13 @@
 
 .chat_main_container {
     width: 100%;
-    height: fit-content;
     position: relative;
     display: flex;
     justify-content: center;
     max-height: fit-content;
     margin-bottom: 8%;
     margin-top: 30px;
-
+    height: 90vh
 }
 
 .chat_container {
@@ -41,8 +40,20 @@
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     background: var(--main-color-light-pink);
-    height: fit-content;
+    /* height: fit-content; */
+    overflow-y: auto;
+    text-overflow: ellipsis;
 }
+
+/* .chat_container .leftSide::-webkit-scrollbar {
+    display: none;
+}
+
+.chat_container .leftSide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    text-overflow: ellipsis;
+} */
 
 .chat_container .rightSide {
     flex: 70;
@@ -95,10 +106,10 @@
     overflow: scroll;
     background: rgba(225, 225, 225, 0.3);
     border-radius: 20px;
-    box-shadow:  7px 7px 5px rgba(0, 0, 0, 0.20),
-         7px -7px 5px rgba(0, 0, 0, 0.20),
-         -7px 7px 5px rgba(0, 0, 0, 0.20),
-         -7px -7px 5px rgba(0, 0, 0, 0.20)
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.20),
+        7px -7px 5px rgba(0, 0, 0, 0.20),
+        -7px 7px 5px rgba(0, 0, 0, 0.20),
+        -7px -7px 5px rgba(0, 0, 0, 0.20)
 }
 
 .message_box::-webkit-scrollbar {
@@ -168,8 +179,8 @@
     font-size: 1rem;
 }
 
-.message_buttons button > i {
-   color: var(--main-color-dark-pink);
+.message_buttons button>i {
+    color: var(--main-color-dark-pink);
 }
 
 .message_buttons {
@@ -204,9 +215,9 @@
     color: var(--main-color-dark-pink);
     background: #f4dfbe;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.20),
-            5px -5px 5px rgba(0, 0, 0, 0.20),
-            -5px 5px 5px rgba(0, 0, 0, 0.20),
-            -5px -5px 5px rgba(0, 0, 0, 0.20)
+        5px -5px 5px rgba(0, 0, 0, 0.20),
+        -5px 5px 5px rgba(0, 0, 0, 0.20),
+        -5px -5px 5px rgba(0, 0, 0, 0.20)
 }
 
 
@@ -238,8 +249,7 @@
 }
 
 
-.input_container input:focus ~ span
- {
+.input_container input:focus~span {
     color: white;
     transition: 0.5s;
     transform: translateX(10px) translateY(-7px);
@@ -250,7 +260,7 @@
     letter-spacing: 0.2em;
 }
 
-.chat_submit{
+.chat_submit {
     margin-left: 5px;
     background: var(--main-color-light-brown);
     outline: none;
@@ -260,9 +270,9 @@
     width: 3rem;
     color: var(--main-color-dark-pink);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.20),
-            5px -5px 5px rgba(0, 0, 0, 0.20),
-            -5px 5px 5px rgba(0, 0, 0, 0.20),
-            -5px -5px 5px rgba(0, 0, 0, 0.20);
+        5px -5px 5px rgba(0, 0, 0, 0.20),
+        -5px 5px 5px rgba(0, 0, 0, 0.20),
+        -5px -5px 5px rgba(0, 0, 0, 0.20);
     display: flex;
     justify-content: center;
     /* align-content: center; */
@@ -299,14 +309,14 @@
 }
 
 .error span {
-    color:  red;
+    color: red;
 }
 
 .error input {
     caret-color: red;
 }
 
-.error + .chat_submit {
-    border:2px solid red;
+.error+.chat_submit {
+    border: 2px solid red;
     color: red;
 }
