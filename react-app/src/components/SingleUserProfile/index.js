@@ -201,9 +201,8 @@ function SingleUserProfile() {
                     </i>
                   </div>
                   <div className="pets-details catborder">
-                    Has {profile.pets}
+                    {profile.pets}
                   </div>
-                  <div className="pets-details catborder">{profile.pets}</div>
                 </div>
                 <div></div>
                 <div></div>
